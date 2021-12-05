@@ -1,6 +1,9 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const { VueLoaderPlugin } = require('vue-loader')
+const AutoImport = require('unplugin-auto-import/webpack')
+const Components = require('unplugin-vue-components/webpack')
+const { ElementPlusResolver } = require('unplugin-vue-components/resolvers')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
 module.exports = {
@@ -16,6 +19,18 @@ module.exports = {
           'css-loader',
           'postcss-loader',
         ],
+      },
+      {
+        test: /\.svg$/,
+        use: ['vue-loader', 'vue-svg-loader'],
+      },
+      {
+        test: /\.mjs$/,
+        resolve: {
+          fullySpecified: false,
+        },
+        include: /node_modules/,
+        type: 'javascript/auto',
       },
       {
         test: /\.(t|j)s$/,
@@ -36,19 +51,21 @@ module.exports = {
   resolve: {
     extensions: ['.ts', '.js', '.vue', '.json'],
     alias: {
-      'vue': '@vue/runtime-dom'
-    }
+      vue: '@vue/runtime-dom',
+    },
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: path.resolve(__dirname, '../public/index.html'),
+      template: path.resolve(__dirname, '../index.html'),
       filename: 'index.html',
       title: 'datawhale-homepage',
     }),
     new VueLoaderPlugin(),
-    new MiniCssExtractPlugin({
-      filename: 'css/[name].[hash].css',
-      chunkFilename: 'css/[id].[hash].css',
-    }),
+    // AutoImport({
+    //   resolvers: [ElementPlusResolver()],
+    // }),
+    // Components({
+    //   resolvers: [ElementPlusResolver()],
+    // }),
   ],
 }

@@ -1,39 +1,60 @@
 <template>
-  <h1>Vue3测试项目</h1>
-  <h3 @click="testFunction">{{ testConst }}</h3>
+  <div class="container">
+    <div v-if="viewValid" class="valid-view">
+      <app-navigator></app-navigator>
+      <router-view></router-view>
+    </div>
+    <div v-else class="invalid-view">
+      请在宽度大于{{ minWidth }}px的浏览器下浏览该网页，以取得最佳展示效果。
+    </div>
+  </div>
 </template>
 
 <script>
+import appNavigator from "./component/appNavigator.vue";
 import { reactive, toRefs } from "vue";
 
+const MIN_WIDTH = 750;
+
 export default {
+  components: { appNavigator },
   setup() {
     const data = reactive({
-      testConst: "点我",
+      viewValid: true,
+      minWidth: MIN_WIDTH,
     });
-    const testFunction = () => {
-      alert("hello world");
-    };
     return {
       ...toRefs(data),
-      testFunction,
     };
+  },
+  mounted() {
+    window.addEventListener("resize", () => {
+      if (document.body.clientWidth < MIN_WIDTH && this.viewValid) {
+        this.viewValid = false;
+      } else if (document.body.clientWidth >= MIN_WIDTH && !this.viewValid) {
+        this.viewValid = true;
+      }
+    });
   },
 };
 </script>
 
 <style scoped>
-h1 {
-  width: 100vw;
-  text-align: center;
-  color: gray;
+.container {
+  min-width: 100vw;
+  min-height: 100vh;
 }
-
-h3 {
-  width: 100vw;
+.valid-view {
+  min-width: 100vw;
+  min-height: 100vh;
+}
+.invalid-view {
+  min-width: 100vw;
+  min-height: 100vh;
+  font-size: 3vw;
+  font-weight: bold;
+  line-height: 100vh;
   text-align: center;
-  color: gray;
-  cursor: pointer;
+  word-break: break-all;
 }
 </style>
-
