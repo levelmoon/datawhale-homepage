@@ -2,8 +2,9 @@
   "name": "datawhale-homepage",
   "description": "datawhale homepage",
   "scripts": {
-    "build:client": "rm -rf output/client && webpack --config ./package/client/build/webpack.prod.js",
-    "build:server": "NODE_ENV=prod && rm -rf output/* && tsc --p ./package/server",
+    "build:all": "npm run clean && npm run build:client && npm run build:server",
+    "build:client": "NODE_ENV=prod webpack --config ./package/client/build/webpack.prod.js",
+    "build:server": "NODE_ENV=prod tsc --p ./package/server",
     "clean": "rm -rf output",
     "dev:all": "npm run dev:client & npm run dev:server",
     "dev:client": "NODE_ENV=dev webpack serve --progress --hot --config ./package/client/build/webpack.dev.js",

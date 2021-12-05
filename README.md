@@ -1,4 +1,4 @@
-# datawhale 官网项目
+# 【WIP】datawhale 官网项目
 
 ## 一、技术选型
 - 编程语言：typescript
@@ -10,8 +10,18 @@
 - orm框架：typeorm
 
 ## 二、目录结构
+|文件目录|说明|
+|-|-|
+|./README.md|说明文档|
+|./deploy|服务器部署/数据库dump|
+|./package|源代码|
+|./package/client|前端源代码|
+|./package/server|后端源代码|
 
 ## 三、开发指南
+使用`yarn`命令安装依赖
+使用`dev:all`命令进行开发，访问`localhost:8080`即可看到网站
+使用`build:all`命令进行打包
 
 ## 四、后续todo
 - 1、用户体系搭建
