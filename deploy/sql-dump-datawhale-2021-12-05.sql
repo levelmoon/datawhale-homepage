@@ -27,14 +27,14 @@ DROP TABLE IF EXISTS `activity`;
 
 CREATE TABLE `activity` (
   `id` int unsigned NOT NULL AUTO_INCREMENT COMMENT '活动id',
-  `name` varchar(512) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '活动名称',
-  `description` varchar(512) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '活动描述',
-  `registration_link` varchar(512) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '报名链接',
+  `name` varchar(512) CHARACTER SET utf8mb4 DEFAULT NULL COMMENT '活动名称',
+  `description` varchar(512) CHARACTER SET utf8mb4 DEFAULT NULL COMMENT '活动描述',
+  `registration_link` varchar(512) CHARACTER SET utf8mb4 DEFAULT NULL COMMENT '报名链接',
   `registration_end_time` timestamp NULL DEFAULT NULL COMMENT '报名截止时间',
   `create_time` timestamp NULL DEFAULT NULL COMMENT '创建时间',
   `modify_time` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP COMMENT '修改时间',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='活动表';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='活动表';
 
 LOCK TABLES `activity` WRITE;
 /*!40000 ALTER TABLE `activity` DISABLE KEYS */;
@@ -58,13 +58,13 @@ DROP TABLE IF EXISTS `banner`;
 
 CREATE TABLE `banner` (
   `id` int unsigned NOT NULL AUTO_INCREMENT COMMENT '轮播图id',
-  `image_url` varchar(512) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '轮播图片链接',
-  `description` varchar(512) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '轮播图描述',
+  `image_url` varchar(512) CHARACTER SET utf8mb4 DEFAULT NULL COMMENT '轮播图片链接',
+  `description` varchar(512) CHARACTER SET utf8mb4 DEFAULT NULL COMMENT '轮播图描述',
   `status` int DEFAULT NULL COMMENT '轮播图状态，10可用，20不可用',
   `create_time` timestamp NULL DEFAULT NULL COMMENT '创建时间',
   `modify_time` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='轮播图内容表';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='轮播图内容表';
 
 LOCK TABLES `banner` WRITE;
 /*!40000 ALTER TABLE `banner` DISABLE KEYS */;
@@ -85,12 +85,12 @@ DROP TABLE IF EXISTS `knowledge`;
 
 CREATE TABLE `knowledge` (
   `id` int unsigned NOT NULL AUTO_INCREMENT COMMENT '知识体系id',
-  `name` varchar(512) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '知识体系名称',
-  `content` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci COMMENT '知识体系内容，json格式',
+  `name` varchar(512) CHARACTER SET utf8mb4 DEFAULT NULL COMMENT '知识体系名称',
+  `content` text CHARACTER SET utf8mb4 COMMENT '知识体系内容，json格式',
   `create_time` timestamp NULL DEFAULT NULL COMMENT '创建时间',
   `modify_time` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP COMMENT '修改时间',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='知识体系表';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='知识体系表';
 
 
 
@@ -101,14 +101,14 @@ DROP TABLE IF EXISTS `learn`;
 
 CREATE TABLE `learn` (
   `id` int unsigned NOT NULL AUTO_INCREMENT COMMENT '学习id',
-  `name` varchar(512) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '学习名称',
-  `description` varchar(512) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '学习描述',
-  `image_url` varchar(512) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '学习封面图',
+  `name` varchar(512) CHARACTER SET utf8mb4 DEFAULT NULL COMMENT '学习名称',
+  `description` varchar(512) CHARACTER SET utf8mb4 DEFAULT NULL COMMENT '学习描述',
+  `image_url` varchar(512) CHARACTER SET utf8mb4 DEFAULT NULL COMMENT '学习封面图',
   `like` int DEFAULT NULL COMMENT '学习点赞数',
   `create_time` timestamp NULL DEFAULT NULL COMMENT '创建时间',
   `modify_time` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP COMMENT '修改时间',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='学习表';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='学习表';
 
 LOCK TABLES `learn` WRITE;
 /*!40000 ALTER TABLE `learn` DISABLE KEYS */;
@@ -131,12 +131,12 @@ DROP TABLE IF EXISTS `learn_detail`;
 CREATE TABLE `learn_detail` (
   `id` int unsigned NOT NULL AUTO_INCREMENT COMMENT '学习章节id',
   `learn_id` int DEFAULT NULL COMMENT '学习id',
-  `title` varchar(512) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '章节标题',
-  `content` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci COMMENT '章节内容，md5格式',
+  `title` varchar(512) CHARACTER SET utf8mb4 DEFAULT NULL COMMENT '章节标题',
+  `content` text CHARACTER SET utf8mb4 COMMENT '章节内容，md5格式',
   `create_time` timestamp NULL DEFAULT NULL COMMENT '创建时间',
   `modify_time` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP COMMENT '修改时间',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='学习章节内容表';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='学习章节内容表';
 
 
 
@@ -148,11 +148,11 @@ DROP TABLE IF EXISTS `learn_tag`;
 CREATE TABLE `learn_tag` (
   `id` int unsigned NOT NULL AUTO_INCREMENT COMMENT '标签id',
   `learn_id` int DEFAULT NULL COMMENT '学习id',
-  `name` varchar(512) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '标签名称',
+  `name` varchar(512) CHARACTER SET utf8mb4 DEFAULT NULL COMMENT '标签名称',
   `create_time` timestamp NULL DEFAULT NULL COMMENT '创建时间',
   `modify_time` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP COMMENT '修改时间',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='学习标签表';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='学习标签表';
 
 LOCK TABLES `learn_tag` WRITE;
 /*!40000 ALTER TABLE `learn_tag` DISABLE KEYS */;
@@ -177,12 +177,12 @@ DROP TABLE IF EXISTS `learn_video`;
 CREATE TABLE `learn_video` (
   `id` int unsigned NOT NULL AUTO_INCREMENT COMMENT '学习视频id',
   `learn_id` int DEFAULT NULL COMMENT '学习id',
-  `title` varchar(512) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '视频标题',
-  `video_url` varchar(512) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT '' COMMENT '视频url',
+  `title` varchar(512) CHARACTER SET utf8mb4 DEFAULT NULL COMMENT '视频标题',
+  `video_url` varchar(512) CHARACTER SET utf8mb4 DEFAULT '' COMMENT '视频url',
   `create_time` timestamp NULL DEFAULT NULL COMMENT '创建时间',
   `modify_time` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP COMMENT '修改时间',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='学习视频表';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='学习视频表';
 
 
 

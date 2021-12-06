@@ -5122,10 +5122,10 @@ vue-loader@^16.8.3:
     hash-sum "^2.0.0"
     loader-utils "^2.0.0"
 
-vue-router@4:
+vue-router@^4.0.12:
   version "4.0.12"
-  resolved "https://registry.npmmirror.com/vue-router/download/vue-router-4.0.12.tgz#8dc792cddf5bb1abcc3908f9064136de7e13c460"
-  integrity sha1-jceSzd9bsavMOQj5BkE23n4TxGA=
+  resolved "https://registry.npmjs.org/vue-router/-/vue-router-4.0.12.tgz#8dc792cddf5bb1abcc3908f9064136de7e13c460"
+  integrity sha512-CPXvfqe+mZLB1kBWssssTiWg4EQERyqJZes7USiqfW9B5N2x+nHlnsM1D3b5CaJ6qgCvMmYJnz+G0iWjNCvXrg==
   dependencies:
     "@vue/devtools-api" "^6.0.0-beta.18"
 
@@ -5149,10 +5149,10 @@ vue@^3.2.23:
     "@vue/server-renderer" "3.2.23"
     "@vue/shared" "3.2.23"
 
-vuex@4:
+vuex@^4.0.2:
   version "4.0.2"
-  resolved "https://registry.nlark.com/vuex/download/vuex-4.0.2.tgz#f896dbd5bf2a0e963f00c67e9b610de749ccacc9"
-  integrity sha1-+Jbb1b8qDpY/AMZ+m2EN50nMrMk=
+  resolved "https://registry.npmjs.org/vuex/-/vuex-4.0.2.tgz#f896dbd5bf2a0e963f00c67e9b610de749ccacc9"
+  integrity sha512-M6r8uxELjZIK8kTKDGgZTYX/ahzblnzC4isU1tpmEuOIIKmV+TRdc+H4s8ds2NuZ7wpUTdGRzJRtoj+lI+pc0Q==
   dependencies:
     "@vue/devtools-api" "^6.0.0-beta.11"
 

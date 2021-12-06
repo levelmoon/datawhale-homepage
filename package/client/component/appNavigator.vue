@@ -14,7 +14,10 @@
       >
     </el-menu>
     <div class="navigator-right">
-      <!-- <img :src="githubSvg" alt="github" /> -->
+      <github-logo
+        class="navigator-github-logo"
+        @click="goGithub"
+      ></github-logo>
     </div>
   </div>
 </template>
@@ -23,6 +26,7 @@
 import { ROUTER_MAP } from "../router/constant";
 import { useStore } from "vuex";
 import { useRouter } from "vue-router";
+import githubLogo from "../asset/github.svg";
 
 export default {
   setup() {
@@ -33,8 +37,13 @@ export default {
       store.commit("setMenuItemIndex", key);
       router.push(ROUTER_MAP[key]);
     };
-    return { handleSelect };
+
+    const goGithub = () => {
+      window.open("https://github.com/datawhalechina");
+    };
+    return { handleSelect, goGithub };
   },
+  components: { githubLogo },
 };
 </script>
 
@@ -68,5 +77,11 @@ export default {
   line-height: 60px;
   height: 60px;
   color: #409eff;
+}
+.navigator-github-logo {
+  margin: 10px;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
 }
 </style>

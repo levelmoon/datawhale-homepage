@@ -31,8 +31,9 @@
     "unplugin-vue-components": "^0.17.4",
     "vue": "^3.2.23",
     "vue-loader": "^16.8.3",
-    "vue-router": "4",
-    "vuex": "4",
+    "vue-router": "^4.0.12",
+    "vue-svg-loader": "^0.17.0-beta.2",
+    "vuex": "^4.0.2",
     "webpack": "^5.64.4",
     "webpack-cli": "^4.9.1",
     "webpack-dev-server": "^4.6.0",
@@ -43,7 +44,6 @@
     "mysql": "^2.18.1",
     "nodemon": "^2.0.15",
     "reflect-metadata": "^0.1.13",
-    "typeorm": "^0.2.41",
-    "vue-svg-loader": "^0.17.0-beta.2"
+    "typeorm": "^0.2.41"
   }
 }
