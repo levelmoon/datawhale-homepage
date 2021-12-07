@@ -1,5 +1,5 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm'
-import { LearnEntity } from './learnEntity'
+import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { LearnEntity } from './learnEntity';
 
 @Entity('learn_tag', { schema: 'datawhale' })
 export class LearnTagEntity {
@@ -7,32 +7,32 @@ export class LearnTagEntity {
     type: 'int',
     name: 'id',
     comment: '标签id',
-    unsigned: true,
+    unsigned: true
   })
-  id: number
+  id: number;
 
   @Column('int', { name: 'learn_id', nullable: true, comment: '学习id' })
-  learnId: number | null
+  learnId: number | null;
 
   @Column('varchar', {
     name: 'name',
     nullable: true,
     comment: '标签名称',
-    length: 512,
+    length: 512
   })
-  name: string | null
+  name: string | null;
 
   @Column('timestamp', {
     name: 'create_time',
     nullable: true,
-    comment: '创建时间',
+    comment: '创建时间'
   })
-  createTime: Date | null
+  createTime: Date | null;
 
   @Column('timestamp', {
     name: 'modify_time',
     nullable: true,
-    comment: '修改时间',
+    comment: '修改时间'
   })
-  modifyTime: Date | null
+  modifyTime: Date | null;
 }

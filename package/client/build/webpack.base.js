@@ -1,10 +1,10 @@
-const path = require('path')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
-const { VueLoaderPlugin } = require('vue-loader')
-const AutoImport = require('unplugin-auto-import/webpack')
-const Components = require('unplugin-vue-components/webpack')
-const { ElementPlusResolver } = require('unplugin-vue-components/resolvers')
-const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const { VueLoaderPlugin } = require('vue-loader');
+const AutoImport = require('unplugin-auto-import/webpack');
+const Components = require('unplugin-vue-components/webpack');
+const { ElementPlusResolver } = require('unplugin-vue-components/resolvers');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
   entry: path.resolve(__dirname, '../main.ts'),
@@ -14,58 +14,70 @@ module.exports = {
         test: /\.css$/,
         use: [
           {
-            loader: MiniCssExtractPlugin.loader,
+            loader: MiniCssExtractPlugin.loader
           },
           'css-loader',
-          'postcss-loader',
-        ],
+          'postcss-loader'
+        ]
       },
       {
         test: /\.svg$/,
-        use: ['vue-loader', 'vue-svg-loader'],
+        use: ['vue-loader', 'vue-svg-loader']
+      },
+      {
+        test: /\.(png|jpe?g|gif)$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[name].[contenthash].[ext]',
+              outputPath: 'image',
+              esModule: false
+            }
+          }
+        ]
       },
       {
         test: /\.mjs$/,
         resolve: {
-          fullySpecified: false,
+          fullySpecified: false
         },
         include: /node_modules/,
-        type: 'javascript/auto',
+        type: 'javascript/auto'
       },
       {
-        test: /\.(t|j)s$/,
-        exclude: /node_modules/,
-        use: {
-          loader: 'babel-loader',
-          options: {
-            cacheDirectory: true,
-          },
+        test: /\.ts$/,
+        loader: 'ts-loader',
+        options: {
+          appendTsSuffixTo: [/\.vue$/],
+          configFile: './tsconfig.json'
         },
+        exclude: /node_modules/
       },
       {
         test: /\.vue$/,
-        use: 'vue-loader',
-      },
-    ],
+        use: 'vue-loader'
+      }
+    ]
   },
   resolve: {
     extensions: ['.ts', '.js', '.vue', '.json'],
     alias: {
-      vue: '@vue/runtime-dom',
-    },
+      vue: '@vue/runtime-dom'
+    }
   },
   plugins: [
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, '../index.html'),
       filename: 'index.html',
-      title: 'datawhale-homepage',
+      title: 'datawhale-homepage'
     }),
-    new VueLoaderPlugin(),
+    new VueLoaderPlugin()
     // AutoImport({
     //   resolvers: [ElementPlusResolver()],
     // }),
     // Components({
     //   resolvers: [ElementPlusResolver()],
     // }),
-  ],
-}
+  ]
+};

@@ -1,4 +1,4 @@
-import { getPassword } from "../util/password";
+import { getPassword } from '../util/password';
 
 export const developmentConfig = {
   db: {
@@ -7,6 +7,6 @@ export const developmentConfig = {
     port: 3306,
     username: 'root',
     password: getPassword(),
-    database: 'datawhale',
-  },
-}
+    database: 'datawhale'
+  }
+};

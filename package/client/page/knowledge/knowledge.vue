@@ -2,8 +2,7 @@
   <div class="knowledge">knowledge</div>
 </template>
 
-<script>
-</script>
+<script lang="ts"></script>
 
 <style scoped>
 .knowledge {
