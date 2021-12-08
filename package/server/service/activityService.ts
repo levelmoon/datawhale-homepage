@@ -17,11 +17,12 @@ export class ActivityService {
     });
 
     const availableList = activityList.map((item) => {
+      const endTime = new Date(item.registrationEndTime);
       return {
         name: item.name,
         description: item.description,
         link: item.registrationLink,
-        endTime: item.registrationEndTime
+        endTime: `${endTime.getFullYear()}-${endTime.getMonth()}-${endTime.getDate()}`
       };
     });
 

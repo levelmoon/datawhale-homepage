@@ -6,9 +6,6 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 module.exports = merge(base, {
   mode: 'development',
   devtool: 'inline-source-map',
-  cache: {
-    type: 'filesystem'
-  },
   output: {
     filename: 'js/[name].[fullhash].js',
     path: path.resolve(__dirname, '../../../output/client')
