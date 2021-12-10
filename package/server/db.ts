@@ -7,7 +7,6 @@ export const initDbConnection = async () => {
     ...config.db,
     type: 'mysql',
     entities: [path.join(__dirname, './entity/**/*.ts'), path.join(__dirname, './entity/**/*.js')],
-    logging: true
   });
   console.log('init db successful');
 };

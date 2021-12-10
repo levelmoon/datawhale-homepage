@@ -31,7 +31,11 @@ export class HomepageController {
       output.activity = activityList;
 
       // 获取首页推荐的学习列表
-      const learnList = await this.learnService.findFivePopularLearn();
+      const learnList = await this.learnService.findLearn({
+        order: { like: 'DESC' },
+        take: 5,
+        skip: 0
+      });
       output.learn = learnList;
 
       return sendSuccessResponse(res, output);

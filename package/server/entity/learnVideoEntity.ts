@@ -29,6 +29,14 @@ export class LearnVideoEntity {
   })
   videoUrl: string | null;
 
+  @Column('varchar', {
+    name: 'image_url',
+    nullable: true,
+    comment: '视频封面url',
+    length: 512
+  })
+  imageUrl: string | null;
+
   @Column('timestamp', {
     name: 'create_time',
     nullable: true,
