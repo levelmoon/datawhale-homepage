@@ -57,7 +57,10 @@ export default {
   setup() {
     const data = reactive({
       activity: [],
-      banner: [],
+      banner: [{
+        url: '',
+        description: ''
+      }],
       learn: []
     });
     const testFunction = () => {
@@ -134,14 +137,14 @@ export default {
   line-height: 25px;
 }
 .learn-detail-description {
-  margin-top: 14px;
+  margin-top: 10px;
   font-size: 14px;
-  height: 20px;
+  height: 40px;
   line-height: 20px;
 }
 .learn-detail-tag-group {
   width: 100%;
-  margin-top: 29px;
+  margin-top: 13px;
   height: 32px;
 }
 .learn-detail-tag {
