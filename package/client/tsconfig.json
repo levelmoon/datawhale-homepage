@@ -10,6 +10,6 @@
     "module": "esnext",
     "jsx": "preserve",
   },
-  "include": ["./**/*.ts"],
+  "include": ["./**/*.ts", "./**/*.d.ts"],
   "exclude": ["../../node_modules"]
 }

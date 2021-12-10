@@ -82,7 +82,7 @@ export default {
 
 <style scoped>
 .homepage {
-  padding: 30px 10vw;
+  padding: 30px 5vw;
   text-align: left;
 }
 .homepage-banner {
@@ -150,7 +150,6 @@ export default {
 .activity-card {
   width: 400px;
   height: 100%;
-  flex-shrink: 0;
 }
 .activity-item {
   padding: 0 24px;

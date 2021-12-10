@@ -38,6 +38,14 @@ export class LearnEntity {
   @Column('int', { name: 'like', nullable: true, comment: '学习点赞数' })
   like: number | null;
 
+  @Column('varchar', {
+    name: 'license',
+    nullable: true,
+    comment: '开源协议',
+    length: 128
+  })
+  license: string | null;
+
   @Column('timestamp', {
     name: 'create_time',
     nullable: true,

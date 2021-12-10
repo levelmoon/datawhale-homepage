@@ -3,7 +3,7 @@
     <div class="navigator-left">Datawhale</div>
     <el-menu :default-active="$store.state.menuItemIndex" class="navigator-menu" mode="horizontal" @select="handleSelect">
       <el-menu-item class="navigator-menu-item" index="0"> 主页 </el-menu-item>
-      <el-menu-item class="navigator-menu-item" index="1"> 学习 </el-menu-item>
+      <el-menu-item class="navigator-menu-item" index="1"> 学习项目 </el-menu-item>
       <el-menu-item class="navigator-menu-item" index="2"> 知识体系 </el-menu-item>
     </el-menu>
     <div class="navigator-right">
