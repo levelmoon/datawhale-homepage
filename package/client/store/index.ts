@@ -1,18 +1,18 @@
 import { createStore } from 'vuex';
 
 interface IState {
-  menuItemIndex: string;
+  routerIndex: string;
 }
 
 const store = createStore({
   state() {
     return {
-      menuItemIndex: '0'
+      routerIndex: '0'
     };
   },
   mutations: {
-    setMenuItemIndex(state: IState, index: string) {
-      state.menuItemIndex = index;
+    setRouterIndex(state: IState, index: string) {
+      state.routerIndex = index;
     }
   }
 });

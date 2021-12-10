@@ -18,18 +18,12 @@
           </div>
         </template>
         <div v-for="(item, index) in learn" :key="`learn-${index}`">
-          <div class="learn-item flex-row-left">
-            <img class="learn-image" :src="item.imageUrl" />
-            <div class="learn-detail">
-              <div class="learn-detail-name">{{ item.name }}</div>
-              <div class="learn-detail-description">{{ item.description }}</div>
-              <div class="learn-detail-tag-group flex-row-left">
-                <el-tag class="learn-detail-tag" v-for="(tag, index) in item.tagList" :key="`learn-tag-${index}`" type="info">{{
-                  tag.tagName
-                }}</el-tag>
-              </div>
-            </div>
-          </div>
+          <learn-item
+            :name="item.name"
+            :imageUrl="item.imageUrl"
+            :tagList="item.tagList"
+            :description="item.description"
+          ></learn-item>
           <el-divider></el-divider>
         </div>
       </el-card>
@@ -39,7 +33,7 @@
         </template>
         <div v-for="(item, index) in activity" :key="`activity-${index}`">
           <div class="activity-item">
-            <el-button type="text">{{ item.name }}</el-button>
+            <el-button type="text" @click="jumpToUrl(item.link)">{{ item.name }}</el-button>
             <div class="activity-end-time">{{ item.endTime }} 截止报名</div>
           </div>
           <el-divider></el-divider>
@@ -52,20 +46,25 @@
 <script lang="ts">
 import { onMounted, reactive, toRefs } from 'vue';
 import { http } from '../../service/axios';
+import learnItem from '../../component/learnItem.vue';
 
 export default {
+  components: { learnItem },
   setup() {
     const data = reactive({
       activity: [],
-      banner: [{
-        url: '',
-        description: ''
-      }],
+      banner: [
+        {
+          url: '',
+          description: ''
+        }
+      ],
       learn: []
     });
-    const testFunction = () => {
-      window.alert('hello world');
-    };
+
+    const jumpToUrl = (url: string) => {
+      window.open(url)
+    }
 
     onMounted(async () => {
       const res = await http.get('/api/homepage');
@@ -77,7 +76,7 @@ export default {
 
     return {
       ...toRefs(data),
-      testFunction
+      jumpToUrl
     };
   }
 };
@@ -116,39 +115,6 @@ export default {
   width: 100%;
   height: 100%;
   margin-right: 30px;
-}
-.learn-item {
-  padding: 0 24px;
-  height: 120px;
-}
-.learn-image {
-  width: 200px;
-  height: 120px;
-  object-fit: cover;
-  margin-right: 30px;
-}
-.learn-detail {
-  width: 100%;
-  height: 120px;
-}
-.learn-detail-name {
-  font-size: 18px;
-  height: 25px;
-  line-height: 25px;
-}
-.learn-detail-description {
-  margin-top: 10px;
-  font-size: 14px;
-  height: 40px;
-  line-height: 20px;
-}
-.learn-detail-tag-group {
-  width: 100%;
-  margin-top: 13px;
-  height: 32px;
-}
-.learn-detail-tag {
-  margin-right: 8px;
 }
 .activity-card {
   width: 400px;

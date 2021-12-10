@@ -1,10 +1,15 @@
 <template>
   <div class="navigator">
     <div class="navigator-left">Datawhale</div>
-    <el-menu :default-active="$store.state.menuItemIndex" class="navigator-menu" mode="horizontal" @select="handleSelect">
-      <el-menu-item class="navigator-menu-item" index="0"> 主页 </el-menu-item>
-      <el-menu-item class="navigator-menu-item" index="1"> 学习项目 </el-menu-item>
-      <el-menu-item class="navigator-menu-item" index="2"> 知识体系 </el-menu-item>
+    <el-menu
+      :default-active="convertRouterIndexToMenuIndex($store.state.routerIndex)"
+      class="navigator-menu"
+      mode="horizontal"
+      @select="handleSelect"
+    >
+      <el-menu-item class="navigator-menu-item" index="homepage"> 主页 </el-menu-item>
+      <el-menu-item class="navigator-menu-item" index="learn"> 学习项目 </el-menu-item>
+      <el-menu-item class="navigator-menu-item" index="knowledge"> 知识体系 </el-menu-item>
     </el-menu>
     <div class="navigator-right">
       <el-popover placement="bottom" :width="200" trigger="hover">
@@ -28,20 +33,36 @@ import { useRouter } from 'vue-router';
 import githubLogo from '../asset/github.svg';
 import wechatLogo from '../asset/wechat.svg';
 
+// routerIndex与menuIndex的映射关系
+const ROUTER_MENU_RELATION = [
+  { routerIndex: '0', menuIndex: 'homepage' },
+  { routerIndex: '1', menuIndex: 'learn' },
+  { routerIndex: '2', menuIndex: 'knowledge' },
+  { routerIndex: '3', menuIndex: 'learn' }
+];
+
 export default {
   setup() {
     const store = useStore();
     const router = useRouter();
 
+    const convertRouterIndexToMenuIndex = (routerIndex: string) => {
+      const relation = ROUTER_MENU_RELATION.filter((item) => item.routerIndex === routerIndex);
+      const menuIndex = relation[0].menuIndex;
+      return menuIndex;
+    };
+
     const handleSelect = (key: string) => {
-      store.commit('setMenuItemIndex', key);
-      router.push(ROUTER_MAP[key]);
+      const relation = ROUTER_MENU_RELATION.filter((item) => item.menuIndex === key);
+      const routerIndex = relation[0].routerIndex;
+      store.commit('setRouterIndex', routerIndex);
+      router.push(ROUTER_MAP[routerIndex]);
     };
 
     const goGithub = () => {
       window.open('https://github.com/datawhalechina');
     };
-    return { handleSelect, goGithub };
+    return { convertRouterIndexToMenuIndex, handleSelect, goGithub };
   },
   components: { githubLogo, wechatLogo }
 };

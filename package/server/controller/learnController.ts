@@ -1,4 +1,4 @@
-import { Request, Response } from 'express';
+import e, { Request, Response } from 'express';
 import { sendSuccessResponse, sendErrorResponse } from '../util/response';
 import { LearnService } from '../service/learnService';
 
@@ -23,7 +23,13 @@ export class LearnController {
   getLearn = async (req: Request, res: Response) => {
     try {
       const { learnId } = req.query;
-      const output = await this.learnService.findLearn({ where: { id: learnId } });
+      let output;
+      if (learnId === undefined) {
+        output = await this.learnService.findLearn({});
+      } else {
+        const learnIdNum = parseInt(learnId as string);
+        output = await this.learnService.findLearn({ where: { id: learnId } });
+      }
 
       return sendSuccessResponse(res, output);
     } catch (e) {
@@ -34,7 +40,8 @@ export class LearnController {
   getLearnByTag = async (req: Request, res: Response) => {
     try {
       const { tagId } = req.query;
-      const output = await this.learnService.findLearnByTag({ where: { id: tagId } });
+      const tagIdNum = parseInt(tagId as string);
+      const output = await this.learnService.findLearnByTag({ where: { id: tagIdNum } });
 
       return sendSuccessResponse(res, output);
     } catch (e) {
