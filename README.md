@@ -19,7 +19,7 @@
 |./package/server|后端源代码|
 
 ## 三、开发指南
-使用`yarn`命令安装依赖
+使用`pnpm install`命令安装依赖
 使用`dev:all`命令进行开发，访问`localhost:8080`即可看到网站
 使用`build:all`命令进行打包
 

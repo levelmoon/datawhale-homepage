@@ -53,7 +53,7 @@ export class LearnService {
         .map((detail) => {
           return {
             chapterId: detail.id,
-            title: detail.title,
+            title: detail.title
           };
         });
 
@@ -97,16 +97,20 @@ export class LearnService {
   };
 
   findLearnVideo = async (learnId: number) => {
-    const learnVideoInfo = await this.learnVideoRepository.findOne({
+    const learnVideoList = await this.learnVideoRepository.find({
       learnId
     });
 
-    return {
-      videoId: learnVideoInfo.id,
-      learnId: learnVideoInfo.learnId,
-      videoUrl: learnVideoInfo.videoUrl,
-      imageUrl: learnVideoInfo.imageUrl,
-      title: learnVideoInfo.title
-    };
+    const output = learnVideoList.map((item) => {
+      return {
+        videoId: item.id,
+        learnId: item.learnId,
+        videoUrl: item.videoUrl,
+        imageUrl: item.imageUrl,
+        title: item.title
+      };
+    });
+
+    return output;
   };
 }

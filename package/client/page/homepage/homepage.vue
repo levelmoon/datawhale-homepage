@@ -23,6 +23,7 @@
             :imageUrl="item.imageUrl"
             :tagList="item.tagList"
             :description="item.description"
+            @click="handleLearnItemClick(item.id)"
           ></learn-item>
           <el-divider></el-divider>
         </div>
@@ -47,10 +48,13 @@
 import { onMounted, reactive, toRefs } from 'vue';
 import { http } from '../../service/axios';
 import learnItem from '../../component/learnItem.vue';
+import { useRouter } from 'vue-router';
 
 export default {
   components: { learnItem },
   setup() {
+    const router = useRouter()
+
     const data = reactive({
       activity: [],
       banner: [
@@ -61,6 +65,10 @@ export default {
       ],
       learn: []
     });
+
+    const handleLearnItemClick = (learnId: number) => {
+      router.push(`/learn/detail/${learnId}`)
+    }
 
     const jumpToUrl = (url: string) => {
       window.open(url)
@@ -76,7 +84,8 @@ export default {
 
     return {
       ...toRefs(data),
-      jumpToUrl
+      jumpToUrl,
+      handleLearnItemClick
     };
   }
 };
