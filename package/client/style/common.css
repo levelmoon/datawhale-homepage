@@ -1,0 +1,14 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+.flex-row-space-between {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.flex-row-left {
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+}

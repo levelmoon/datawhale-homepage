@@ -18,7 +18,7 @@
         <div>相关视频</div>
       </el-menu-item>
     </el-menu>
-    <div v-if="!showVideo" class="learn-content">{{ content }}</div>
+    <div v-if="!showVideo" class="learn-content markdownitit" v-html="htmlContent"></div>
     <div v-if="showVideo" class="learn-video flex-row-left">
       <el-card
         class="learn-video-card"
@@ -27,10 +27,7 @@
         :body-style="{ padding: '0px', width: '300px', height: '260px' }"
         @click="jumpToUrl(item.videoUrl)"
       >
-        <img
-          class="learn-video-card-image"
-          :src="item.imageUrl"
-        />
+        <img class="learn-video-card-image" :src="item.imageUrl" />
         <div class="learn-video-card-text">{{ item.title }}</div>
       </el-card>
     </div>
@@ -41,6 +38,7 @@
 import { onMounted, reactive, toRefs } from 'vue';
 import { useRouter } from 'vue-router';
 import { http } from '../../service/axios';
+import { convertMarkdownToHtml } from '../../util/convertMarkdown';
 
 export default {
   setup() {
@@ -52,7 +50,7 @@ export default {
       chapterList: [],
       currentMenuIndex: 'chapter-0',
       currentChapterId: -1,
-      content: '',
+      htmlContent: '',
       videoList: [],
       showVideo: false
     });
@@ -63,7 +61,8 @@ export default {
       data.showVideo = false;
       data.currentMenuIndex = `chapter-${index}`;
       data.currentChapterId = chapterId;
-      data.content = learnDetail.data.data.content;
+      const content = learnDetail.data.data.content;
+      data.htmlContent = convertMarkdownToHtml(content);
     };
 
     const handleVideoItemClick = async () => {
@@ -94,7 +93,8 @@ export default {
         http.get('/api/learn/detail', { params: { learnId, chapterId } }),
         http.get('/api/learn/video', { params: { learnId } })
       ]);
-      data.content = learnDetail.data.data.content;
+      const content = learnDetail.data.data.content;
+      data.htmlContent = convertMarkdownToHtml(content);
       data.videoList = learnVideo.data.data;
     });
 
@@ -116,6 +116,10 @@ export default {
   width: 200px;
   flex-shrink: 0;
   min-height: calc(100vh - 61px);
+}
+.learn-content {
+  width: 100%;
+  padding: 20px 50px;
 }
 .learn-video {
   flex-wrap: wrap;
