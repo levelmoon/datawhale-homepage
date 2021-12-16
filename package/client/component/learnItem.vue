@@ -5,7 +5,13 @@
       <div class="learn-detail-name">{{ name }}</div>
       <div class="learn-detail-description">{{ description }}</div>
       <div class="learn-detail-tag-group flex-row-left">
-        <el-tag class="learn-detail-tag" v-for="(tag, index) in tagList" :key="`learn-tag-${index}`" type="info">{{ tag.tagName }}</el-tag>
+        <el-tag
+          class="learn-detail-tag"
+          v-for="(tag, index) in tagList"
+          :key="`learn-tag-${index}`"
+          type="info"
+          >{{ tag.tagName }}</el-tag
+        >
       </div>
     </div>
   </div>

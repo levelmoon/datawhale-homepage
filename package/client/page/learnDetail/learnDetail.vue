@@ -31,7 +31,7 @@
           <div class="learn-video-card-text">{{ item.title }}</div>
         </el-card>
       </div>
-      <div v-else class="flex-row-left">
+      <div v-else class="flex-row-space-between">
         <div class="markdownit" v-html="htmlContent" ref="markdownElement"></div>
         <div class="learn-anchor-wrapper">
           <learn-anchor
@@ -121,7 +121,7 @@ export default {
       if (targetElementTop !== undefined) {
         learnContentElement?.value?.scroll({
           top: targetElementTop - HEADER_HEIGHT + 1,
-          behavior: 'smooth'
+          behavior: 'auto'
         });
       }
     };
@@ -202,11 +202,10 @@ export default {
 .learn-anchor-wrapper {
   position: -webkit-sticky;
   position: sticky;
-  width: 200px;
+  width: 250px;
   height: 100%;
   flex-shrink: 0;
   top: 0;
-  margin-left: 50px;
   padding: 0 24px;
   cursor: pointer;
 }

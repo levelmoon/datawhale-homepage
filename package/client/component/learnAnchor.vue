@@ -10,14 +10,6 @@
         </div>
       </el-timeline-item>
     </el-timeline>
-    <!-- <div v-for="(item, index) in anchorList" :key="`learn-anchor-item-${index}`">
-      <div
-        :class="item.href === activeAnchorHref ? 'learn-anchor-item-active' : 'learn-anchor-item'"
-        @click="handleAnchorItemClick(item.href)"
-      >
-        {{ item.name }}
-      </div>
-    </div> -->
   </div>
 </template>
 

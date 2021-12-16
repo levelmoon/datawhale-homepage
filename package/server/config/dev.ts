@@ -1,4 +1,5 @@
 import { getPassword } from '../util/password';
+import path from 'path';
 
 export const developmentConfig = {
   db: {
@@ -6,7 +7,9 @@ export const developmentConfig = {
     host: 'localhost',
     port: 3306,
     username: 'root',
-    password: getPassword(),
-    database: 'datawhale'
-  }
+    password: getPassword(path.join(__dirname, '../../../password.json')),
+    database: 'datawhale',
+    entities: [path.join(__dirname, '../entity/**/*.ts')]
+  },
+  staticFilePath: path.join(__dirname, '../../../output/client')
 };

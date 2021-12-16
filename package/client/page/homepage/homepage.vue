@@ -32,12 +32,17 @@
         <template #header>
           <div class="card-header">参加活动</div>
         </template>
-        <div v-for="(item, index) in activity" :key="`activity-${index}`">
-          <div class="activity-item">
-            <el-button type="text" @click="jumpToUrl(item.link)">{{ item.name }}</el-button>
-            <div class="activity-end-time">{{ item.endTime }} 截止报名</div>
+        <div v-if="activity.length > 0">
+          <div v-for="(item, index) in activity" :key="`activity-${index}`">
+            <div class="activity-item">
+              <el-button type="text" @click="jumpToUrl(item.link)">{{ item.name }}</el-button>
+              <div class="activity-end-time">{{ item.endTime }} 截止报名</div>
+            </div>
+            <el-divider></el-divider>
           </div>
-          <el-divider></el-divider>
+        </div>
+        <div v-else>
+          <div class="empty-activity">暂无活动</div>
         </div>
       </el-card>
     </div>
@@ -135,6 +140,14 @@ export default {
 }
 .activity-end-time {
   font-size: 12px;
+  color: var(--el-color-info);
+}
+.empty-activity {
+  width: 100%;
+  height: 150px;
+  text-align: center;
+  line-height: 150px;
+  font-size: 14px;
   color: var(--el-color-info);
 }
 </style>

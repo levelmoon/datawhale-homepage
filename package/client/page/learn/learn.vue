@@ -66,8 +66,8 @@ export default {
     };
 
     const handleLearnItemClick = (learnId: number) => {
-      router.push(`/learn/detail/${learnId}`)
-    }
+      router.push(`/learn/detail/${learnId}`);
+    };
 
     onMounted(async () => {
       const [learn, tag] = await Promise.all([http.get('/api/learn'), http.get('/api/learn/tag')]);

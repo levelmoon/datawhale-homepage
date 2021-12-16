@@ -5,7 +5,9 @@
       <router-view></router-view>
     </div>
   </div>
-  <div v-else class="invalid-view">请在宽度大于{{ minWidth }}px的浏览器下浏览该网页，以取得最佳展示效果。</div>
+  <div v-else class="invalid-view">
+    请在宽度大于{{ minWidth }}px的浏览器下浏览该网页，以取得最佳展示效果。
+  </div>
 </template>
 
 <script lang="ts">
