@@ -13,6 +13,7 @@ specifiers:
   file-loader: ^6.2.0
   html-webpack-plugin: ^5.5.0
   markdown-it: ^12.3.0
+  markdown-it-anchor: ^8.4.1
   mini-css-extract-plugin: ^2.4.5
   mysql: ^2.18.1
   nodemon: ^2.0.15
@@ -20,6 +21,7 @@ specifiers:
   prettier: 2.5.1
   reflect-metadata: ^0.1.13
   shadow-tracker: ^1.0.3
+  spark-md5: ^3.0.2
   ts-loader: ^9.2.6
   ts-node: ^10.4.0
   typeorm: ^0.2.41
@@ -55,10 +57,12 @@ devDependencies:
   file-loader: registry.nlark.com/file-loader/6.2.0_webpack@5.65.0
   html-webpack-plugin: registry.npmmirror.com/html-webpack-plugin/5.5.0_webpack@5.65.0
   markdown-it: registry.npmmirror.com/markdown-it/12.3.0
+  markdown-it-anchor: 8.4.1_markdown-it@12.3.0
   mini-css-extract-plugin: registry.npmmirror.com/mini-css-extract-plugin/2.4.5_webpack@5.65.0
   postcss-loader: registry.npmmirror.com/postcss-loader/6.2.1_webpack@5.65.0
   prettier: registry.npmmirror.com/prettier/2.5.1
   shadow-tracker: registry.npmmirror.com/shadow-tracker/1.0.3
+  spark-md5: 3.0.2
   ts-loader: registry.nlark.com/ts-loader/9.2.6_typescript@4.5.3+webpack@5.65.0
   ts-node: registry.npmmirror.com/ts-node/10.4.0_typescript@4.5.3
   typescript: registry.npmmirror.com/typescript/4.5.3
@@ -75,6 +79,26 @@ devDependencies:
   webpack-merge: registry.nlark.com/webpack-merge/5.8.0
 
 packages:
+
+  /fsevents/2.3.2:
+    resolution: {integrity: sha512-xiqMQR4xAeHTuB9uWm+fFRcIOgKBMiOBP+eXiyT7jsgVCq1bkVygt00oASowB7EdtpOHaaPgKt812P9ab+DDKA==}
+    engines: {node: ^8.16.0 || ^10.6.0 || >=11.0.0}
+    os: [darwin]
+    requiresBuild: true
+    optional: true
+
+  /markdown-it-anchor/8.4.1_markdown-it@12.3.0:
+    resolution: {integrity: sha512-sLODeRetZ/61KkKLJElaU3NuU2z7MhXf12Ml1WJMSdwpngeofneCRF+JBbat8HiSqhniOMuTemXMrsI7hA6XyA==}
+    peerDependencies:
+      '@types/markdown-it': '*'
+      markdown-it: '*'
+    dependencies:
+      markdown-it: registry.npmmirror.com/markdown-it/12.3.0
+    dev: true
+
+  /spark-md5/3.0.2:
+    resolution: {integrity: sha512-wcFzz9cDfbuqe0FZzfi2or1sgyIrsDwmPwfZC4hiNidPdPINjeUwNfv5kldczoEAcjl9Y1L3SM7Uz2PUEQzxQw==}
+    dev: true
 
   registry.nlark.com/@antfu/utils/0.3.0:
     resolution: {integrity: sha1-YwbEO1Kog72Olz4+2N1kJIQYvMQ=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/@antfu/utils/download/@antfu/utils-0.3.0.tgz}
@@ -4036,7 +4060,7 @@ packages:
       normalize-path: registry.nlark.com/normalize-path/3.0.0
       readdirp: registry.nlark.com/readdirp/3.6.0
     optionalDependencies:
-      fsevents: registry.npmmirror.com/fsevents/2.3.2
+      fsevents: 2.3.2
 
   registry.npmmirror.com/ci-info/2.0.0:
     resolution: {integrity: sha1-Z6npZL4xpR4V5QENWObxKDQAL0Y=, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/ci-info/download/ci-info-2.0.0.tgz}
@@ -4346,15 +4370,6 @@ packages:
       debug:
         optional: true
     dev: true
-
-  registry.npmmirror.com/fsevents/2.3.2:
-    resolution: {integrity: sha1-ilJveLj99GI7cJ4Ll1xSwkwC/Ro=, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/fsevents/download/fsevents-2.3.2.tgz}
-    name: fsevents
-    version: 2.3.2
-    engines: {node: ^8.16.0 || ^10.6.0 || >=11.0.0}
-    os: [darwin]
-    requiresBuild: true
-    optional: true
 
   registry.npmmirror.com/glob-parent/5.1.2:
     resolution: {integrity: sha1-hpgyxYA0/mikCTwX3BXoNA2EAcQ=, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/glob-parent/download/glob-parent-5.1.2.tgz}

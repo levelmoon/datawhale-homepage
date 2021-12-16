@@ -53,7 +53,7 @@ import { useRouter } from 'vue-router';
 export default {
   components: { learnItem },
   setup() {
-    const router = useRouter()
+    const router = useRouter();
 
     const data = reactive({
       activity: [],
@@ -67,12 +67,12 @@ export default {
     });
 
     const handleLearnItemClick = (learnId: number) => {
-      router.push(`/learn/detail/${learnId}`)
-    }
+      router.push(`/learn/detail/${learnId}`);
+    };
 
     const jumpToUrl = (url: string) => {
-      window.open(url)
-    }
+      window.open(url);
+    };
 
     onMounted(async () => {
       const res = await http.get('/api/homepage');
@@ -109,7 +109,7 @@ export default {
 .homepage-banner-text {
   font-size: 40px;
   padding: 300px 70px 0 70px;
-  color: #fff;
+  color: var(--el-color-white);
 }
 .homepage-content {
   margin-top: 30px;
@@ -135,6 +135,6 @@ export default {
 }
 .activity-end-time {
   font-size: 12px;
-  color: #99a9bf;
+  color: var(--el-color-info);
 }
 </style>

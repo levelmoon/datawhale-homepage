@@ -18,31 +18,47 @@
         <div>相关视频</div>
       </el-menu-item>
     </el-menu>
-    <div v-if="!showVideo" class="learn-content markdownitit" v-html="htmlContent"></div>
-    <div v-if="showVideo" class="learn-video flex-row-left">
-      <el-card
-        class="learn-video-card"
-        v-for="(item, index) in videoList"
-        :key="`learn-video-item-${index}`"
-        :body-style="{ padding: '0px', width: '300px', height: '260px' }"
-        @click="jumpToUrl(item.videoUrl)"
-      >
-        <img class="learn-video-card-image" :src="item.imageUrl" />
-        <div class="learn-video-card-text">{{ item.title }}</div>
-      </el-card>
+    <div class="learn-content" ref="learnContentElement">
+      <div v-if="showVideo" class="learn-video flex-row-left">
+        <el-card
+          class="learn-video-card"
+          v-for="(item, index) in videoList"
+          :key="`learn-video-item-${index}`"
+          :body-style="{ padding: '0px', width: '300px', height: '260px' }"
+          @click="jumpToUrl(item.videoUrl)"
+        >
+          <img class="learn-video-card-image" :src="item.imageUrl" />
+          <div class="learn-video-card-text">{{ item.title }}</div>
+        </el-card>
+      </div>
+      <div v-else class="flex-row-left">
+        <div class="markdownit" v-html="htmlContent" ref="markdownElement"></div>
+        <div class="learn-anchor-wrapper">
+          <learn-anchor
+            :anchorList="anchorList"
+            :handleAnchorClick="handleAnchorClick"
+            :activeAnchorHref="activeAnchorHref"
+          />
+        </div>
+      </div>
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import { onMounted, reactive, toRefs } from 'vue';
+import { onMounted, reactive, toRefs, ref, nextTick, onUnmounted } from 'vue';
 import { useRouter } from 'vue-router';
 import { http } from '../../service/axios';
 import { convertMarkdownToHtml } from '../../util/convertMarkdown';
+import learnAnchor from '../../component/learnAnchor.vue';
+import { HEADER_HEIGHT, isInViewPort } from '../../util/scroll';
 
 export default {
+  components: { learnAnchor },
   setup() {
     const router = useRouter();
+    const learnContentElement = ref<HTMLElement | null>(null);
+    const markdownElement = ref<HTMLElement | null>(null);
 
     const data = reactive({
       name: '',
@@ -52,17 +68,24 @@ export default {
       currentChapterId: -1,
       htmlContent: '',
       videoList: [],
-      showVideo: false
+      showVideo: false,
+      anchorList: [],
+      activeAnchorHref: ''
     });
 
     const handleMenuItemClick = async (chapterId: number, index: number) => {
-      const learnId = router.currentRoute.value.params.learnId;
+      const learnId = router.currentRoute.value.params.learnId || '';
       const learnDetail = await http.get('/api/learn/detail', { params: { learnId, chapterId } });
       data.showVideo = false;
       data.currentMenuIndex = `chapter-${index}`;
       data.currentChapterId = chapterId;
       const content = learnDetail.data.data.content;
-      data.htmlContent = convertMarkdownToHtml(content);
+      const { html, tag } = convertMarkdownToHtml(content);
+      data.htmlContent = html;
+
+      await nextTick();
+      generateAnchorList(tag);
+      setCurrentActiveAnchorHref();
     };
 
     const handleVideoItemClick = async () => {
@@ -75,7 +98,48 @@ export default {
       window.open(url);
     };
 
+    const generateAnchorList = (tag: string) => {
+      const output = [];
+      const elementList = markdownElement?.value?.getElementsByTagName(tag);
+      if (elementList.length > 0) {
+        for (let a = 0; a < elementList.length; a++) {
+          const element = elementList[a];
+          const elementContent = element.textContent;
+          output.push({
+            href: (element.parentNode as HTMLDivElement).id,
+            name: elementContent
+          });
+        }
+      }
+
+      data.anchorList = output;
+    };
+
+    const handleAnchorClick = (href: string) => {
+      data.activeAnchorHref = href;
+      const targetElementTop = document.getElementById(href)?.offsetTop;
+      if (targetElementTop !== undefined) {
+        learnContentElement?.value?.scroll({
+          top: targetElementTop - HEADER_HEIGHT + 1,
+          behavior: 'smooth'
+        });
+      }
+    };
+
+    const setCurrentActiveAnchorHref = () => {
+      let activeHref = data.anchorList && data.anchorList[0] ? data.anchorList[0].href : '';
+      for (const item of data.anchorList) {
+        if (isInViewPort(document.getElementById(item.href))) {
+          activeHref = item.href;
+          break;
+        }
+      }
+      data.activeAnchorHref = activeHref;
+    };
+
     onMounted(async () => {
+      learnContentElement?.value?.scroll(0, 0);
+
       const learnId = router.currentRoute.value.params.learnId;
       const learnInfo = await http.get('/api/learn', { params: { learnId } });
       const name = learnInfo.data.data[0].name;
@@ -94,15 +158,25 @@ export default {
         http.get('/api/learn/video', { params: { learnId } })
       ]);
       const content = learnDetail.data.data.content;
-      data.htmlContent = convertMarkdownToHtml(content);
+      const { html, tag } = convertMarkdownToHtml(content);
+      data.htmlContent = html;
       data.videoList = learnVideo.data.data;
+
+      await nextTick();
+
+      generateAnchorList(tag);
+      setCurrentActiveAnchorHref();
+      learnContentElement?.value?.addEventListener('scroll', setCurrentActiveAnchorHref);
     });
 
     return {
       ...toRefs(data),
+      markdownElement,
+      learnContentElement,
       handleMenuItemClick,
       handleVideoItemClick,
-      jumpToUrl
+      jumpToUrl,
+      handleAnchorClick
     };
   }
 };
@@ -111,15 +185,30 @@ export default {
 <style scoped>
 .learn-detail {
   text-align: left;
+  height: calc(100vh - 61px);
 }
 .learn-detail-menu {
   width: 200px;
   flex-shrink: 0;
-  min-height: calc(100vh - 61px);
+  height: calc(100vh - 61px);
+  overflow: auto;
 }
 .learn-content {
   width: 100%;
   padding: 20px 50px;
+  height: calc(100vh - 101px);
+  overflow: auto;
+}
+.learn-anchor-wrapper {
+  position: -webkit-sticky;
+  position: sticky;
+  width: 200px;
+  height: 100%;
+  flex-shrink: 0;
+  top: 0;
+  margin-left: 50px;
+  padding: 0 24px;
+  cursor: pointer;
 }
 .learn-video {
   flex-wrap: wrap;

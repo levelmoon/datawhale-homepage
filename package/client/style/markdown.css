@@ -1,13 +1,4 @@
 .markdownit {
   text-align: left;
-}
-.markdownit > h1,
-h2,
-h3,
-h4,
-h5 {
   color: var(--el-text-color-primary);
-}
-.markdownit > p {
-  color: var(--el-text-color-secondary);
 }

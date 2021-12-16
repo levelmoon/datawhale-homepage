@@ -76,18 +76,18 @@ export default {
 .navigator-left {
   width: 265px;
   height: 60px;
-  border-bottom: solid 1px #e6e6e6;
+  border-bottom: solid 1px var(--el-border-color-light);
   text-align: center;
   font-size: 24px;
   line-height: 60px;
   height: 60px;
-  color: #409eff;
+  color: var(--el-color-primary);
 }
 .navigator-menu {
   width: 100%;
   font-weight: 500;
-  --el-menu-bg-color: #fff;
-  --el-menu-hover-bg-color: #fff;
+  --el-menu-bg-color: var(--el-color-white);
+  --el-menu-hover-bg-color: var(--el-color-white);
 }
 .navigator-menu-item {
   width: 120px;
@@ -95,7 +95,7 @@ export default {
 .navigator-right {
   width: 300px;
   height: 60px;
-  border-bottom: solid 1px #e6e6e6;
+  border-bottom: solid 1px var(--el-border-color-light);
   text-align: center;
   font-size: 22px;
   line-height: 60px;
@@ -119,7 +119,7 @@ export default {
   line-height: 20px;
   margin-bottom: 5px;
   text-align: center;
-  color: #000;
+  color: var(--el-color-black);
 }
 .navigator-qrcode-popover-image {
   width: 200px;
