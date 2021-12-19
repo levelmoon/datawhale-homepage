@@ -15,13 +15,13 @@ export class KnowledgeService {
       skip: 0
     });
 
-		const output = availableList.map(item => {
-			return {
-				id:item.id,
-				name:item.name,
-				content:item.content
-			}
-		})
+    const output = availableList.map((item) => {
+      return {
+        id: item.id,
+        name: item.name,
+        content: item.content
+      };
+    });
 
     return output;
   };

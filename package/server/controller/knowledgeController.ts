@@ -8,7 +8,6 @@ export class KnowledgeController {
 
   getKnowledge = async (req: Request, res: Response) => {
     try {
-      
       // 获取知识体系内容
       const output = await this.knowledgeService.findAvailableKnowledge();
 

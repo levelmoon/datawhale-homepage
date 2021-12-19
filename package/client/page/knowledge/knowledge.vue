@@ -1,43 +1,32 @@
 <template>
   <div class="knowledge">
-    <el-container class="container">
-      <el-aside class="side" width="200px">
-        <el-menu
-          @select="selectMenu"
-          active-text-color="#409EFF"
-          background-color="#f6f6f6"
-          class="menu"
-          default-active="1"
-          text-color="#000000"
+    <div class="flex-row-left">
+      <el-menu @select="selectMenu" class="menu" default-active="1">
+        <el-menu-item v-for="item of knowledge" :key="item.id" :index="item.id" class="menu-item">
+          <span>{{ item.name }}</span>
+        </el-menu-item>
+      </el-menu>
+      <el-timeline class="main">
+        <el-timeline-item
+          v-for="(item, index) of content"
+          :key="index"
+          :timestamp="item.name"
+          placement="top"
+          class="content-title"
         >
-          <el-menu-item v-for="item of knowledge" :key="item.id" :index="item.id" class="menu-item">
-            <span>{{ item.name }}</span>
-          </el-menu-item>
-        </el-menu></el-aside
-      >
-      <el-main class="main">
-        <el-timeline>
-          <el-timeline-item
-            v-for="(item, index) of content"
+          <section
+            v-for="(ele, index) of item.content"
             :key="index"
-            :timestamp="item.name"
-            placement="top"
-            class="content-title"
+            style="margin: 0.5rem; max-width: 50rem"
           >
-            <section
-              v-for="(ele, index) of item.content"
-              :key="index"
-              style="margin: 0.5rem; max-width: 50rem"
-            >
-              <h4>{{ ele.title }}</h4>
-              <el-card>
-                {{ ele.context }}
-              </el-card>
-            </section>
-          </el-timeline-item>
-        </el-timeline>
-      </el-main>
-    </el-container>
+            <h4>{{ ele.title }}</h4>
+            <el-card>
+              {{ ele.context }}
+            </el-card>
+          </section>
+        </el-timeline-item>
+      </el-timeline>
+    </div>
   </div>
 </template>
 
@@ -81,23 +70,16 @@ export default {
 </script>
 
 <style scoped>
-.knowledge {
-  width: 100vw;
-  height: 100vh;
-}
-.container {
-  height: 100%;
-}
-.side {
-  background-color: #f6f6f6;
+.menu {
+  height: calc(100vh - 61px);
+  width: 250px;
+  overflow: auto;
 }
 .main {
-}
-
-.menu-item {
-  justify-content: center;
-  font-size: 16px;
-  font-weight: 400;
+  padding-top: 24px;
+  width: 100%;
+  height: calc(100vh - 85px);
+  overflow: auto;
 }
 .content-title >>> .el-timeline-item__timestamp {
   font-size: 16px;
