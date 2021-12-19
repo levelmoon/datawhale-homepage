@@ -48,15 +48,15 @@ export default {
 
 <style scoped>
 .learn-anchor {
-  padding: 10px 24px;
+  padding: 24px 24px 10px 0;
   cursor: pointer;
+  overflow: auto;
+  height: calc(100vh - 95px);
 }
 .learn-anchor-item {
-  height: 20px;
   color: var(--el-text-color-primary);
 }
 .learn-anchor-item-active {
-  height: 20px;
   color: var(--el-color-primary);
 }
 </style>

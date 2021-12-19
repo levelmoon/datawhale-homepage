@@ -1,7 +1,7 @@
 import MarkdownIt from 'markdown-it';
 import MarkdownItKatex from '@iktakahiro/markdown-it-katex';
 
-const md = new MarkdownIt({ breaks: true });
+const md = new MarkdownIt({ breaks: true, html: true });
 md.use(MarkdownItKatex, { globalGroup: true, enableBareBlocks: true });
 
 const allIndexOf = (target: string, sourceString: string) => {
@@ -54,7 +54,8 @@ const getExistTag = (html: string) => {
 };
 
 export const convertMarkdownToHtml = (markdown: string) => {
-  const html = md.render(markdown);
+  const input = markdown.replace('$ ', '$').replace(' $', '$');
+  const html = md.render(input);
   const targetTag = getExistTag(html);
   const output = handleGeneratedHtml(html, targetTag);
   return { html: output, tag: targetTag };

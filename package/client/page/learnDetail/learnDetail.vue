@@ -7,7 +7,7 @@
         :key="`learn-menu-${index}`"
         @click="handleMenuItemClick(item.chapterId, index)"
       >
-        <div>{{ item.title }}</div>
+        <div class="learn-detail-menu-item">{{ item.title }}</div>
       </el-menu-item>
       <el-menu-item
         v-if="videoList !== undefined && videoList.length > 0"
@@ -188,15 +188,19 @@ export default {
   height: calc(100vh - 61px);
 }
 .learn-detail-menu {
-  width: 200px;
+  width: 250px;
   flex-shrink: 0;
   height: calc(100vh - 61px);
   overflow: auto;
 }
+.learn-detail-menu-item {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
 .learn-content {
   width: 100%;
-  padding: 20px 50px;
-  height: calc(100vh - 101px);
+  height: calc(100vh - 61px);
   overflow: auto;
 }
 .learn-anchor-wrapper {
@@ -206,7 +210,6 @@ export default {
   height: 100%;
   flex-shrink: 0;
   top: 0;
-  padding: 0 24px;
   cursor: pointer;
 }
 .learn-video {

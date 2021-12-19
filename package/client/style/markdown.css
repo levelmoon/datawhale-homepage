@@ -1,4 +1,15 @@
 .markdownit {
   text-align: left;
   color: var(--el-text-color-primary);
+  overflow-x: auto;
+  padding: 8px 0 24px 36px;
+}
+.markdownit img {
+  max-width: 80%;
+}
+.markdownit a {
+  color: var(--el-color-primary);
+}
+.katex {
+  font-size: 16px !important;
 }
