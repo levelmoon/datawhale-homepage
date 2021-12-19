@@ -150,6 +150,25 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "【dev】获取知识体系",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8081/api/knowledge",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"knowledge"
+					]
+				}
+			},
+			"response": []
 		}
 	]
 }
