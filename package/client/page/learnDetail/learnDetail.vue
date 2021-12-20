@@ -1,22 +1,34 @@
 <template>
   <div class="learn-detail flex-row-left">
     <el-menu :default-active="currentMenuIndex" class="learn-detail-menu">
-      <el-menu-item
+      <el-tooltip
         v-for="(item, index) in chapterList"
-        :index="`chapter-${index}`"
-        :key="`learn-menu-${index}`"
-        @click="handleMenuItemClick(item.chapterId, index)"
+        effect="dark"
+        :content="item.title"
+        :key="`learn-menu-tooltip-${index}`"
+        placement="top"
+        :fallback-placements="['bottom']"
       >
-        <div class="learn-detail-menu-item">{{ item.title }}</div>
-      </el-menu-item>
-      <el-menu-item
+        <el-menu-item
+          :index="`chapter-${index}`"
+          :key="`learn-menu-${index}`"
+          @click="handleMenuItemClick(item.chapterId, index)"
+        >
+          <div class="learn-detail-menu-item">{{ item.title }}</div>
+        </el-menu-item>
+      </el-tooltip>
+      <el-tooltip
+        effect="dark"
+        content="相关视频"
+        :key="`learn-menu-tooltip-video`"
+        placement="top"
+        fallback-placements="bottom"
         v-if="videoList !== undefined && videoList.length > 0"
-        key="learn-menu-video"
-        index="chapter-video"
-        @click="handleVideoItemClick"
       >
-        <div>相关视频</div>
-      </el-menu-item>
+        <el-menu-item key="learn-menu-video" index="chapter-video" @click="handleVideoItemClick">
+          <div>相关视频</div>
+        </el-menu-item>
+      </el-tooltip>
     </el-menu>
     <div class="learn-content" ref="learnContentElement">
       <div v-if="showVideo" class="learn-video flex-row-left">
@@ -188,7 +200,7 @@ export default {
   height: calc(100vh - 61px);
 }
 .learn-detail-menu {
-  width: 250px;
+  width: 200px;
   flex-shrink: 0;
   height: calc(100vh - 61px);
   overflow: auto;
