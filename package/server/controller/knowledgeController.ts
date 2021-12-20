@@ -1,6 +1,5 @@
 import { Request, Response } from 'express';
 import { KnowledgeService } from '../service/knowledgeService';
-import { MoreThan } from 'typeorm';
 import { sendSuccessResponse, sendErrorResponse } from '../util/response';
 
 export class KnowledgeController {
@@ -11,9 +10,9 @@ export class KnowledgeController {
       // 获取知识体系内容
       const output = await this.knowledgeService.findAvailableKnowledge();
 
-      return sendSuccessResponse(res, output);
+      sendSuccessResponse(res, output);
     } catch (e) {
-      res.send(e.message);
+      sendErrorResponse(res, e.message);
     }
   };
 }

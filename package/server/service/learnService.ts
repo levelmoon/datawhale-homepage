@@ -4,12 +4,14 @@ import { LearnTagEntity } from '../entity/learnTagEntity';
 import { LearnDetailEntity } from '../entity/learnDetailEntity';
 import { LearnVideoEntity } from '../entity/learnVideoEntity';
 import { removeDuplicateItem } from '../util/removeDuplicate';
+import { LearnTagRelationEntity } from '../entity/learnTagRelationEntity';
 
 export class LearnService {
   private learnRepository = getRepository(LearnEntity);
   private learnDetailRepository = getRepository(LearnDetailEntity);
   private learnVideoRepository = getRepository(LearnVideoEntity);
   private learnTagRepository = getRepository(LearnTagEntity);
+  private learnTagRelationRepository = getRepository(LearnTagRelationEntity);
 
   find = async (query: FindManyOptions<LearnEntity>) => {
     return this.learnRepository.find(query);
@@ -19,32 +21,52 @@ export class LearnService {
     return this.learnTagRepository.find(query);
   };
 
+  findTagRelation = async (query: FindManyOptions<LearnTagRelationEntity>) => {
+    return this.learnTagRelationRepository.find(query);
+  };
+
   findDetail = async (query: FindManyOptions<LearnDetailEntity>) => {
     return this.learnDetailRepository.find(query);
   };
 
   findLearn = async (query: FindManyOptions<LearnEntity>) => {
     const learnList = await this.find(query);
-    const learnTagList = await this.findTag({
+    const learnTagRelationList = await this.findTagRelation({
       where: {
         learnId: In(learnList.map((item) => item.id))
+      }
+    });
+    const learnTagList = await this.findTag({
+      where: {
+        id: In(learnTagRelationList.map((item) => item.learnTagId))
       }
     });
     const learnDetailList = await this.findDetail({
       select: ['id', 'learnId', 'title'],
       where: {
         learnId: In(learnList.map((item) => item.id))
+      },
+      order: {
+        index: 'ASC'
       }
     });
 
     // 组合learn、tag、detail
     const output = learnList.map((item) => {
-      const tagList = learnTagList
-        .filter((tag) => tag.learnId === item.id)
-        .map((tag) => {
+      const tagList = learnTagRelationList
+        .filter((relation) => relation.learnId === item.id)
+        .map((relation) => {
+          const tagInfoList = learnTagList.filter((tag) => tag.id === relation.learnTagId);
+          if (tagInfoList.length === 0) {
+            return {
+              tagId: relation.learnTagId,
+              tagName: ''
+            };
+          }
+
           return {
-            tagId: tag.id,
-            tagName: tag.name
+            tagId: relation.learnTagId,
+            tagName: tagInfoList[0].name
           };
         });
 
@@ -71,13 +93,15 @@ export class LearnService {
     return output;
   };
 
-  findLearnByTag = async (query: FindManyOptions<LearnTagEntity>) => {
-    const targetLearnTagList = await this.findTag(query);
-    const targetLearnList = removeDuplicateItem(targetLearnTagList.map((item) => item.learnId));
+  findLearnByTag = async (query: FindManyOptions<LearnTagRelationEntity>) => {
+    const targetLearnTagRelationList = await this.findTagRelation(query);
+    const targetLearnIdList = removeDuplicateItem(
+      targetLearnTagRelationList.map((item) => item.learnId)
+    );
 
     return this.findLearn({
       where: {
-        id: In(targetLearnList)
+        id: In(targetLearnIdList)
       }
     });
   };
@@ -98,7 +122,10 @@ export class LearnService {
 
   findLearnVideo = async (learnId: number) => {
     const learnVideoList = await this.learnVideoRepository.find({
-      learnId
+      where: { learnId },
+      order: {
+        index: 'ASC'
+      }
     });
 
     const output = learnVideoList.map((item) => {

@@ -13,6 +13,9 @@ export class LearnVideoEntity {
   @Column('int', { name: 'learn_id', nullable: true, comment: '学习id' })
   learnId: number | null;
 
+  @Column('int', { name: 'index', nullable: true, comment: '视频序号' })
+  index: number | null;
+
   @Column('varchar', {
     name: 'title',
     nullable: true,

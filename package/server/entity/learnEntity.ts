@@ -1,5 +1,4 @@
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
-import { LearnTagEntity } from './learnTagEntity';
 
 @Entity('learn', { schema: 'datawhale' })
 export class LearnEntity {

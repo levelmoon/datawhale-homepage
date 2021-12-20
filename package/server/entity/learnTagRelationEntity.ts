@@ -1,11 +1,11 @@
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
-@Entity('learn_detail', { schema: 'datawhale' })
-export class LearnDetailEntity {
+@Entity('learn_tag_relation', { schema: 'datawhale' })
+export class LearnTagRelationEntity {
   @PrimaryGeneratedColumn({
     type: 'int',
     name: 'id',
-    comment: '学习章节id',
+    comment: '标签id',
     unsigned: true
   })
   id: number;
@@ -13,23 +13,8 @@ export class LearnDetailEntity {
   @Column('int', { name: 'learn_id', nullable: true, comment: '学习id' })
   learnId: number | null;
 
-  @Column('int', { name: 'index', nullable: true, comment: '章节序号' })
-  index: number | null;
-
-  @Column('varchar', {
-    name: 'title',
-    nullable: true,
-    comment: '章节标题',
-    length: 512
-  })
-  title: string | null;
-
-  @Column('text', {
-    name: 'content',
-    nullable: true,
-    comment: '章节内容，md5格式'
-  })
-  content: string | null;
+  @Column('int', { name: 'learn_tag_id', nullable: true, comment: '标签id' })
+  learnTagId: number | null;
 
   @Column('timestamp', {
     name: 'create_time',

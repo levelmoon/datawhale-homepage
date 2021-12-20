@@ -1,5 +1,4 @@
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
-import { LearnEntity } from './learnEntity';
 
 @Entity('learn_tag', { schema: 'datawhale' })
 export class LearnTagEntity {
@@ -10,9 +9,6 @@ export class LearnTagEntity {
     unsigned: true
   })
   id: number;
-
-  @Column('int', { name: 'learn_id', nullable: true, comment: '学习id' })
-  learnId: number | null;
 
   @Column('varchar', {
     name: 'name',

@@ -19,8 +19,7 @@ const sendResponse = (
 export const sendSuccessResponse = (
   res: Response,
   data: any,
-  message?: string,
-  statusCode?: STATUS_CODE
+  message?: string
 ) => {
   return sendResponse(res, 200, data, message || 'success', STATUS_CODE.SUCCESS);
 };

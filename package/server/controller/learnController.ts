@@ -1,4 +1,4 @@
-import e, { Request, Response } from 'express';
+import { Request, Response } from 'express';
 import { sendSuccessResponse, sendErrorResponse } from '../util/response';
 import { LearnService } from '../service/learnService';
 
@@ -14,26 +14,26 @@ export class LearnController {
           name: item.name
         };
       });
-      return sendSuccessResponse(res, output);
+      sendSuccessResponse(res, output);
     } catch (e) {
-      res.send(e.message);
+      sendErrorResponse(res, e.message);
     }
   };
 
   getLearn = async (req: Request, res: Response) => {
     try {
       const { learnId } = req.query;
-      let output;
+      let output: ILearnItem[];
       if (learnId === undefined) {
         output = await this.learnService.findLearn({});
       } else {
         const learnIdNum = parseInt(learnId as string);
-        output = await this.learnService.findLearn({ where: { id: learnId } });
+        output = await this.learnService.findLearn({ where: { id: learnIdNum } });
       }
 
-      return sendSuccessResponse(res, output);
+      sendSuccessResponse(res, output);
     } catch (e) {
-      res.send(e.message);
+      sendErrorResponse(res, e.message);
     }
   };
 
@@ -41,11 +41,11 @@ export class LearnController {
     try {
       const { tagId } = req.query;
       const tagIdNum = parseInt(tagId as string);
-      const output = await this.learnService.findLearnByTag({ where: { id: tagIdNum } });
+      const output = await this.learnService.findLearnByTag({ where: { learnTagId: tagIdNum } });
 
-      return sendSuccessResponse(res, output);
+      sendSuccessResponse(res, output);
     } catch (e) {
-      res.send(e.message);
+      sendErrorResponse(res, e.message);
     }
   };
 
@@ -56,9 +56,9 @@ export class LearnController {
       const chapterIdNum = parseInt(chapterId as string);
       const output = await this.learnService.findLearnDetail(learnIdNum, chapterIdNum);
 
-      return sendSuccessResponse(res, output);
+      sendSuccessResponse(res, output);
     } catch (e) {
-      res.send(e.message);
+      sendErrorResponse(res, e.message);
     }
   };
 
@@ -68,9 +68,19 @@ export class LearnController {
       const learnIdNum = parseInt(learnId as string);
       const output = await this.learnService.findLearnVideo(learnIdNum);
 
-      return sendSuccessResponse(res, output);
+      sendSuccessResponse(res, output);
     } catch (e) {
-      res.send(e.message);
+      sendErrorResponse(res, e.message);
     }
   };
+}
+
+interface ILearnItem {
+  id: number;
+  name: string;
+  description: string;
+  imageUrl: string;
+  like: number;
+  tagList: { tagId: number; tagName: string }[];
+  detailList: { chapterId: number; title: string }[];
 }

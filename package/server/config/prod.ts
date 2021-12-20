@@ -1,4 +1,3 @@
-import { getPassword } from '../util/password';
 import path from 'path';
 
 export const productionConfig = {
@@ -7,7 +6,7 @@ export const productionConfig = {
     host: 'localhost',
     port: 3306,
     username: 'root',
-    password: getPassword(path.join(__dirname, '../../password.json')),
+    passwordPath: path.join(__dirname, '../../password.json'),
     database: 'datawhale',
     entities: [path.join(__dirname, '../entity/**/*.js')]
   },

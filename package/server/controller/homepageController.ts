@@ -1,7 +1,6 @@
 import { Request, Response } from 'express';
 import { ActivityService } from '../service/activityService';
 import { BannerService } from '../service/bannerService';
-import { MoreThan } from 'typeorm';
 import { sendSuccessResponse, sendErrorResponse } from '../util/response';
 import { LearnService } from '../service/learnService';
 
@@ -38,9 +37,9 @@ export class HomepageController {
       });
       output.learn = learnList;
 
-      return sendSuccessResponse(res, output);
+      sendSuccessResponse(res, output);
     } catch (e) {
-      res.send(e.message);
+      sendErrorResponse(res, e.message);
     }
   };
 }
