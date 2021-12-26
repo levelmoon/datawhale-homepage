@@ -25,11 +25,7 @@
         :fallback-placements="['bottom']"
         v-if="videoList !== undefined && videoList.length > 0"
       >
-        <el-menu-item
-          key="learn-menu-video"
-          index="chapter-video"
-          @click="handleVideoItemClick"
-        >
+        <el-menu-item key="learn-menu-video" index="chapter-video" @click="handleVideoItemClick">
           <div>相关视频</div>
         </el-menu-item>
       </el-tooltip>
@@ -49,7 +45,7 @@
       </div>
       <div v-else class="flex-row-space-between">
         <div class="markdownit" v-html="htmlContent" ref="markdownElement"></div>
-        <div class="learn-anchor-wrapper">
+        <div class="learn-anchor-wrapper" :style="{ display: showAnchor ? 'block' : 'none' }">
           <learn-anchor
             :anchorList="anchorList"
             :handleAnchorClick="handleAnchorClick"
@@ -68,6 +64,7 @@ import { http } from '../../service/axios';
 import { convertMarkdownToHtml } from '../../util/convertMarkdown';
 import learnAnchor from '../../component/learnAnchor.vue';
 import { HEADER_HEIGHT, isInViewPort } from '../../util/scroll';
+import { MIN_LEARN_WIDTH } from '../../constant';
 
 export default {
   components: { learnAnchor },
@@ -87,7 +84,8 @@ export default {
       showVideo: false,
       anchorList: [],
       activeAnchorHref: '',
-      learnId: ''
+      learnId: '',
+      showAnchor: true
     });
 
     const handleMenuItemClick = async (chapterId: number, index: number) => {
@@ -111,7 +109,7 @@ export default {
       data.showVideo = true;
 
       await nextTick();
-      
+
       data.currentMenuIndex = `chapter-video`;
       data.currentChapterId = -1;
     };
@@ -182,6 +180,14 @@ export default {
       } else {
         await handleVideoItemClick();
       }
+
+      window.addEventListener('resize', () => {
+        if (document.body.clientWidth < MIN_LEARN_WIDTH && data.showAnchor) {
+          data.showAnchor = false;
+        } else if (document.body.clientWidth >= MIN_LEARN_WIDTH && !data.showAnchor) {
+          data.showAnchor = true;
+        }
+      });
     });
 
     return {

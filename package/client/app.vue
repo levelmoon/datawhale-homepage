@@ -13,22 +13,21 @@
 <script lang="ts">
 import appNavigator from './component/appNavigator.vue';
 import { onMounted, reactive, toRefs } from 'vue';
-
-const MIN_WIDTH = 750;
+import { MIN_DISPLAY_WIDTH } from './constant';
 
 export default {
   components: { appNavigator },
   setup() {
     const data = reactive({
       viewValid: true,
-      minWidth: MIN_WIDTH
+      minWidth: MIN_DISPLAY_WIDTH
     });
 
     onMounted(() => {
       window.addEventListener('resize', () => {
-        if (document.body.clientWidth < MIN_WIDTH && data.viewValid) {
+        if (document.body.clientWidth < MIN_DISPLAY_WIDTH && data.viewValid) {
           data.viewValid = false;
-        } else if (document.body.clientWidth >= MIN_WIDTH && !data.viewValid) {
+        } else if (document.body.clientWidth >= MIN_DISPLAY_WIDTH && !data.viewValid) {
           data.viewValid = true;
         }
       });
