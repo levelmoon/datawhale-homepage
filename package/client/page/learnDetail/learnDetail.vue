@@ -22,10 +22,14 @@
         content="相关视频"
         :key="`learn-menu-tooltip-video`"
         placement="top"
-        fallback-placements="bottom"
+        :fallback-placements="['bottom']"
         v-if="videoList !== undefined && videoList.length > 0"
       >
-        <el-menu-item key="learn-menu-video" index="chapter-video" @click="handleVideoItemClick">
+        <el-menu-item
+          key="learn-menu-video"
+          index="chapter-video"
+          @click="handleVideoItemClick"
+        >
           <div>相关视频</div>
         </el-menu-item>
       </el-tooltip>
@@ -82,12 +86,14 @@ export default {
       videoList: [],
       showVideo: false,
       anchorList: [],
-      activeAnchorHref: ''
+      activeAnchorHref: '',
+      learnId: ''
     });
 
     const handleMenuItemClick = async (chapterId: number, index: number) => {
-      const learnId = router.currentRoute.value.params.learnId || '';
-      const learnDetail = await http.get('/api/learn/detail', { params: { learnId, chapterId } });
+      const learnDetail = await http.get('/api/learn/detail', {
+        params: { learnId: data.learnId, chapterId }
+      });
       data.showVideo = false;
       data.currentMenuIndex = `chapter-${index}`;
       data.currentChapterId = chapterId;
@@ -96,12 +102,16 @@ export default {
       data.htmlContent = html;
 
       await nextTick();
+
       generateAnchorList(tag);
       setCurrentActiveAnchorHref();
     };
 
     const handleVideoItemClick = async () => {
       data.showVideo = true;
+
+      await nextTick();
+      
       data.currentMenuIndex = `chapter-video`;
       data.currentChapterId = -1;
     };
@@ -152,33 +162,26 @@ export default {
     onMounted(async () => {
       learnContentElement?.value?.scroll(0, 0);
 
-      const learnId = router.currentRoute.value.params.learnId;
-      const learnInfo = await http.get('/api/learn', { params: { learnId } });
+      data.learnId = router.currentRoute.value.params.learnId as string;
+      const learnInfo = await http.get('/api/learn', { params: { learnId: data.learnId } });
       const name = learnInfo.data.data[0].name;
       const imageUrl = learnInfo.data.data[0].imageUrl;
       const chapterList = learnInfo.data.data[0].detailList;
-      const chapterId = chapterList[0].chapterId;
 
       data.name = name;
       data.imageUrl = imageUrl;
       data.chapterList = chapterList;
-      data.currentChapterId = chapterId;
-      data.currentMenuIndex = 'chapter-0';
 
-      const [learnDetail, learnVideo] = await Promise.all([
-        http.get('/api/learn/detail', { params: { learnId, chapterId } }),
-        http.get('/api/learn/video', { params: { learnId } })
-      ]);
-      const content = learnDetail.data.data.content;
-      const { html, tag } = convertMarkdownToHtml(content);
-      data.htmlContent = html;
+      const learnVideo = await http.get('/api/learn/video', { params: { learnId: data.learnId } });
       data.videoList = learnVideo.data.data;
 
-      await nextTick();
-
-      generateAnchorList(tag);
-      setCurrentActiveAnchorHref();
-      learnContentElement?.value?.addEventListener('scroll', setCurrentActiveAnchorHref);
+      if (chapterList.length !== 0) {
+        const chapterId = chapterList[0].chapterId;
+        await handleMenuItemClick(chapterId, 0);
+        learnContentElement?.value?.addEventListener('scroll', setCurrentActiveAnchorHref);
+      } else {
+        await handleVideoItemClick();
+      }
     });
 
     return {

@@ -18,7 +18,8 @@ export class BannerService {
     const output = availableList.map((item) => {
       return {
         url: item.imageUrl,
-        description: item.description
+        description: item.description,
+        linkUrl: item.linkUrl
       };
     });
 

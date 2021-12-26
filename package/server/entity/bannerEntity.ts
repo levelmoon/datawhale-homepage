@@ -26,6 +26,14 @@ export class BannerEntity {
   })
   description: string | null;
 
+  @Column('varchar', {
+    name: 'link_url',
+    nullable: true,
+    comment: '点击跳转链接',
+    length: 512
+  })
+  linkUrl: string | null;
+
   @Column('int', {
     name: 'status',
     nullable: true,

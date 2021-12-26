@@ -55,6 +55,7 @@ export default {
   height: 120px;
   object-fit: cover;
   margin-right: 30px;
+  flex-shrink: 0;
 }
 .learn-detail {
   width: 100%;
@@ -70,6 +71,7 @@ export default {
   font-size: 14px;
   height: 40px;
   line-height: 20px;
+  overflow: hidden;
 }
 .learn-detail-tag-group {
   width: 100%;

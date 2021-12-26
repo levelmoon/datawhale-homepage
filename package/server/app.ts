@@ -3,6 +3,7 @@ import express from 'express';
 import { initDbConnection } from './db';
 import { getRouter } from './router';
 import { config } from './config';
+import compression from 'compression';
 
 const main = async () => {
   await initDbConnection();
@@ -10,6 +11,7 @@ const main = async () => {
   const app = express();
   const port = 8081;
 
+  app.use(compression());
   app.use('/datawhale-homepage', express.static(config.staticFilePath));
   // 使用getRouter是为了防止在建立dbconnection之前初始化entity
   app.use('/api', getRouter());
