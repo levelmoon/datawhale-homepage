@@ -1,29 +1,27 @@
 <template>
-  <div class="knowledge">
-    <div class="flex-row-left">
-      <div class="knowledge-side-menu">
-        <div
-          @click="selectedItem(0)"
-          class="side-menu side-menu-title"
-          :class="[selectedId === 0 ? 'selected-item' : 'side-menu-title']"
-        >
-          <a>关于AI知识体系</a>
-        </div>
-        <div
-          @click="selectedItem(item.id)"
-          v-for="item of knowledge"
-          :key="item.id"
-          :index="item.id"
-          class="side-sub-menu"
-          :class="[selectedId === item.id ? 'selected-item' : 'side-sub-menu']"
-        >
-          <a>{{ item.name }}</a>
-        </div>
+  <div class="knowledge flex-row-left">
+    <div class="knowledge-side-menu">
+      <div
+        @click="selectedItem(0)"
+        class="side-menu"
+        :class="[selectedId === 0 ? 'selected-item' : 'side-menu-title']"
+      >
+        关于AI知识体系
       </div>
-      <div class="knowledge-detail">
-        <knowledge-overview v-if="selectedId === 0"></knowledge-overview>
-        <knowledge-detail v-if="selectedId !== 0" :content="content"></knowledge-detail>
+      <div
+        @click="selectedItem(item.id)"
+        v-for="item of knowledge"
+        :key="item.id"
+        :index="item.id"
+        class="side-menu"
+        :class="[selectedId === item.id ? 'selected-item' : 'side-sub-menu']"
+      >
+        {{ item.name }}
       </div>
+    </div>
+    <div class="knowledge-content">
+      <knowledge-overview v-if="selectedId === 0"></knowledge-overview>
+      <knowledge-detail v-if="selectedId !== 0" :content="content"></knowledge-detail>
     </div>
   </div>
 </template>
@@ -33,6 +31,7 @@ import { onMounted, reactive, toRefs } from 'vue';
 import { http } from '../../service/axios';
 import knowledgeDetail from './knowledgeDetail.vue';
 import knowledgeOverview from './knowledgeOverview.vue';
+
 export default {
   setup() {
     const data = reactive({
@@ -85,46 +84,30 @@ export default {
 </script>
 
 <style scoped>
+.knowledge {
+  height: calc(100vh - 61px);
+}
 .knowledge-side-menu {
   height: calc(100vh - 61px);
-  width: 250px;
   overflow: auto;
-  /* border-right: 1px solid #e5e7ec; */
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 2px 12px 0px;
+  width: 200px;
+  font-size: 14px;
+  border-right: solid 1px #e6e6e6;
+  cursor: pointer;
+  flex-shrink: 0;
 }
 .side-menu {
-  display: flex;
-  align-items: center;
-  font-size: 14px;
-  list-style: none;
-  white-space: nowrap;
-  color: black;
-  background-color: white;
-}
-.side-menu-title {
   height: 56px;
   line-height: 56px;
   padding: 0 20px;
-}
-.side-sub-menu {
-  height: 32px;
-  line-height: 32px;
-  font-size: 14px;
-  padding: 0 40px;
-}
-.content-title >>> .el-timeline-item__timestamp {
-  font-size: 16px;
-  font-weight: bold;
-  color: #409eff;
+  color: var(--el-text-color-primary);
 }
 .selected-item {
-  color: white;
-  background-color: #409eff;
+  color: var(--el-color-primary);
 }
-.knowledge-detail {
-  flex-grow: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.knowledge-content {
+  width: 100%;
+  height: calc(100vh - 61px);
+  overflow: auto;
 }
 </style>

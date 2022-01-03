@@ -5,6 +5,9 @@ body {
   margin: 0;
   padding: 0;
 }
+a {
+  color: var(--el-color-primary);
+}
 .flex-row-space-between {
   display: flex;
   flex-direction: row;
@@ -15,7 +18,8 @@ body {
   flex-direction: row;
   justify-content: left;
 }
-.flex {
+.flex-row-align-center {
   display: flex;
+  flex-direction: row;
   align-items: center;
 }

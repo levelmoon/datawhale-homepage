@@ -58,11 +58,11 @@
 </template>
 
 <script lang="ts">
-import { onMounted, reactive, toRefs, ref, nextTick, onUnmounted } from 'vue';
+import { onMounted, reactive, toRefs, ref, nextTick } from 'vue';
 import { useRouter } from 'vue-router';
 import { http } from '../../service/axios';
 import { convertMarkdownToHtml } from '../../util/convertMarkdown';
-import learnAnchor from '../../component/learnAnchor.vue';
+import learnAnchor from './learnAnchor.vue';
 import { HEADER_HEIGHT, isInViewPort } from '../../util/scroll';
 import { MIN_LEARN_WIDTH } from '../../constant';
 

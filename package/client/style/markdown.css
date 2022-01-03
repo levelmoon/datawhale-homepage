@@ -7,9 +7,6 @@
 .markdownit img {
   max-width: 80%;
 }
-.markdownit a {
-  color: var(--el-color-primary);
-}
 .katex {
   font-size: 16px !important;
 }

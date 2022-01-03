@@ -12,40 +12,12 @@
     </div>
   </div>
 </template>
+
 <script lang="ts">
 import { defineComponent, reactive, toRefs, SetupContext } from 'vue';
-import rawData from '../../util/g6';
-import G6 from '@antv/g6';
-const { Util } = G6;
-const colorArr = [
-  '#5B8FF9',
-  '#5AD8A6',
-  '#5D7092',
-  '#F6BD16',
-  '#6F5EF9',
-  '#6DC8EC',
-  '#D3EEF9',
-  '#DECFEA',
-  '#FFE0C7',
-  '#1E9493',
-  '#BBDEDE',
-  '#FF99C3',
-  '#FFE0ED',
-  '#CDDDFD',
-  '#CDF3E4',
-  '#CED4DE',
-  '#FCEBB9',
-  '#D3CEFD',
-  '#945FB9',
-  '#FF9845'
-];
 export default defineComponent({
   name: 'Overview',
-  methods: {
-    initData() {}
-  },
   mounted() {
-    this.initData();
   }
 });
 </script>
