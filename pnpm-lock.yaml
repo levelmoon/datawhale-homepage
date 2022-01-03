@@ -10,6 +10,7 @@ specifiers:
   axios: ^0.24.0
   compression: ^1.7.4
   css-loader: ^6.5.1
+  echarts: ^5.2.2
   element-plus: ^1.2.0-beta.5
   express: ^4.17.1
   file-loader: ^6.2.0
@@ -55,6 +56,7 @@ devDependencies:
   '@vue/runtime-dom': registry.npmmirror.com/@vue/runtime-dom/3.2.24
   axios: registry.npmmirror.com/axios/0.24.0
   css-loader: registry.npmmirror.com/css-loader/6.5.1_webpack@5.65.0
+  echarts: registry.npmmirror.com/echarts/5.2.2
   element-plus: registry.npmmirror.com/element-plus/1.2.0-beta.5_vue@3.2.24
   file-loader: registry.nlark.com/file-loader/6.2.0_webpack@5.65.0
   html-webpack-plugin: registry.npmmirror.com/html-webpack-plugin/5.5.0_webpack@5.65.0
@@ -90,13 +92,13 @@ packages:
     resolution: {integrity: sha512-Wq3WobR/YEmVH3meimrzHPVkslXwIr+6LCH07GC6I33/J4MfJDAguwDmkn+GB5hJ5aA53TiY9HYnhDeSVdUNDA==}
     dependencies:
       '@antv/util': 2.0.17
-      tslib: 2.3.1
+      tslib: registry.nlark.com/tslib/2.3.1
     dev: false
 
   /@antv/dom-util/2.0.3:
     resolution: {integrity: sha512-dUHsUT4U9X1T1/Y9bH3jRMe0MzvWJk2jSQm1vm3w9NX+Ra0ftq5VUBiGTNbthm3nFwG0fFFjip904rYjl50g4A==}
     dependencies:
-      tslib: 2.3.1
+      tslib: registry.nlark.com/tslib/2.3.1
     dev: false
 
   /@antv/event-emitter/0.1.2:
@@ -116,7 +118,7 @@ packages:
       d3-interpolate: 1.4.0
       d3-timer: 1.0.10
       detect-browser: 5.3.0
-      tslib: 2.3.1
+      tslib: registry.nlark.com/tslib/2.3.1
     dev: false
 
   /@antv/g-canvas/0.5.12:
@@ -128,7 +130,7 @@ packages:
       '@antv/path-util': 2.0.15
       '@antv/util': 2.0.17
       gl-matrix: 3.4.3
-      tslib: 2.3.1
+      tslib: registry.nlark.com/tslib/2.3.1
     dev: false
 
   /@antv/g-math/0.1.7:
@@ -145,7 +147,7 @@ packages:
       '@antv/g-math': 0.1.7
       '@antv/util': 2.0.17
       detect-browser: 5.3.0
-      tslib: 2.3.1
+      tslib: registry.nlark.com/tslib/2.3.1
     dev: false
 
   /@antv/g-webgpu-core/0.5.6:
@@ -203,7 +205,7 @@ packages:
       '@antv/path-util': 2.0.15
       '@antv/util': 2.0.17
       ml-matrix: 6.8.2
-      tslib: 2.3.1
+      tslib: registry.nlark.com/tslib/2.3.1
     dev: false
 
   /@antv/g6-element/0.5.1:
@@ -280,7 +282,7 @@ packages:
     dependencies:
       '@antv/util': 2.0.17
       gl-matrix: 3.4.3
-      tslib: 2.3.1
+      tslib: registry.nlark.com/tslib/2.3.1
     dev: false
 
   /@antv/matrix-util/3.1.0-beta.3:
@@ -288,7 +290,7 @@ packages:
     dependencies:
       '@antv/util': 2.0.17
       gl-matrix: 3.4.3
-      tslib: 2.3.1
+      tslib: registry.nlark.com/tslib/2.3.1
     dev: false
 
   /@antv/path-util/2.0.15:
@@ -296,7 +298,7 @@ packages:
     dependencies:
       '@antv/matrix-util': 3.0.4
       '@antv/util': 2.0.17
-      tslib: 2.3.1
+      tslib: registry.nlark.com/tslib/2.3.1
     dev: false
 
   /@antv/scale/0.3.14:
@@ -304,14 +306,14 @@ packages:
     dependencies:
       '@antv/util': 2.0.17
       fecha: 4.2.1
-      tslib: 2.3.1
+      tslib: registry.nlark.com/tslib/2.3.1
     dev: false
 
   /@antv/util/2.0.17:
     resolution: {integrity: sha512-o6I9hi5CIUvLGDhth0RxNSFDRwXeywmt6ExR4+RmVAzIi48ps6HUy+svxOCayvrPBN37uE6TAc2KDofRo0nK9Q==}
     dependencies:
       csstype: 3.0.10
-      tslib: 2.3.1
+      tslib: registry.nlark.com/tslib/2.3.1
     dev: false
 
   /@babel/runtime/7.16.7:
@@ -447,13 +449,6 @@ packages:
     resolution: {integrity: sha512-MMMQ0ludy/nBs1/o0zVOiKTpG7qMbonKUzjJgQFEuvq6INZ1OraKPRAWkBq5vlKLOUMpmNYG1JoN3oDPUQ9m3Q==}
     dev: false
 
-  /fsevents/2.3.2:
-    resolution: {integrity: sha512-xiqMQR4xAeHTuB9uWm+fFRcIOgKBMiOBP+eXiyT7jsgVCq1bkVygt00oASowB7EdtpOHaaPgKt812P9ab+DDKA==}
-    engines: {node: ^8.16.0 || ^10.6.0 || >=11.0.0}
-    os: [darwin]
-    requiresBuild: true
-    optional: true
-
   /gl-matrix/3.4.3:
     resolution: {integrity: sha512-wcCp8vu8FT22BnvKVPjXa/ICBWRq/zjFfdofZy1WSpQZpphblv12/bOQLBC1rMM7SGOFS9ltVmKOHil5+Ml7gA==}
     dev: false
@@ -564,10 +559,6 @@ packages:
 
   /tinycolor2/1.4.2:
     resolution: {integrity: sha512-vJhccZPs965sV/L2sU4oRQVAos0pQXwsvTLkWYdqJ+a8Q5kPFzJTuOFwy7UniPli44NKQGAglksjvOcpo95aZA==}
-    dev: false
-
-  /tslib/2.3.1:
-    resolution: {integrity: sha512-77EbyPPpMz+FRFRuAFlWMtmgUWGe9UOG2Z25NqCwiIjRhOf5iKGuzSe5P2w1laq+FkRy4p+PCuVkJSGkzTEKVw==}
     dev: false
 
   registry.nlark.com/@antfu/utils/0.3.0:
@@ -3576,6 +3567,12 @@ packages:
       webpack: registry.npmmirror.com/webpack/5.65.0_webpack-cli@4.9.1
     dev: true
 
+  registry.nlark.com/tslib/2.3.0:
+    resolution: {integrity: sha1-gDuM2rPhK6WBpMpByIObuw2ssJ4=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/tslib/download/tslib-2.3.0.tgz}
+    name: tslib
+    version: 2.3.0
+    dev: true
+
   registry.nlark.com/tslib/2.3.1:
     resolution: {integrity: sha1-6KM1rdXOrlGqJh0ypJAVjvBC7wE=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/tslib/download/tslib-2.3.1.tgz}
     name: tslib
@@ -3883,6 +3880,14 @@ packages:
     name: zen-observable
     version: 0.8.15
     dev: false
+
+  registry.nlark.com/zrender/5.2.1:
+    resolution: {integrity: sha1-X0u9qRW6bUErCxncJDG+qtBUF7s=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/zrender/download/zrender-5.2.1.tgz}
+    name: zrender
+    version: 5.2.1
+    dependencies:
+      tslib: registry.nlark.com/tslib/2.3.0
+    dev: true
 
   registry.npmmirror.com/@babel/code-frame/7.16.0:
     resolution: {integrity: sha1-DfyAMJvuyEEeZecGRhxAiwu5tDE=, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@babel/code-frame/download/@babel/code-frame-7.16.0.tgz?cache=0&sync_timestamp=1635561503638&other_urls=https%3A%2F%2Fregistry.npmmirror.com%2F%40babel%2Fcode-frame%2Fdownload%2F%40babel%2Fcode-frame-7.16.0.tgz}
@@ -4526,7 +4531,7 @@ packages:
       normalize-path: registry.nlark.com/normalize-path/3.0.0
       readdirp: registry.nlark.com/readdirp/3.6.0
     optionalDependencies:
-      fsevents: 2.3.2
+      fsevents: registry.npmmirror.com/fsevents/2.3.2
 
   registry.npmmirror.com/ci-info/2.0.0:
     resolution: {integrity: sha1-Z6npZL4xpR4V5QENWObxKDQAL0Y=, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/ci-info/download/ci-info-2.0.0.tgz}
@@ -4700,6 +4705,15 @@ packages:
     version: 0.1.4
     dev: false
 
+  registry.npmmirror.com/echarts/5.2.2:
+    resolution: {integrity: sha512-yxuBfeIH5c+0FsoRP60w4De6omXhA06c7eUYBsC1ykB6Ys2yK5fSteIYWvkJ4xJVLQgCvAdO8C4mN6MLeJpBaw==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/echarts/download/echarts-5.2.2.tgz}
+    name: echarts
+    version: 5.2.2
+    dependencies:
+      tslib: registry.nlark.com/tslib/2.3.0
+      zrender: registry.nlark.com/zrender/5.2.1
+    dev: true
+
   registry.npmmirror.com/electron-to-chromium/1.4.14:
     resolution: {integrity: sha512-RsGkAN9JEAYMObS72kzUsPPcPGMqX1rBqGuXi9aa4TBKLzICoLf+DAAtd0fVFzrniJqYzpby47gthCUoObfs0Q==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/electron-to-chromium/download/electron-to-chromium-1.4.14.tgz}
     name: electron-to-chromium
@@ -4836,6 +4850,15 @@ packages:
       debug:
         optional: true
     dev: true
+
+  registry.npmmirror.com/fsevents/2.3.2:
+    resolution: {integrity: sha1-ilJveLj99GI7cJ4Ll1xSwkwC/Ro=, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/fsevents/download/fsevents-2.3.2.tgz}
+    name: fsevents
+    version: 2.3.2
+    engines: {node: ^8.16.0 || ^10.6.0 || >=11.0.0}
+    os: [darwin]
+    requiresBuild: true
+    optional: true
 
   registry.npmmirror.com/glob-parent/5.1.2:
     resolution: {integrity: sha1-hpgyxYA0/mikCTwX3BXoNA2EAcQ=, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/glob-parent/download/glob-parent-5.1.2.tgz}
