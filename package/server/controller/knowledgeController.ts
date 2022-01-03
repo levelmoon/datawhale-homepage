@@ -15,4 +15,13 @@ export class KnowledgeController {
       sendErrorResponse(res, e.message);
     }
   };
+	getKnowledgeMind = async (req: Request, res: Response) => {
+    try {
+      // 获取思维导图
+      const output = await this.knowledgeService.findAvailableKnowledgeMind();
+      sendSuccessResponse(res, output);
+    } catch (e) {
+      sendErrorResponse(res, e.message);
+    }
+  };
 }

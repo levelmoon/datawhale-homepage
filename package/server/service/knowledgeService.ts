@@ -25,4 +25,21 @@ export class KnowledgeService {
 
     return output;
   };
+	findAvailableKnowledgeMind = async () => {
+    const availableList = await this.find({
+      where: {},
+      take: 100,
+      skip: 0
+    });
+		//这里逻辑还没写
+    const output = availableList.map((item) => {
+      return {
+        id: item.id,
+        name: item.name,
+        content: item.content
+      };
+    });
+
+    return output;
+  };
 }

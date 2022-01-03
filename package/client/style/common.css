@@ -15,3 +15,7 @@ body {
   flex-direction: row;
   justify-content: left;
 }
+.flex {
+  display: flex;
+  align-items: center;
+}

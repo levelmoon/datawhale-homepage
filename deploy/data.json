@@ -1,0 +1,100 @@
+[
+	{
+		"name": "数据分析基础",
+		"content": [
+			{
+				"title": "Python基础：learn-python-the-smart-way",
+				"context": "本教程适合哪类同学学习？ 1、想要从0开始系统学习 Python 的同学。 2、需要在最短时间内学习 Python 解决当下问题的同学。 3、对 Python 感兴趣想要了解的同学。",
+				"img": "https://tva1.sinaimg.cn/large/008i3skNly1gxrnjwndczj31400u0q4j.jpg",
+				"url":"https://github.com/datawhalechina/learn-python-the-smart-way"
+			},
+			{
+				"title": "Excel基础：free-excel",
+				"context": "Free Excel根据多年工作经验总结而成，很多内容是常用且重要的，同时学完后能加深对Excel的理解。授之以鱼不如授之以渔，让我们开始愉快的Excel之旅吧！",
+				"img": "https://tva1.sinaimg.cn/large/008i3skNly1gxrnjx5423j31900u00uo.jpg",
+				"url":"https://github.com/datawhalechina/free-excel?from=from_parent_mindnote"
+			},
+			{
+				"title": "SQL基础：wonderful-sql",
+				"context": "Follow me，从 0 到 1 掌握 SQL，决胜秋招。 随着大数据技术的快速发展，SQL 应用能力日趋重要。 在诸多领域中 SQL 应用广泛，数据分析、开发、测试、维护、产品经理等都有可能会用到SQL，而在学校里系统性讲授 SQL 的课程较少，但是面试及工作中却经常会涉及到 SQL。这就要求我们提前掌握这一技能。笔者在多年的学习过程中，发现了一本很好的教材《SQL基础教程 第2版》作者：MICK，感觉很有必要分享出来，笔者便联合DataWhale团队成员结合该教材及其他学习资源编写了此学习材料。希望可以帮助你更好的掌握 SQL。",
+				"img": "https://tva1.sinaimg.cn/large/008i3skNly1gxrnjww1npj318y0u00v0.jpg",
+				"url":"https://github.com/datawhalechina/wonderful-sql?from=from_parent_mindnote"
+			},
+			{
+				"title": "Pandas基础：joyful-pandas",
+				"context": "本教程共有十章，可分为三大模块：基础知识、四类操作、四类数据，涵盖了pandas的所有核心操作与特性。",
+				"img": "https://tva1.sinaimg.cn/large/008i3skNly1gxrnjww1npj318y0u00v0.jpg",
+				"url":"https://github.com/datawhalechina/joyful-pandas"
+			}
+		]
+	},
+	{
+		"name": "机器学习",
+		"content": [
+			{
+				"title": "理论：南瓜书pumpkin-book",
+				"context": "“周志华老师的《机器学习》（西瓜书）是机器学习领域的经典入门教材之一，周老师为了使尽可能多的读者通过西瓜书对机器学习有所了解, 所以在书中对部分公式的推导细节没有详述，但是这对那些想深究公式推导细节的读者来说可能“不太友好”，本书旨在对西瓜书里比较难理解的公式加以解析，以及对部分公式补充具体的推导细节。” 读到这里，大家可能会疑问为啥前面这段话加了引号，因为这只是我们最初的遐想，后来我们了解到，周老师之所以省去这些推导细节的真实原因是，他本尊认为“理工科数学基础扎实点的大二下学生应该对西瓜书中的推导细节无困难吧，要点在书里都有了，略去的细节应能脑补或做练习”。所以......本南瓜书只能算是我等数学渣渣在自学的时候记下来的笔记，希望能够帮助大家都成为一名合格的“理工科数学基础扎实点的大二下学生”。",
+				"img": "https://tva1.sinaimg.cn/large/008i3skNly1gxrnjxqruzj30m80m8mxy.jpg",
+				 "url":"https://github.com/datawhalechina/pumpkin-book"
+			},
+			{
+				"title": "实践：machine-learning-toy-code",
+				"context": "本项目以西瓜书以及南瓜书为主要参考，其他资料为辅助，来进行常见机器学习代码的实战。主要特色为力求数码结合，即数学公式与相关代码的形神对应，能够帮助读者加深对公式的理解以及代码的熟练。",
+				"img": "https://tva1.sinaimg.cn/large/008i3skNly1gxrnjxl6p1j31910u0teg.jpg",
+				"url":"https://github.com/datawhalechina/machine-learning-toy-code"
+			}
+		]
+	},
+	{
+		"name": "集成学习",
+		"content": [
+			{
+				"title": "理论&实践：ensemble-learning",
+				"context": "这件事开始于我们参加一些机器学习比赛，在类似于kaggle等大型数据科学竞赛的时候, 我们总喜欢去观摩高分选手的一些参赛模型，得出一个很重要的结论就是：除了深度学习以外的高分模型，无一例外地见到了集成学习和模型融合的身影。这个发现迫使我去学习一些除了基础模型以外的集成学习方法以便在这些比赛上获得更好的成绩。但是，当我使用具体的sklearn编程的时候, 往往因为不懂得集成学习的一 些底层知识而不懂参数的含义。因此，在本项目中我们会从基础模型的推导以及 sklearn应用过渡到使用集成学习的技术去优化我们的基础模型，使得我们的模型能更好地解决机器学习问题。",
+				"img": "https://tva1.sinaimg.cn/large/008i3skNly1gxrnjxl6p1j31910u0teg.jpg",
+				"url":"https://github.com/datawhalechina/ensemble-learning?from=from_parent_mindnote"
+			}
+			
+		]
+	},
+	{
+		"name":"数据分析",
+		"content":[
+			{
+				"title": "理论&实践：hands-on-data-analysis",
+				"context": "关于我们项目的名字——动手学数据分析（Hands-on data analysis）。数据分析是一个要从一堆数字中看到真相的过程。学会操作数据只是数据分析的一半功力，剩下的另一半要用我们的大脑，多多思考，多多总结，更要多动手，实打实的的敲代码。所以也希望在学习这门课时，多去推理，多去问问为什么；多多练习，确保理论实践结合起来，在课程结束的时候一定会有大收获。",
+				"img": "https://tva1.sinaimg.cn/large/008i3skNly1gxrnjxbjanj31900u0djj.jpg",
+				"url":"https://github.com/datawhalechina/hands-on-data-analysis"
+			}
+		]
+	},
+	{
+		"name": "选修",
+		"content": [
+			{
+				"title": "可视化：fantastic-matplotlib",
+				"context": "本项目重点希望在两个层面帮助读者构建matplotlib的知识体系， 从图形，布局，文本，样式等多维度系统梳理matplotlib的绘图方法，构建对于绘图方法的整体理解 从绘图API层级，接口等方面阐明matplotlib的设计理念，摆脱只会复制粘贴的尴尬处境 最后还要说的是，对于学习完本教程的读者，若是仍然觉得学有余力不过瘾，强烈建议按需阅读官方文档，相信你一定会有所收获的。 "				,
+				"img": "https://tva1.sinaimg.cn/large/008i3skNly1gxrnjxbjanj31900u0djj.jpg",
+				"url":"https://github.com/datawhalechina/ensemble-learning?from=from_parent_mindnote"
+			},
+			{
+				"title": "可视化：wow-plotly",
+				"context": "本系列的教程讲解的是一个比较新的Python可视化库：Plotly，它主要有以下的特点： 图形多样化：plotly中能够绘制多种图形，常见的折线图、散点图、饼图、桑基图、气泡图、联合分布图；还有和机器学习、统计相关的各种图形等 开源免费：Plotly官网的所有资源都是免费，用户可直接使用 在线可编辑：Plotly有自己的在线可编辑平台，使用者将图形上传即可编辑和分享 图形绚丽：Plotly的图形全部是动态可视化的，而且还有多种颜色面板供用户使用 代码量少：Plotly绘图的过程中，尤其是使用Plotly的高级封装Plotly_express，一行代码即可实现非常漂亮的图形等",
+				"img": "https://tva1.sinaimg.cn/large/008i3skNly1gxrnjxbjanj31900u0djj.jpg",
+				"url":"https://github.com/datawhalechina/wow-plotly"
+			}	
+		]
+	},
+	{
+		"name": "恭喜毕业啦！",
+		"content": [
+			{
+				"title": "",
+				"context": "",
+				"img": "",
+				"url":""
+			}
+		]
+	}
+	
+]
