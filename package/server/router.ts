@@ -17,7 +17,8 @@ export const getRouter = () => {
   router.get('/learn/getByTag', learnController.getLearnByTag);
   router.get('/learn/detail', learnController.getLearnDetail);
   router.get('/learn/video', learnController.getLearnVideo);
-  router.get('/knowledge', knowledgeController.getKnowledge);
+  router.get('/knowledge/list', knowledgeController.getKnowledge);
+	router.get('/knowledge/mind',knowledgeController.getKnowledgeMind)
 
   return router;
 };

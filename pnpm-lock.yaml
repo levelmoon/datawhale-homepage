@@ -9,6 +9,7 @@ specifiers:
   axios: ^0.24.0
   compression: ^1.7.4
   css-loader: ^6.5.1
+  echarts: ^5.2.2
   element-plus: ^1.2.0-beta.5
   express: ^4.17.1
   file-loader: ^6.2.0
@@ -25,8 +26,6 @@ specifiers:
   ts-node: ^10.4.0
   typeorm: ^0.2.41
   typescript: ^4.5.2
-  unplugin-auto-import: ^0.5.1
-  unplugin-vue-components: ^0.17.4
   vue: ^3.2.23
   vue-loader: ^16.8.3
   vue-router: ^4.0.12
@@ -53,6 +52,7 @@ devDependencies:
   '@vue/runtime-dom': registry.npmmirror.com/@vue/runtime-dom/3.2.24
   axios: registry.npmmirror.com/axios/0.24.0
   css-loader: registry.npmmirror.com/css-loader/6.5.1_webpack@5.65.0
+  echarts: registry.npmmirror.com/echarts/5.2.2
   element-plus: registry.npmmirror.com/element-plus/1.2.0-beta.5_vue@3.2.24
   file-loader: registry.nlark.com/file-loader/6.2.0_webpack@5.65.0
   html-webpack-plugin: registry.npmmirror.com/html-webpack-plugin/5.5.0_webpack@5.65.0
@@ -64,8 +64,6 @@ devDependencies:
   ts-loader: registry.nlark.com/ts-loader/9.2.6_typescript@4.5.3+webpack@5.65.0
   ts-node: registry.npmmirror.com/ts-node/10.4.0_typescript@4.5.3
   typescript: registry.npmmirror.com/typescript/4.5.3
-  unplugin-auto-import: registry.npmmirror.com/unplugin-auto-import/0.5.3_webpack@5.65.0
-  unplugin-vue-components: registry.npmmirror.com/unplugin-vue-components/0.17.6_vue@3.2.24+webpack@5.65.0
   vue: registry.npmmirror.com/vue/3.2.24
   vue-loader: registry.npmmirror.com/vue-loader/16.8.3_webpack@5.65.0
   vue-router: registry.npmmirror.com/vue-router/4.0.12_vue@3.2.24
@@ -77,14 +75,6 @@ devDependencies:
   webpack-merge: registry.nlark.com/webpack-merge/5.8.0
 
 packages:
-
-  registry.nlark.com/@antfu/utils/0.3.0:
-    resolution: {integrity: sha1-YwbEO1Kog72Olz4+2N1kJIQYvMQ=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/@antfu/utils/download/@antfu/utils-0.3.0.tgz}
-    name: '@antfu/utils'
-    version: 0.3.0
-    dependencies:
-      '@types/throttle-debounce': registry.npmmirror.com/@types/throttle-debounce/2.1.0
-    dev: true
 
   registry.nlark.com/@babel/helper-validator-identifier/7.15.7:
     resolution: {integrity: sha1-Ig35k7/pBKSmsCq08zhaXr9uI4k=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/@babel/helper-validator-identifier/download/@babel/helper-validator-identifier-7.15.7.tgz}
@@ -125,16 +115,6 @@ packages:
     dependencies:
       '@nodelib/fs.scandir': registry.nlark.com/@nodelib/fs.scandir/2.1.5
       fastq: registry.nlark.com/fastq/1.13.0
-    dev: true
-
-  registry.nlark.com/@rollup/pluginutils/4.1.1:
-    resolution: {integrity: sha1-HU2obdTt7RVlalfZM/2iuaCNR+w=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/@rollup/pluginutils/download/@rollup/pluginutils-4.1.1.tgz}
-    name: '@rollup/pluginutils'
-    version: 4.1.1
-    engines: {node: '>= 8.0.0'}
-    dependencies:
-      estree-walker: registry.nlark.com/estree-walker/2.0.2
-      picomatch: registry.nlark.com/picomatch/2.3.0
     dev: true
 
   registry.nlark.com/@szmarczak/http-timer/1.1.2:
@@ -525,14 +505,6 @@ packages:
       base64-js: registry.nlark.com/base64-js/1.5.1
       ieee754: registry.nlark.com/ieee754/1.2.1
     dev: false
-
-  registry.nlark.com/builtins/4.0.0:
-    resolution: {integrity: sha1-qDRUIN6CBo/cTWVZ0EVkA6j7GQU=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/builtins/download/builtins-4.0.0.tgz}
-    name: builtins
-    version: 4.0.0
-    dependencies:
-      semver: registry.nlark.com/semver/7.3.5
-    dev: true
 
   registry.nlark.com/cacheable-request/6.1.0:
     resolution: {integrity: sha1-IP+4vRYrpL4R6VZ9gj22UQUsqRI=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/cacheable-request/download/cacheable-request-6.1.0.tgz}
@@ -3084,6 +3056,12 @@ packages:
       webpack: registry.npmmirror.com/webpack/5.65.0_webpack-cli@4.9.1
     dev: true
 
+  registry.nlark.com/tslib/2.3.0:
+    resolution: {integrity: sha1-gDuM2rPhK6WBpMpByIObuw2ssJ4=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/tslib/download/tslib-2.3.0.tgz}
+    name: tslib
+    version: 2.3.0
+    dev: true
+
   registry.nlark.com/tslib/2.3.1:
     resolution: {integrity: sha1-6KM1rdXOrlGqJh0ypJAVjvBC7wE=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/tslib/download/tslib-2.3.1.tgz}
     name: tslib
@@ -3264,12 +3242,6 @@ packages:
       wildcard: registry.nlark.com/wildcard/2.0.0
     dev: true
 
-  registry.nlark.com/webpack-virtual-modules/0.4.3:
-    resolution: {integrity: sha1-zVl8bVHVpey0c+6hmDpY+ooX3tk=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/webpack-virtual-modules/download/webpack-virtual-modules-0.4.3.tgz}
-    name: webpack-virtual-modules
-    version: 0.4.3
-    dev: true
-
   registry.nlark.com/websocket-driver/0.7.4:
     resolution: {integrity: sha1-ia1Slbv2S0gKvLox5JU6ynBvV2A=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/websocket-driver/download/websocket-driver-0.7.4.tgz}
     name: websocket-driver
@@ -3391,6 +3363,14 @@ packages:
     name: zen-observable
     version: 0.8.15
     dev: false
+
+  registry.nlark.com/zrender/5.2.1:
+    resolution: {integrity: sha1-X0u9qRW6bUErCxncJDG+qtBUF7s=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/zrender/download/zrender-5.2.1.tgz}
+    name: zrender
+    version: 5.2.1
+    dependencies:
+      tslib: registry.nlark.com/tslib/2.3.0
+    dev: true
 
   registry.npmmirror.com/@babel/code-frame/7.16.0:
     resolution: {integrity: sha1-DfyAMJvuyEEeZecGRhxAiwu5tDE=, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@babel/code-frame/download/@babel/code-frame-7.16.0.tgz?cache=0&sync_timestamp=1635561503638&other_urls=https%3A%2F%2Fregistry.npmmirror.com%2F%40babel%2Fcode-frame%2Fdownload%2F%40babel%2Fcode-frame-7.16.0.tgz}
@@ -3607,12 +3587,6 @@ packages:
     dependencies:
       '@types/mime': registry.npmmirror.com/@types/mime/1.3.2
       '@types/node': registry.npmmirror.com/@types/node/16.11.12
-    dev: true
-
-  registry.npmmirror.com/@types/throttle-debounce/2.1.0:
-    resolution: {integrity: sha1-HD32JL/Eti+ZLTASuExW1B6rN3Y=, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@types/throttle-debounce/download/@types/throttle-debounce-2.1.0.tgz}
-    name: '@types/throttle-debounce'
-    version: 2.1.0
     dev: true
 
   registry.npmmirror.com/@types/zen-observable/0.8.3:
@@ -4208,6 +4182,15 @@ packages:
     version: 0.1.4
     dev: false
 
+  registry.npmmirror.com/echarts/5.2.2:
+    resolution: {integrity: sha512-yxuBfeIH5c+0FsoRP60w4De6omXhA06c7eUYBsC1ykB6Ys2yK5fSteIYWvkJ4xJVLQgCvAdO8C4mN6MLeJpBaw==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/echarts/download/echarts-5.2.2.tgz}
+    name: echarts
+    version: 5.2.2
+    dependencies:
+      tslib: registry.nlark.com/tslib/2.3.0
+      zrender: registry.nlark.com/zrender/5.2.1
+    dev: true
+
   registry.npmmirror.com/electron-to-chromium/1.4.14:
     resolution: {integrity: sha512-RsGkAN9JEAYMObS72kzUsPPcPGMqX1rBqGuXi9aa4TBKLzICoLf+DAAtd0fVFzrniJqYzpby47gthCUoObfs0Q==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/electron-to-chromium/download/electron-to-chromium-1.4.14.tgz}
     name: electron-to-chromium
@@ -4512,14 +4495,6 @@ packages:
       resolve-cwd: registry.nlark.com/resolve-cwd/3.0.0
     dev: true
 
-  registry.npmmirror.com/import-meta-resolve/1.1.1:
-    resolution: {integrity: sha1-JE/VQv0frnNVDU+LPN47uh17Kxg=, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/import-meta-resolve/download/import-meta-resolve-1.1.1.tgz}
-    name: import-meta-resolve
-    version: 1.1.1
-    dependencies:
-      builtins: registry.nlark.com/builtins/4.0.0
-    dev: true
-
   registry.npmmirror.com/is-ci/2.0.0:
     resolution: {integrity: sha1-a8YzQYGBDgS1wis9WJ/cpVAmQEw=, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/is-ci/download/is-ci-2.0.0.tgz?cache=0&sync_timestamp=1635262818706&other_urls=https%3A%2F%2Fregistry.npmmirror.com%2Fis-ci%2Fdownload%2Fis-ci-2.0.0.tgz}
     name: is-ci
@@ -4617,15 +4592,6 @@ packages:
       big.js: registry.npmmirror.com/big.js/5.2.2
       emojis-list: registry.nlark.com/emojis-list/3.0.0
       json5: registry.nlark.com/json5/2.2.0
-    dev: true
-
-  registry.npmmirror.com/local-pkg/0.4.0:
-    resolution: {integrity: sha1-5iIRcYE9WggS3YT6gP+xyPzABTE=, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/local-pkg/download/local-pkg-0.4.0.tgz}
-    name: local-pkg
-    version: 0.4.0
-    engines: {node: '>=14'}
-    dependencies:
-      mlly: registry.npmmirror.com/mlly/0.2.10
     dev: true
 
   registry.npmmirror.com/lowercase-keys/1.0.1:
@@ -4732,14 +4698,6 @@ packages:
     engines: {node: '>=10'}
     hasBin: true
     dev: false
-
-  registry.npmmirror.com/mlly/0.2.10:
-    resolution: {integrity: sha1-ZFkCyXYdxrXe0XS45xcUf+UuSJM=, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/mlly/download/mlly-0.2.10.tgz}
-    name: mlly
-    version: 0.2.10
-    dependencies:
-      import-meta-resolve: registry.npmmirror.com/import-meta-resolve/1.1.1
-    dev: true
 
   registry.npmmirror.com/ms/2.0.0:
     resolution: {integrity: sha1-VgiurfwAvmwpAd9fmGF4jeDVl8g=, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/ms/download/ms-2.0.0.tgz}
@@ -5382,85 +5340,6 @@ packages:
     name: undefsafe
     version: 2.0.5
     dev: false
-
-  registry.npmmirror.com/unplugin-auto-import/0.5.3_webpack@5.65.0:
-    resolution: {integrity: sha512-jXs0rnKTS+/TyXOild6RkVp73yz1DeLXVJWR6VRn+oageEsvHgW6zofvc2BmpAm/pTSANxZ48kLi12wOa/iwdw==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/unplugin-auto-import/download/unplugin-auto-import-0.5.3.tgz}
-    id: registry.npmmirror.com/unplugin-auto-import/0.5.3
-    name: unplugin-auto-import
-    version: 0.5.3
-    engines: {node: '>=14'}
-    peerDependencies:
-      '@vueuse/core': '*'
-    peerDependenciesMeta:
-      '@vueuse/core':
-        optional: true
-    dependencies:
-      '@antfu/utils': registry.nlark.com/@antfu/utils/0.3.0
-      '@rollup/pluginutils': registry.nlark.com/@rollup/pluginutils/4.1.1
-      local-pkg: registry.npmmirror.com/local-pkg/0.4.0
-      magic-string: registry.nlark.com/magic-string/0.25.7
-      resolve: registry.nlark.com/resolve/1.20.0
-      unplugin: registry.npmmirror.com/unplugin/0.2.21_webpack@5.65.0
-    transitivePeerDependencies:
-      - rollup
-      - vite
-      - webpack
-    dev: true
-
-  registry.npmmirror.com/unplugin-vue-components/0.17.6_vue@3.2.24+webpack@5.65.0:
-    resolution: {integrity: sha512-Z2XvwKeY7/++MucRKzJihDsbdL8rFb71VfmuhtMtLE8zurjFu57XKFx0RNFUD5zD4g0HEyR9GGTwXu2YI0rang==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/unplugin-vue-components/download/unplugin-vue-components-0.17.6.tgz}
-    id: registry.npmmirror.com/unplugin-vue-components/0.17.6
-    name: unplugin-vue-components
-    version: 0.17.6
-    engines: {node: '>=14'}
-    peerDependencies:
-      '@babel/parser': ^7.15.8
-      '@babel/traverse': ^7.15.4
-      vue: 2 || 3
-    peerDependenciesMeta:
-      '@babel/parser':
-        optional: true
-      '@babel/traverse':
-        optional: true
-    dependencies:
-      '@antfu/utils': registry.nlark.com/@antfu/utils/0.3.0
-      '@rollup/pluginutils': registry.nlark.com/@rollup/pluginutils/4.1.1
-      chokidar: registry.npmmirror.com/chokidar/3.5.2
-      debug: registry.npmmirror.com/debug/4.3.3
-      fast-glob: registry.nlark.com/fast-glob/3.2.7
-      local-pkg: registry.npmmirror.com/local-pkg/0.4.0
-      magic-string: registry.nlark.com/magic-string/0.25.7
-      minimatch: registry.nlark.com/minimatch/3.0.4
-      resolve: registry.nlark.com/resolve/1.20.0
-      unplugin: registry.npmmirror.com/unplugin/0.2.21_webpack@5.65.0
-      vue: registry.npmmirror.com/vue/3.2.24
-    transitivePeerDependencies:
-      - rollup
-      - supports-color
-      - vite
-      - webpack
-    dev: true
-
-  registry.npmmirror.com/unplugin/0.2.21_webpack@5.65.0:
-    resolution: {integrity: sha512-IJ15/L5XbhnV7J09Zjk0FT5HEkBjkXucWAXQWRsmEtUxmmxwh23yavrmDbCF6ZPxWiVB28+wnKIHePTRRpQPbQ==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/unplugin/download/unplugin-0.2.21.tgz}
-    id: registry.npmmirror.com/unplugin/0.2.21
-    name: unplugin
-    version: 0.2.21
-    peerDependencies:
-      rollup: ^2.50.0
-      vite: ^2.3.0
-      webpack: 4 || 5
-    peerDependenciesMeta:
-      rollup:
-        optional: true
-      vite:
-        optional: true
-      webpack:
-        optional: true
-    dependencies:
-      webpack: registry.npmmirror.com/webpack/5.65.0_webpack-cli@4.9.1
-      webpack-virtual-modules: registry.nlark.com/webpack-virtual-modules/0.4.3
-    dev: true
 
   registry.npmmirror.com/uuid/8.3.2:
     resolution: {integrity: sha1-gNW1ztJxu5r2xEXyGhoExgbO++I=, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/uuid/download/uuid-8.3.2.tgz}

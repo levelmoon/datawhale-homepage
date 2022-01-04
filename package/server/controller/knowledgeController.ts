@@ -9,8 +9,17 @@ export class KnowledgeController {
     try {
       // 获取知识体系内容
       const output = await this.knowledgeService.findAvailableKnowledge();
-
       sendSuccessResponse(res, output);
+    } catch (e) {
+      sendErrorResponse(res, e.message);
+    }
+  };
+
+  getKnowledgeMind = async (req: Request, res: Response) => {
+    try {
+      // 获取思维导图
+      const output = await this.knowledgeService.findAvailableKnowledgeMind();
+      sendSuccessResponse(res, output[0]);
     } catch (e) {
       sendErrorResponse(res, e.message);
     }

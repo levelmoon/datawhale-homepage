@@ -25,6 +25,13 @@ export class KnowledgeEntity {
   })
   content: string | null;
 
+  @Column('int', {
+    name: 'type',
+    nullable: true,
+    comment: '知识体系的类型，10为总览，20为具体细节'
+  })
+  type: KNOWLEDGE_TYPE | null;
+
   @Column('timestamp', {
     name: 'create_time',
     nullable: true,
@@ -38,4 +45,9 @@ export class KnowledgeEntity {
     comment: '修改时间'
   })
   modifyTime: Date | null;
+}
+
+export enum KNOWLEDGE_TYPE {
+  MIND = 10,
+  DETAIL = 20
 }

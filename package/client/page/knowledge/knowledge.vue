@@ -1,31 +1,27 @@
 <template>
-  <div class="knowledge">
-    <div class="flex-row-left">
-      <el-menu @select="selectMenu" class="menu" default-active="1">
-        <el-menu-item v-for="item of knowledge" :key="item.id" :index="item.id" class="menu-item">
-          <span>{{ item.name }}</span>
-        </el-menu-item>
-      </el-menu>
-      <el-timeline class="main">
-        <el-timeline-item
-          v-for="(item, index) of content"
-          :key="index"
-          :timestamp="item.name"
-          placement="top"
-          class="content-title"
-        >
-          <section
-            v-for="(ele, index) of item.content"
-            :key="index"
-            style="margin: 0.5rem; max-width: 50rem"
-          >
-            <h4>{{ ele.title }}</h4>
-            <el-card>
-              {{ ele.context }}
-            </el-card>
-          </section>
-        </el-timeline-item>
-      </el-timeline>
+  <div class="knowledge flex-row-left">
+    <div class="knowledge-side-menu">
+      <div
+        @click="selectMenu('0')"
+        class="side-menu"
+        :class="[selectedId === '0' ? 'selected-item' : 'side-menu-title']"
+      >
+        关于AI知识体系
+      </div>
+      <div
+        @click="selectMenu(item.id)"
+        v-for="item of knowledge"
+        :key="item.id"
+        :index="item.id"
+        class="side-menu"
+        :class="[selectedId === item.id ? 'selected-item' : 'side-sub-menu']"
+      >
+        {{ item.name }}
+      </div>
+    </div>
+    <div class="knowledge-content">
+      <knowledge-overview v-if="selectedId === '0'"></knowledge-overview>
+      <knowledge-detail v-if="selectedId !== '0'" :content="content"></knowledge-detail>
     </div>
   </div>
 </template>
@@ -33,32 +29,37 @@
 <script lang="ts">
 import { onMounted, reactive, toRefs } from 'vue';
 import { http } from '../../service/axios';
+import knowledgeDetail from './knowledgeDetail.vue';
+import knowledgeOverview from './knowledgeOverview.vue';
+
 export default {
+  components: {
+    knowledgeDetail,
+    knowledgeOverview
+  },
   setup() {
     const data = reactive({
+      selectedId: '0',
       knowledge: [],
       content: []
     });
 
     const selectMenu = (index: string) => {
-      setContent(index);
-    };
-
-    const setContent = (id: string) => {
-      let ele = data.knowledge.find((x) => x.id === id);
+      const ele = data.knowledge.find((item) => item.id === index);
       data.content = ele ? ele.content : [];
+      data.selectedId = index;
     };
 
     onMounted(async () => {
-      const res = await http.get('/api/knowledge');
-      data.knowledge = res.data.data.map((item) => {
+      const knowledgeRes = await http.get('/api/knowledge/list');
+      data.knowledge = knowledgeRes.data.data.map((item) => {
         return {
           id: item.id.toString(),
           name: item.name,
           content: JSON.parse(item.content)
         };
       });
-      setContent('1');
+      selectMenu('0')
     });
 
     return {
@@ -70,20 +71,30 @@ export default {
 </script>
 
 <style scoped>
-.menu {
+.knowledge {
   height: calc(100vh - 61px);
-  width: 250px;
-  overflow: auto;
 }
-.main {
-  padding-top: 24px;
+.knowledge-side-menu {
+  height: calc(100vh - 61px);
+  overflow: auto;
+  width: 200px;
+  font-size: 14px;
+  border-right: solid 1px #e6e6e6;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+.side-menu {
+  height: 56px;
+  line-height: 56px;
+  padding: 0 20px;
+  color: var(--el-text-color-primary);
+}
+.selected-item {
+  color: var(--el-color-primary);
+}
+.knowledge-content {
   width: 100%;
-  height: calc(100vh - 85px);
+  height: calc(100vh - 61px);
   overflow: auto;
-}
-.content-title >>> .el-timeline-item__timestamp {
-  font-size: 16px;
-  font-weight: bold;
-  color: #409eff;
 }
 </style>
