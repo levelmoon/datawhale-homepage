@@ -2,14 +2,14 @@
   <div class="knowledge flex-row-left">
     <div class="knowledge-side-menu">
       <div
-        @click="selectedItem(0)"
+        @click="selectMenu('0')"
         class="side-menu"
-        :class="[selectedId === 0 ? 'selected-item' : 'side-menu-title']"
+        :class="[selectedId === '0' ? 'selected-item' : 'side-menu-title']"
       >
         关于AI知识体系
       </div>
       <div
-        @click="selectedItem(item.id)"
+        @click="selectMenu(item.id)"
         v-for="item of knowledge"
         :key="item.id"
         :index="item.id"
@@ -20,8 +20,8 @@
       </div>
     </div>
     <div class="knowledge-content">
-      <knowledge-overview v-if="selectedId === 0"></knowledge-overview>
-      <knowledge-detail v-if="selectedId !== 0" :content="content"></knowledge-detail>
+      <knowledge-overview v-if="selectedId === '0'"></knowledge-overview>
+      <knowledge-detail v-if="selectedId !== '0'" :content="content"></knowledge-detail>
     </div>
   </div>
 </template>
@@ -33,52 +33,39 @@ import knowledgeDetail from './knowledgeDetail.vue';
 import knowledgeOverview from './knowledgeOverview.vue';
 
 export default {
+  components: {
+    knowledgeDetail,
+    knowledgeOverview
+  },
   setup() {
     const data = reactive({
+      selectedId: '0',
       knowledge: [],
       content: []
     });
 
     const selectMenu = (index: string) => {
-      setContent(index);
-    };
-
-    const setContent = (id: string) => {
-      let ele = data.knowledge.find((x) => x.id === id);
+      const ele = data.knowledge.find((item) => item.id === index);
       data.content = ele ? ele.content : [];
+      data.selectedId = index;
     };
 
     onMounted(async () => {
-      const res = await http.get('/api/knowledge');
-      data.knowledge = res.data.data.map((item) => {
+      const knowledgeRes = await http.get('/api/knowledge/list');
+      data.knowledge = knowledgeRes.data.data.map((item) => {
         return {
           id: item.id.toString(),
           name: item.name,
           content: JSON.parse(item.content)
         };
       });
-      setContent('1');
+      selectMenu('0')
     });
 
     return {
       ...toRefs(data),
       selectMenu
     };
-  },
-  components: {
-    knowledgeDetail,
-    knowledgeOverview
-  },
-  data() {
-    return {
-      selectedId: 0
-    };
-  },
-  methods: {
-    selectedItem(item) {
-      console.log(item);
-      this.selectedId = item;
-    }
   }
 };
 </script>

@@ -7,7 +7,7 @@
 - 前端组件库：element-plus
 - markdown-to-html 解析库：markdown-it
 - 前端包管理工具：pnpm
-- 流程图绘制库：antv-g6
+- 流程图绘制库：echart
 - 后端框架：express
 - orm 框架：typeorm
 - 部署工具：pm2

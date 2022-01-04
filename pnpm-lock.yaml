@@ -1,7 +1,6 @@
 lockfileVersion: 5.3
 
 specifiers:
-  '@antv/g6': ^4.5.1
   '@iktakahiro/markdown-it-katex': ^4.0.1
   '@types/express': ^4.17.13
   '@types/katex': ^0.11.1
@@ -27,8 +26,6 @@ specifiers:
   ts-node: ^10.4.0
   typeorm: ^0.2.41
   typescript: ^4.5.2
-  unplugin-auto-import: ^0.5.1
-  unplugin-vue-components: ^0.17.4
   vue: ^3.2.23
   vue-loader: ^16.8.3
   vue-router: ^4.0.12
@@ -40,7 +37,6 @@ specifiers:
   webpack-merge: ^5.8.0
 
 dependencies:
-  '@antv/g6': 4.5.1
   compression: registry.nlark.com/compression/1.7.4
   express: registry.nlark.com/express/4.17.1
   mysql: registry.nlark.com/mysql/2.18.1
@@ -68,8 +64,6 @@ devDependencies:
   ts-loader: registry.nlark.com/ts-loader/9.2.6_typescript@4.5.3+webpack@5.65.0
   ts-node: registry.npmmirror.com/ts-node/10.4.0_typescript@4.5.3
   typescript: registry.npmmirror.com/typescript/4.5.3
-  unplugin-auto-import: registry.npmmirror.com/unplugin-auto-import/0.5.3_webpack@5.65.0
-  unplugin-vue-components: registry.npmmirror.com/unplugin-vue-components/0.17.6_vue@3.2.24+webpack@5.65.0
   vue: registry.npmmirror.com/vue/3.2.24
   vue-loader: registry.npmmirror.com/vue-loader/16.8.3_webpack@5.65.0
   vue-router: registry.npmmirror.com/vue-router/4.0.12_vue@3.2.24
@@ -81,493 +75,6 @@ devDependencies:
   webpack-merge: registry.nlark.com/webpack-merge/5.8.0
 
 packages:
-
-  /@ant-design/colors/4.0.5:
-    resolution: {integrity: sha512-3mnuX2prnWOWvpFTS2WH2LoouWlOgtnIpc6IarWN6GOzzLF8dW/U8UctuvIPhoboETehZfJ61XP+CGakBEPJ3Q==}
-    dependencies:
-      tinycolor2: 1.4.2
-    dev: false
-
-  /@antv/algorithm/0.1.18:
-    resolution: {integrity: sha512-Wq3WobR/YEmVH3meimrzHPVkslXwIr+6LCH07GC6I33/J4MfJDAguwDmkn+GB5hJ5aA53TiY9HYnhDeSVdUNDA==}
-    dependencies:
-      '@antv/util': 2.0.17
-      tslib: registry.nlark.com/tslib/2.3.1
-    dev: false
-
-  /@antv/dom-util/2.0.3:
-    resolution: {integrity: sha512-dUHsUT4U9X1T1/Y9bH3jRMe0MzvWJk2jSQm1vm3w9NX+Ra0ftq5VUBiGTNbthm3nFwG0fFFjip904rYjl50g4A==}
-    dependencies:
-      tslib: registry.nlark.com/tslib/2.3.1
-    dev: false
-
-  /@antv/event-emitter/0.1.2:
-    resolution: {integrity: sha512-6C6NJOdoNVptCr5y9BVOhKkCgW7LFs/SpcRyAExUeSjAm0zJqcqNkSIRGsXYhj4PJI+CZICHzGwwiSnIsE68Ug==}
-    dev: false
-
-  /@antv/g-base/0.5.9:
-    resolution: {integrity: sha512-IAzuCLRmz9cKCWUKR3cKWgLZ/6OQYpTCIOgxAP8Bc+HRw0mu8iC3OTz+tWKGv9L8unpvCvpQd1H+OTTjdg/TpQ==}
-    dependencies:
-      '@antv/event-emitter': 0.1.2
-      '@antv/g-math': 0.1.7
-      '@antv/matrix-util': 3.1.0-beta.3
-      '@antv/path-util': 2.0.15
-      '@antv/util': 2.0.17
-      '@types/d3-timer': 2.0.1
-      d3-ease: 1.0.7
-      d3-interpolate: 1.4.0
-      d3-timer: 1.0.10
-      detect-browser: 5.3.0
-      tslib: registry.nlark.com/tslib/2.3.1
-    dev: false
-
-  /@antv/g-canvas/0.5.12:
-    resolution: {integrity: sha512-iJ/muwwqCCNONVlPIzv/7OL5iLguaKRj2BxNMytUO3TWwamM+kHkiyYEOkS0dPn9h/hBsHYlLUluSVz2Fp6/bw==}
-    dependencies:
-      '@antv/g-base': 0.5.9
-      '@antv/g-math': 0.1.7
-      '@antv/matrix-util': 3.1.0-beta.3
-      '@antv/path-util': 2.0.15
-      '@antv/util': 2.0.17
-      gl-matrix: 3.4.3
-      tslib: registry.nlark.com/tslib/2.3.1
-    dev: false
-
-  /@antv/g-math/0.1.7:
-    resolution: {integrity: sha512-xGyXaloD1ynfp7gS4VuV+MjSptZIwHvLHr8ekXJSFAeWPYLu84yOW2wOZHDdp1bzDAIuRv6xDBW58YGHrWsFcA==}
-    dependencies:
-      '@antv/util': 2.0.17
-      gl-matrix: 3.4.3
-    dev: false
-
-  /@antv/g-svg/0.5.6:
-    resolution: {integrity: sha512-Xve1EUGk4HMbl2nq4ozR4QLh6GyoZ8Xw/+9kHYI4B5P2lIUQU95MuRsaLFfW5NNpZDx85ZeH97tqEmC9L96E7A==}
-    dependencies:
-      '@antv/g-base': 0.5.9
-      '@antv/g-math': 0.1.7
-      '@antv/util': 2.0.17
-      detect-browser: 5.3.0
-      tslib: registry.nlark.com/tslib/2.3.1
-    dev: false
-
-  /@antv/g-webgpu-core/0.5.6:
-    resolution: {integrity: sha512-DPiH3GkAUiT0Q+LAKeImpI+IOQ/gP2w6HstYKivpFIpBPIvZ/9equM3icVrn1iDfDkZANVXQ1PppcO3xBv1ZTw==}
-    dependencies:
-      eventemitter3: 4.0.7
-      gl-matrix: 3.4.3
-      inversify: 5.1.1
-      inversify-inject-decorators: 3.1.0
-      probe.gl: 3.5.0
-      reflect-metadata: 0.1.13
-    dev: false
-
-  /@antv/g-webgpu-engine/0.5.6:
-    resolution: {integrity: sha512-D311qYUefdEFwLayutIHqucrAY3cAGH3BdnXS37nq+0nsglrHcNP0Ab1YTinn9RihLoY3yXFTLzrYkJHJbZXDg==}
-    dependencies:
-      '@antv/g-webgpu-core': 0.5.6
-      '@webgpu/glslang': 0.0.15
-      '@webgpu/types': 0.0.31
-      gl-matrix: 3.4.3
-      hammerjs: 2.0.8
-      inversify: 5.1.1
-      inversify-inject-decorators: 3.1.0
-      probe.gl: 3.5.0
-      reflect-metadata: 0.1.13
-      regl: 1.7.0
-    dev: false
-
-  /@antv/g-webgpu/0.5.5:
-    resolution: {integrity: sha512-TxtBniINFq1jFGEPo46xjJfrbJbUqkFd5wmsRs3tcg/7J7xoldOP1kEadpI3AJG9knMYdE92VpILw1VPd6DgzQ==}
-    dependencies:
-      '@antv/g-webgpu-core': 0.5.6
-      '@antv/g-webgpu-engine': 0.5.6
-      '@webgpu/types': 0.0.31
-      gl-matrix: 3.4.3
-      gl-vec2: 1.3.0
-      hammerjs: 2.0.8
-      inversify: 5.1.1
-      inversify-inject-decorators: 3.1.0
-      polyline-miter-util: 1.0.1
-      polyline-normals: 2.0.2
-      probe.gl: 3.5.0
-      reflect-metadata: 0.1.13
-    dev: false
-
-  /@antv/g6-core/0.5.1:
-    resolution: {integrity: sha512-OPvUytoPkb9RR9+xpBzaMkMb1vPKw9/9pumx0xe0Dw14LA85pRepkfOJqmbAUSZDXvi9YVOAK7CkuSXkgioYFw==}
-    dependencies:
-      '@antv/algorithm': 0.1.18
-      '@antv/dom-util': 2.0.3
-      '@antv/event-emitter': 0.1.2
-      '@antv/g-base': 0.5.9
-      '@antv/g-math': 0.1.7
-      '@antv/matrix-util': 3.1.0-beta.3
-      '@antv/path-util': 2.0.15
-      '@antv/util': 2.0.17
-      ml-matrix: 6.8.2
-      tslib: registry.nlark.com/tslib/2.3.1
-    dev: false
-
-  /@antv/g6-element/0.5.1:
-    resolution: {integrity: sha512-ohCzA1s1QQRiat9Bdn206z/KR3uLugtlepYWFx+kSaMeRqJsRWOptb5pbTtb70kzOTvfIFrFc36t8YNBKqQyKg==}
-    dependencies:
-      '@antv/g-base': 0.5.9
-      '@antv/g6-core': 0.5.1
-      '@antv/util': 2.0.17
-    dev: false
-
-  /@antv/g6-pc/0.5.1:
-    resolution: {integrity: sha512-StwDDjvYSUlx61qquQs96qLaSDZlNx7HJ/NQeOZx99RRe4DFx0jLDzwCbQzoz5iV5K1RgAE8Jft423BYqTzWuQ==}
-    dependencies:
-      '@ant-design/colors': 4.0.5
-      '@antv/algorithm': 0.1.18
-      '@antv/dom-util': 2.0.3
-      '@antv/event-emitter': 0.1.2
-      '@antv/g-base': 0.5.9
-      '@antv/g-canvas': 0.5.12
-      '@antv/g-math': 0.1.7
-      '@antv/g-svg': 0.5.6
-      '@antv/g6-core': 0.5.1
-      '@antv/g6-element': 0.5.1
-      '@antv/g6-plugin': 0.5.1
-      '@antv/hierarchy': 0.6.8
-      '@antv/layout': 0.1.24
-      '@antv/matrix-util': 3.1.0-beta.3
-      '@antv/path-util': 2.0.15
-      '@antv/util': 2.0.17
-      color: 3.2.1
-      d3-force: 2.1.1
-      dagre: 0.8.5
-      insert-css: 2.0.0
-      ml-matrix: 6.8.2
-    dev: false
-
-  /@antv/g6-plugin/0.5.1:
-    resolution: {integrity: sha512-37sPqc4rkqO/8OFGX3LhgDQlaWKV4NYkAB8e5rH6QXsSuNAZoU5B5PGjcCHkx5mG4UPdLVFgUUU3rLoCOmEHHQ==}
-    dependencies:
-      '@antv/dom-util': 2.0.3
-      '@antv/g-base': 0.5.9
-      '@antv/g-canvas': 0.5.12
-      '@antv/g-svg': 0.5.6
-      '@antv/g6-core': 0.5.1
-      '@antv/matrix-util': 3.1.0-beta.3
-      '@antv/scale': 0.3.14
-      '@antv/util': 2.0.17
-      insert-css: 2.0.0
-    dev: false
-
-  /@antv/g6/4.5.1:
-    resolution: {integrity: sha512-ZI7V5cQFhiG0QcPpDonkTk07viAa5wZe98EJIOeQiS58vmc7LBCeCt3Vbgqtxh0k7Oo7yhpb1IoLALVxJLxT3g==}
-    dependencies:
-      '@antv/g6-pc': 0.5.1
-    dev: false
-
-  /@antv/hierarchy/0.6.8:
-    resolution: {integrity: sha512-wVzUl+pxny5gyGJ2mkWx8IiEypX6bnMHgr/NILgbxY6shoy0Vf4FhZpI3CY8Ez7bQT6js8fMkB2NymPW7d7i8A==}
-    dependencies:
-      '@antv/util': 2.0.17
-    dev: false
-
-  /@antv/layout/0.1.24:
-    resolution: {integrity: sha512-Uihq18tFMZZ8iFwYIX2+3nZtn1FK3sI/bxxQ4ChzOFPNXc70pmAVCh/8DTxmforSbq6iuvBRnpuyXWiF2c/jEg==}
-    dependencies:
-      '@antv/g-webgpu': 0.5.5
-      '@dagrejs/graphlib': 2.1.4
-      d3-force: 2.1.1
-      ml-matrix: 6.8.2
-    dev: false
-
-  /@antv/matrix-util/3.0.4:
-    resolution: {integrity: sha512-BAPyu6dUliHcQ7fm9hZSGKqkwcjEDVLVAstlHULLvcMZvANHeLXgHEgV7JqcAV/GIhIz8aZChIlzM1ZboiXpYQ==}
-    dependencies:
-      '@antv/util': 2.0.17
-      gl-matrix: 3.4.3
-      tslib: registry.nlark.com/tslib/2.3.1
-    dev: false
-
-  /@antv/matrix-util/3.1.0-beta.3:
-    resolution: {integrity: sha512-W2R6Za3A6CmG51Y/4jZUM/tFgYSq7vTqJL1VD9dKrvwxS4sE0ZcXINtkp55CdyBwJ6Cwm8pfoRpnD4FnHahN0A==}
-    dependencies:
-      '@antv/util': 2.0.17
-      gl-matrix: 3.4.3
-      tslib: registry.nlark.com/tslib/2.3.1
-    dev: false
-
-  /@antv/path-util/2.0.15:
-    resolution: {integrity: sha512-R2VLZ5C8PLPtr3VciNyxtjKqJ0XlANzpFb5sE9GE61UQqSRuSVSzIakMxjEPrpqbgc+s+y8i+fmc89Snu7qbNw==}
-    dependencies:
-      '@antv/matrix-util': 3.0.4
-      '@antv/util': 2.0.17
-      tslib: registry.nlark.com/tslib/2.3.1
-    dev: false
-
-  /@antv/scale/0.3.14:
-    resolution: {integrity: sha512-G19Mh9VYPX/Z5PXKJrORIYCjrA+Fmko6ZB4HN6Y8K0T9FeKaSJq+idIe7AUJhIIXDCrFk4LzW+t908NsORqxPg==}
-    dependencies:
-      '@antv/util': 2.0.17
-      fecha: 4.2.1
-      tslib: registry.nlark.com/tslib/2.3.1
-    dev: false
-
-  /@antv/util/2.0.17:
-    resolution: {integrity: sha512-o6I9hi5CIUvLGDhth0RxNSFDRwXeywmt6ExR4+RmVAzIi48ps6HUy+svxOCayvrPBN37uE6TAc2KDofRo0nK9Q==}
-    dependencies:
-      csstype: 3.0.10
-      tslib: registry.nlark.com/tslib/2.3.1
-    dev: false
-
-  /@babel/runtime/7.16.7:
-    resolution: {integrity: sha512-9E9FJowqAsytyOY6LG+1KuueckRL+aQW+mKvXRXnuFGyRAyepJPmEo9vgMfXUA6O9u3IeEdv9MAkppFcaQwogQ==}
-    engines: {node: '>=6.9.0'}
-    dependencies:
-      regenerator-runtime: 0.13.9
-    dev: false
-
-  /@dagrejs/graphlib/2.1.4:
-    resolution: {integrity: sha512-QCg9sL4uhjn468FDEsb/S9hS2xUZSrv/+dApb1Ze5VKO96pTXKNJZ6MGhIpgWkc1TVhbVGH9/7rq/Mf8/jWicw==}
-    dependencies:
-      lodash: 4.17.21
-    dev: false
-
-  /@probe.gl/env/3.5.0:
-    resolution: {integrity: sha512-YdlpZZshhyYxvWDBmZ5RIW2pTR14Pw4p9czMlt/v7F6HbFzWfAdmH7q6xVwFRYxUpQLwhWensWyv4aFysiWl4g==}
-    dependencies:
-      '@babel/runtime': 7.16.7
-    dev: false
-
-  /@probe.gl/log/3.5.0:
-    resolution: {integrity: sha512-nW/qz2X1xY08WU/TsmJP6/6IPNcaY5fS/vLjpC4ahJuE2Mezga4hGM/R2X5JWE/nkPc+BsC5GnAnD13rwAxS7g==}
-    dependencies:
-      '@babel/runtime': 7.16.7
-      '@probe.gl/env': 3.5.0
-    dev: false
-
-  /@probe.gl/stats/3.5.0:
-    resolution: {integrity: sha512-IH2M+F3c8HR1DTroBARePUFG7wIewumtKA0UFqx51Z7S4hKrD60wFbpMmg0AcF4FvHAXMBoC+kYi1UKW9XbAOw==}
-    dependencies:
-      '@babel/runtime': 7.16.7
-    dev: false
-
-  /@types/d3-timer/2.0.1:
-    resolution: {integrity: sha512-TF8aoF5cHcLO7W7403blM7L1T+6NF3XMyN3fxyUolq2uOcFeicG/khQg/dGxiCJWoAcmYulYN7LYSRKO54IXaA==}
-    dev: false
-
-  /@webgpu/glslang/0.0.15:
-    resolution: {integrity: sha512-niT+Prh3Aff8Uf1MVBVUsaNjFj9rJAKDXuoHIKiQbB+6IUP/3J3JIhBNyZ7lDhytvXxw6ppgnwKZdDJ08UMj4Q==}
-    dev: false
-
-  /@webgpu/types/0.0.31:
-    resolution: {integrity: sha512-cvvCMSZBT4VsRNtt0lI6XQqvOIIWw6+NRUtnPUMDVDgsI4pCZColz3qzF5QcP9wIYOHEc3jssIBse8UWONKhlQ==}
-    dev: false
-
-  /color-convert/1.9.3:
-    resolution: {integrity: sha512-QfAUtd+vFdAtFQcC8CCyYt1fYWxSqAiK2cSD6zDB8N3cpsEBAvRxp9zOGg6G/SHHJYAT88/az/IuDGALsNVbGg==}
-    dependencies:
-      color-name: 1.1.3
-    dev: false
-
-  /color-name/1.1.3:
-    resolution: {integrity: sha1-p9BVi9icQveV3UIyj3QIMcpTvCU=}
-    dev: false
-
-  /color-name/1.1.4:
-    resolution: {integrity: sha512-dOy+3AuW3a2wNbZHIuMZpTcgjGuLU/uBL/ubcZF9OXbDo8ff4O8yVp5Bf0efS8uEoYo5q4Fx7dY9OgQGXgAsQA==}
-    dev: false
-
-  /color-string/1.9.0:
-    resolution: {integrity: sha512-9Mrz2AQLefkH1UvASKj6v6hj/7eWgjnT/cVsR8CumieLoT+g900exWeNogqtweI8dxloXN9BDQTYro1oWu/5CQ==}
-    dependencies:
-      color-name: 1.1.4
-      simple-swizzle: 0.2.2
-    dev: false
-
-  /color/3.2.1:
-    resolution: {integrity: sha512-aBl7dZI9ENN6fUGC7mWpMTPNHmWUSNan9tuWN6ahh5ZLNk9baLJOnSMlrQkHcrfFgz2/RigjUVAjdx36VcemKA==}
-    dependencies:
-      color-convert: 1.9.3
-      color-string: 1.9.0
-    dev: false
-
-  /csstype/3.0.10:
-    resolution: {integrity: sha512-2u44ZG2OcNUO9HDp/Jl8C07x6pU/eTR3ncV91SiK3dhG9TWvRVsCoJw14Ckx5DgWkzGA3waZWO3d7pgqpUI/XA==}
-    dev: false
-
-  /d3-color/1.4.1:
-    resolution: {integrity: sha512-p2sTHSLCJI2QKunbGb7ocOh7DgTAn8IrLx21QRc/BSnodXM4sv6aLQlnfpvehFMLZEfBc6g9pH9SWQccFYfJ9Q==}
-    dev: false
-
-  /d3-dispatch/2.0.0:
-    resolution: {integrity: sha512-S/m2VsXI7gAti2pBoLClFFTMOO1HTtT0j99AuXLoGFKO6deHDdnv6ZGTxSTTUTgO1zVcv82fCOtDjYK4EECmWA==}
-    dev: false
-
-  /d3-ease/1.0.7:
-    resolution: {integrity: sha512-lx14ZPYkhNx0s/2HX5sLFUI3mbasHjSSpwO/KaaNACweVwxUruKyWVcb293wMv1RqTPZyZ8kSZ2NogUZNcLOFQ==}
-    dev: false
-
-  /d3-force/2.1.1:
-    resolution: {integrity: sha512-nAuHEzBqMvpFVMf9OX75d00OxvOXdxY+xECIXjW6Gv8BRrXu6gAWbv/9XKrvfJ5i5DCokDW7RYE50LRoK092ew==}
-    dependencies:
-      d3-dispatch: 2.0.0
-      d3-quadtree: 2.0.0
-      d3-timer: 2.0.0
-    dev: false
-
-  /d3-interpolate/1.4.0:
-    resolution: {integrity: sha512-V9znK0zc3jOPV4VD2zZn0sDhZU3WAE2bmlxdIwwQPPzPjvyLkd8B3JUVdS1IDUFDkWZ72c9qnv1GK2ZagTZ8EA==}
-    dependencies:
-      d3-color: 1.4.1
-    dev: false
-
-  /d3-quadtree/2.0.0:
-    resolution: {integrity: sha512-b0Ed2t1UUalJpc3qXzKi+cPGxeXRr4KU9YSlocN74aTzp6R/Ud43t79yLLqxHRWZfsvWXmbDWPpoENK1K539xw==}
-    dev: false
-
-  /d3-timer/1.0.10:
-    resolution: {integrity: sha512-B1JDm0XDaQC+uvo4DT79H0XmBskgS3l6Ve+1SBCfxgmtIb1AVrPIoqd+nPSv+loMX8szQ0sVUhGngL7D5QPiXw==}
-    dev: false
-
-  /d3-timer/2.0.0:
-    resolution: {integrity: sha512-TO4VLh0/420Y/9dO3+f9abDEFYeCUr2WZRlxJvbp4HPTQcSylXNiL6yZa9FIUvV1yRiFufl1bszTCLDqv9PWNA==}
-    dev: false
-
-  /dagre/0.8.5:
-    resolution: {integrity: sha512-/aTqmnRta7x7MCCpExk7HQL2O4owCT2h8NT//9I1OQ9vt29Pa0BzSAkR5lwFUcQ7491yVi/3CXU9jQ5o0Mn2Sw==}
-    dependencies:
-      graphlib: 2.1.8
-      lodash: 4.17.21
-    dev: false
-
-  /detect-browser/5.3.0:
-    resolution: {integrity: sha512-53rsFbGdwMwlF7qvCt0ypLM5V5/Mbl0szB7GPN8y9NCcbknYOeVVXdrXEq+90IwAfrrzt6Hd+u2E2ntakICU8w==}
-    dev: false
-
-  /eventemitter3/4.0.7:
-    resolution: {integrity: sha512-8guHBZCwKnFhYdHr2ysuRWErTwhoN2X8XELRlrRwpmfeY2jjuUN4taQMsULKUVo1K4DvZl+0pgfyoysHxvmvEw==}
-    dev: false
-
-  /fecha/4.2.1:
-    resolution: {integrity: sha512-MMMQ0ludy/nBs1/o0zVOiKTpG7qMbonKUzjJgQFEuvq6INZ1OraKPRAWkBq5vlKLOUMpmNYG1JoN3oDPUQ9m3Q==}
-    dev: false
-
-  /gl-matrix/3.4.3:
-    resolution: {integrity: sha512-wcCp8vu8FT22BnvKVPjXa/ICBWRq/zjFfdofZy1WSpQZpphblv12/bOQLBC1rMM7SGOFS9ltVmKOHil5+Ml7gA==}
-    dev: false
-
-  /gl-vec2/1.3.0:
-    resolution: {integrity: sha512-YiqaAuNsheWmUV0Sa8k94kBB0D6RWjwZztyO+trEYS8KzJ6OQB/4686gdrf59wld4hHFIvaxynO3nRxpk1Ij/A==}
-    dev: false
-
-  /graphlib/2.1.8:
-    resolution: {integrity: sha512-jcLLfkpoVGmH7/InMC/1hIvOPSUh38oJtGhvrOFGzioE1DZ+0YW16RgmOJhHiuWTvGiJQ9Z1Ik43JvkRPRvE+A==}
-    dependencies:
-      lodash: 4.17.21
-    dev: false
-
-  /hammerjs/2.0.8:
-    resolution: {integrity: sha1-BO93hiz/K7edMPdpIJWTAiK/YPE=}
-    engines: {node: '>=0.8.0'}
-    dev: false
-
-  /insert-css/2.0.0:
-    resolution: {integrity: sha1-610Ql7dUL0x56jBg067gfQU4gPQ=}
-    dev: false
-
-  /inversify-inject-decorators/3.1.0:
-    resolution: {integrity: sha512-/seBlVp5bXrLQS3DpKEmlgeZL6C7Tf/QITd+IMQrbBBGuCbxb7k3hRAWu9XSreNpFzLgSboz3sClLSEmGwHphw==}
-    dev: false
-
-  /inversify/5.1.1:
-    resolution: {integrity: sha512-j8grHGDzv1v+8T1sAQ+3boTCntFPfvxLCkNcxB1J8qA0lUN+fAlSyYd+RXKvaPRL4AGyPxViutBEJHNXOyUdFQ==}
-    dev: false
-
-  /is-any-array/1.0.1:
-    resolution: {integrity: sha512-m+FSiaONxBt2W0h9XOUngMBu/WW8uzAKbSk4Ty2aeCcQJ+muBqENexvxUHtDpX65fk5AMCROxqgNX0sSAHstcw==}
-    dev: false
-
-  /is-arrayish/0.3.2:
-    resolution: {integrity: sha512-eVRqCvVlZbuw3GrM63ovNSNAeA1K16kaR/LRY/92w0zxQ5/1YzwblUX652i4Xs9RwAGjW9d9y6X88t8OaAJfWQ==}
-    dev: false
-
-  /lodash/4.17.21:
-    resolution: {integrity: sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==}
-    dev: false
-
-  /ml-array-max/1.2.3:
-    resolution: {integrity: sha512-49YwnLlAf4/E/VyezUz+SNfSBhPE8JTahxRPuyM9S9Uv+ft5x0C8A4trtkDgrttMxoxbhudTA1yg8zgJZaYtpA==}
-    dependencies:
-      is-any-array: 1.0.1
-    dev: false
-
-  /ml-array-min/1.2.2:
-    resolution: {integrity: sha512-yidQcOHFaGEuVr6FcwAn+QvKXJv1Lxel5fyKrO+aXGJGp97Mt+p8r21WYtikS/PTVbxdSrliQ0UK4wSHYHHgzQ==}
-    dependencies:
-      is-any-array: 1.0.1
-    dev: false
-
-  /ml-array-rescale/1.3.6:
-    resolution: {integrity: sha512-Lzj45T6hvHNdht924JQhHzInIK+ilC55zn98uraZUvLBkOWOJGOztEkRM0xyzAjWvVuhpszLADOnoVwfBSnj8w==}
-    dependencies:
-      is-any-array: 1.0.1
-      ml-array-max: 1.2.3
-      ml-array-min: 1.2.2
-    dev: false
-
-  /ml-matrix/6.8.2:
-    resolution: {integrity: sha512-5o2gVLFyieDSgsStEU5mqty4MZqfeytYA/gJqBSw5/Xuob0X2UrFX/k7FDh+YAwjzG/1l8nYa0oDaJ0sGs/RlA==}
-    dependencies:
-      ml-array-rescale: 1.3.6
-    dev: false
-
-  /polyline-miter-util/1.0.1:
-    resolution: {integrity: sha1-tpPyOJ6g3tNqa89ezS7OS2kX2Vc=}
-    dependencies:
-      gl-vec2: 1.3.0
-    dev: false
-
-  /polyline-normals/2.0.2:
-    resolution: {integrity: sha1-oXN+ddjA3MsaWR+csn8J7vS30TU=}
-    dependencies:
-      polyline-miter-util: 1.0.1
-    dev: false
-
-  /probe.gl/3.5.0:
-    resolution: {integrity: sha512-KWj8u0PNytr/rVwcQFcN7O8SK7n/ITOsUZ91l4fSX95oHhKvVCI7eadrzFUzFRlXkFfBWpMWZXFHITsHHHUctw==}
-    dependencies:
-      '@babel/runtime': 7.16.7
-      '@probe.gl/env': 3.5.0
-      '@probe.gl/log': 3.5.0
-      '@probe.gl/stats': 3.5.0
-    dev: false
-
-  /reflect-metadata/0.1.13:
-    resolution: {integrity: sha512-Ts1Y/anZELhSsjMcU605fU9RE4Oi3p5ORujwbIKXfWa+0Zxs510Qrmrce5/Jowq3cHSZSJqBjypxmHarc+vEWg==}
-    dev: false
-
-  /regenerator-runtime/0.13.9:
-    resolution: {integrity: sha512-p3VT+cOEgxFsRRA9X4lkI1E+k2/CtnKtU4gcxyaCUreilL/vqI6CdZ3wxVUx3UOUg+gnUOQQcRI7BmSI656MYA==}
-    dev: false
-
-  /regl/1.7.0:
-    resolution: {integrity: sha512-bEAtp/qrtKucxXSJkD4ebopFZYP0q1+3Vb2WECWv/T8yQEgKxDxJ7ztO285tAMaYZVR6mM1GgI6CCn8FROtL1w==}
-    dev: false
-
-  /simple-swizzle/0.2.2:
-    resolution: {integrity: sha1-pNprY1/8zMoz9w0Xy5JZLeleVXo=}
-    dependencies:
-      is-arrayish: 0.3.2
-    dev: false
-
-  /tinycolor2/1.4.2:
-    resolution: {integrity: sha512-vJhccZPs965sV/L2sU4oRQVAos0pQXwsvTLkWYdqJ+a8Q5kPFzJTuOFwy7UniPli44NKQGAglksjvOcpo95aZA==}
-    dev: false
-
-  registry.nlark.com/@antfu/utils/0.3.0:
-    resolution: {integrity: sha1-YwbEO1Kog72Olz4+2N1kJIQYvMQ=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/@antfu/utils/download/@antfu/utils-0.3.0.tgz}
-    name: '@antfu/utils'
-    version: 0.3.0
-    dependencies:
-      '@types/throttle-debounce': registry.npmmirror.com/@types/throttle-debounce/2.1.0
-    dev: true
 
   registry.nlark.com/@babel/helper-validator-identifier/7.15.7:
     resolution: {integrity: sha1-Ig35k7/pBKSmsCq08zhaXr9uI4k=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/@babel/helper-validator-identifier/download/@babel/helper-validator-identifier-7.15.7.tgz}
@@ -608,16 +115,6 @@ packages:
     dependencies:
       '@nodelib/fs.scandir': registry.nlark.com/@nodelib/fs.scandir/2.1.5
       fastq: registry.nlark.com/fastq/1.13.0
-    dev: true
-
-  registry.nlark.com/@rollup/pluginutils/4.1.1:
-    resolution: {integrity: sha1-HU2obdTt7RVlalfZM/2iuaCNR+w=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/@rollup/pluginutils/download/@rollup/pluginutils-4.1.1.tgz}
-    name: '@rollup/pluginutils'
-    version: 4.1.1
-    engines: {node: '>= 8.0.0'}
-    dependencies:
-      estree-walker: registry.nlark.com/estree-walker/2.0.2
-      picomatch: registry.nlark.com/picomatch/2.3.0
     dev: true
 
   registry.nlark.com/@szmarczak/http-timer/1.1.2:
@@ -1008,14 +505,6 @@ packages:
       base64-js: registry.nlark.com/base64-js/1.5.1
       ieee754: registry.nlark.com/ieee754/1.2.1
     dev: false
-
-  registry.nlark.com/builtins/4.0.0:
-    resolution: {integrity: sha1-qDRUIN6CBo/cTWVZ0EVkA6j7GQU=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/builtins/download/builtins-4.0.0.tgz}
-    name: builtins
-    version: 4.0.0
-    dependencies:
-      semver: registry.nlark.com/semver/7.3.5
-    dev: true
 
   registry.nlark.com/cacheable-request/6.1.0:
     resolution: {integrity: sha1-IP+4vRYrpL4R6VZ9gj22UQUsqRI=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/cacheable-request/download/cacheable-request-6.1.0.tgz}
@@ -3753,12 +3242,6 @@ packages:
       wildcard: registry.nlark.com/wildcard/2.0.0
     dev: true
 
-  registry.nlark.com/webpack-virtual-modules/0.4.3:
-    resolution: {integrity: sha1-zVl8bVHVpey0c+6hmDpY+ooX3tk=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/webpack-virtual-modules/download/webpack-virtual-modules-0.4.3.tgz}
-    name: webpack-virtual-modules
-    version: 0.4.3
-    dev: true
-
   registry.nlark.com/websocket-driver/0.7.4:
     resolution: {integrity: sha1-ia1Slbv2S0gKvLox5JU6ynBvV2A=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/websocket-driver/download/websocket-driver-0.7.4.tgz}
     name: websocket-driver
@@ -4104,12 +3587,6 @@ packages:
     dependencies:
       '@types/mime': registry.npmmirror.com/@types/mime/1.3.2
       '@types/node': registry.npmmirror.com/@types/node/16.11.12
-    dev: true
-
-  registry.npmmirror.com/@types/throttle-debounce/2.1.0:
-    resolution: {integrity: sha1-HD32JL/Eti+ZLTASuExW1B6rN3Y=, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@types/throttle-debounce/download/@types/throttle-debounce-2.1.0.tgz}
-    name: '@types/throttle-debounce'
-    version: 2.1.0
     dev: true
 
   registry.npmmirror.com/@types/zen-observable/0.8.3:
@@ -5018,14 +4495,6 @@ packages:
       resolve-cwd: registry.nlark.com/resolve-cwd/3.0.0
     dev: true
 
-  registry.npmmirror.com/import-meta-resolve/1.1.1:
-    resolution: {integrity: sha1-JE/VQv0frnNVDU+LPN47uh17Kxg=, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/import-meta-resolve/download/import-meta-resolve-1.1.1.tgz}
-    name: import-meta-resolve
-    version: 1.1.1
-    dependencies:
-      builtins: registry.nlark.com/builtins/4.0.0
-    dev: true
-
   registry.npmmirror.com/is-ci/2.0.0:
     resolution: {integrity: sha1-a8YzQYGBDgS1wis9WJ/cpVAmQEw=, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/is-ci/download/is-ci-2.0.0.tgz?cache=0&sync_timestamp=1635262818706&other_urls=https%3A%2F%2Fregistry.npmmirror.com%2Fis-ci%2Fdownload%2Fis-ci-2.0.0.tgz}
     name: is-ci
@@ -5123,15 +4592,6 @@ packages:
       big.js: registry.npmmirror.com/big.js/5.2.2
       emojis-list: registry.nlark.com/emojis-list/3.0.0
       json5: registry.nlark.com/json5/2.2.0
-    dev: true
-
-  registry.npmmirror.com/local-pkg/0.4.0:
-    resolution: {integrity: sha1-5iIRcYE9WggS3YT6gP+xyPzABTE=, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/local-pkg/download/local-pkg-0.4.0.tgz}
-    name: local-pkg
-    version: 0.4.0
-    engines: {node: '>=14'}
-    dependencies:
-      mlly: registry.npmmirror.com/mlly/0.2.10
     dev: true
 
   registry.npmmirror.com/lowercase-keys/1.0.1:
@@ -5238,14 +4698,6 @@ packages:
     engines: {node: '>=10'}
     hasBin: true
     dev: false
-
-  registry.npmmirror.com/mlly/0.2.10:
-    resolution: {integrity: sha1-ZFkCyXYdxrXe0XS45xcUf+UuSJM=, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/mlly/download/mlly-0.2.10.tgz}
-    name: mlly
-    version: 0.2.10
-    dependencies:
-      import-meta-resolve: registry.npmmirror.com/import-meta-resolve/1.1.1
-    dev: true
 
   registry.npmmirror.com/ms/2.0.0:
     resolution: {integrity: sha1-VgiurfwAvmwpAd9fmGF4jeDVl8g=, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/ms/download/ms-2.0.0.tgz}
@@ -5888,85 +5340,6 @@ packages:
     name: undefsafe
     version: 2.0.5
     dev: false
-
-  registry.npmmirror.com/unplugin-auto-import/0.5.3_webpack@5.65.0:
-    resolution: {integrity: sha512-jXs0rnKTS+/TyXOild6RkVp73yz1DeLXVJWR6VRn+oageEsvHgW6zofvc2BmpAm/pTSANxZ48kLi12wOa/iwdw==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/unplugin-auto-import/download/unplugin-auto-import-0.5.3.tgz}
-    id: registry.npmmirror.com/unplugin-auto-import/0.5.3
-    name: unplugin-auto-import
-    version: 0.5.3
-    engines: {node: '>=14'}
-    peerDependencies:
-      '@vueuse/core': '*'
-    peerDependenciesMeta:
-      '@vueuse/core':
-        optional: true
-    dependencies:
-      '@antfu/utils': registry.nlark.com/@antfu/utils/0.3.0
-      '@rollup/pluginutils': registry.nlark.com/@rollup/pluginutils/4.1.1
-      local-pkg: registry.npmmirror.com/local-pkg/0.4.0
-      magic-string: registry.nlark.com/magic-string/0.25.7
-      resolve: registry.nlark.com/resolve/1.20.0
-      unplugin: registry.npmmirror.com/unplugin/0.2.21_webpack@5.65.0
-    transitivePeerDependencies:
-      - rollup
-      - vite
-      - webpack
-    dev: true
-
-  registry.npmmirror.com/unplugin-vue-components/0.17.6_vue@3.2.24+webpack@5.65.0:
-    resolution: {integrity: sha512-Z2XvwKeY7/++MucRKzJihDsbdL8rFb71VfmuhtMtLE8zurjFu57XKFx0RNFUD5zD4g0HEyR9GGTwXu2YI0rang==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/unplugin-vue-components/download/unplugin-vue-components-0.17.6.tgz}
-    id: registry.npmmirror.com/unplugin-vue-components/0.17.6
-    name: unplugin-vue-components
-    version: 0.17.6
-    engines: {node: '>=14'}
-    peerDependencies:
-      '@babel/parser': ^7.15.8
-      '@babel/traverse': ^7.15.4
-      vue: 2 || 3
-    peerDependenciesMeta:
-      '@babel/parser':
-        optional: true
-      '@babel/traverse':
-        optional: true
-    dependencies:
-      '@antfu/utils': registry.nlark.com/@antfu/utils/0.3.0
-      '@rollup/pluginutils': registry.nlark.com/@rollup/pluginutils/4.1.1
-      chokidar: registry.npmmirror.com/chokidar/3.5.2
-      debug: registry.npmmirror.com/debug/4.3.3
-      fast-glob: registry.nlark.com/fast-glob/3.2.7
-      local-pkg: registry.npmmirror.com/local-pkg/0.4.0
-      magic-string: registry.nlark.com/magic-string/0.25.7
-      minimatch: registry.nlark.com/minimatch/3.0.4
-      resolve: registry.nlark.com/resolve/1.20.0
-      unplugin: registry.npmmirror.com/unplugin/0.2.21_webpack@5.65.0
-      vue: registry.npmmirror.com/vue/3.2.24
-    transitivePeerDependencies:
-      - rollup
-      - supports-color
-      - vite
-      - webpack
-    dev: true
-
-  registry.npmmirror.com/unplugin/0.2.21_webpack@5.65.0:
-    resolution: {integrity: sha512-IJ15/L5XbhnV7J09Zjk0FT5HEkBjkXucWAXQWRsmEtUxmmxwh23yavrmDbCF6ZPxWiVB28+wnKIHePTRRpQPbQ==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/unplugin/download/unplugin-0.2.21.tgz}
-    id: registry.npmmirror.com/unplugin/0.2.21
-    name: unplugin
-    version: 0.2.21
-    peerDependencies:
-      rollup: ^2.50.0
-      vite: ^2.3.0
-      webpack: 4 || 5
-    peerDependenciesMeta:
-      rollup:
-        optional: true
-      vite:
-        optional: true
-      webpack:
-        optional: true
-    dependencies:
-      webpack: registry.npmmirror.com/webpack/5.65.0_webpack-cli@4.9.1
-      webpack-virtual-modules: registry.nlark.com/webpack-virtual-modules/0.4.3
-    dev: true
 
   registry.npmmirror.com/uuid/8.3.2:
     resolution: {integrity: sha1-gNW1ztJxu5r2xEXyGhoExgbO++I=, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/uuid/download/uuid-8.3.2.tgz}

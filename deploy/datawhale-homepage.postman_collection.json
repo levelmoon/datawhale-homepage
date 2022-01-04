@@ -152,19 +152,40 @@
 			"response": []
 		},
 		{
-			"name": "【dev】获取知识体系",
+			"name": "【dev】获取全部知识体系",
 			"request": {
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "localhost:8081/api/knowledge",
+					"raw": "localhost:8081/api/knowledge/list",
 					"host": [
 						"localhost"
 					],
 					"port": "8081",
 					"path": [
 						"api",
-						"knowledge"
+						"knowledge",
+						"list"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "【dev】获取知识体系图",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8081/api/knowledge/mind",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"knowledge",
+						"mind"
 					]
 				}
 			},

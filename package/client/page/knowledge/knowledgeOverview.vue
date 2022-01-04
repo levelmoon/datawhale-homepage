@@ -7,23 +7,89 @@
       show-icon
       :closable="false"
     ></el-alert>
-    <div>
-      <h3>AI知识体系图</h3>
-      <div id="container"></div>
-    </div>
+    <div class="knowledge-overview-chart" ref="chartElement"></div>
   </div>
 </template>
 
 <script lang="ts">
-import { onMounted } from 'vue';
-import { initGraph } from './initGraph';
+import { onMounted, ref } from 'vue';
+import * as echarts from 'echarts';
+import { http } from '../../service/axios';
 
 export default {
   name: 'knowledge-overview',
   setup() {
-    onMounted(() => {
-      initGraph();
+    const chartElement = ref<HTMLElement | null>(null);
+
+    onMounted(async () => {
+      const myChart = echarts.init(chartElement.value);
+      myChart.showLoading();
+      const knowledgeOverviewRes = await http.get('/api/knowledge/mind');
+      const overviewData = JSON.parse(knowledgeOverviewRes.data.data.content);
+      myChart.hideLoading();
+
+      const option = {
+        title: {
+          text: 'AI知识体系图',
+          subtext: '知识体系可以拖动/缩放进行查看'
+        },
+        tooltip: {
+          trigger: 'item',
+          triggerOn: 'mousemove',
+          formatter: (params) => {
+            const name = params.treeAncestors.map((item) => item.name).join(' -> ');
+            if (params.value) {
+              return name + '<br/> 查看地址：' + params.value;
+            }
+            return name;
+          }
+        },
+        series: [
+          {
+            type: 'tree',
+            id: 0,
+            data: [overviewData],
+            name: 'AI知识体系图',
+            symbol: 'none',
+            symbolSize: 12,
+            left: '8%',
+            right: '20%',
+            edgeShape: 'polyline',
+            edgeForkPosition: '50%',
+            initialTreeDepth: -1,
+            lineStyle: {
+              width: 2
+            },
+            label: {
+              backgroundColor: '#fff',
+              position: 'left',
+              verticalAlign: 'middle',
+              align: 'right'
+            },
+            leaves: {
+              label: {
+                position: 'right',
+                verticalAlign: 'middle',
+                align: 'left'
+              }
+            },
+            expandAndCollapse: false,
+            roam: true
+          }
+        ]
+      };
+      
+      myChart.setOption(option);
+      myChart.on('click', (param) => {
+        if (param.value) {
+          window.open(`${param.value}`);
+        }
+      });
     });
+
+    return {
+      chartElement
+    };
   }
 };
 </script>
@@ -37,7 +103,9 @@ export default {
   border: 1px solid #b3b3b3;
   padding: 0.5rem;
 }
-#container {
-  height: 500px;
+.knowledge-overview-chart {
+  margin-top: 30px;
+  width: 100%;
+  height: calc(100vh - 211px);
 }
 </style>

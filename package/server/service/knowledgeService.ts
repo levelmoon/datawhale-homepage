@@ -1,4 +1,4 @@
-import { KnowledgeEntity } from '../entity/knowledgeEntity';
+import { KnowledgeEntity, KNOWLEDGE_TYPE } from '../entity/knowledgeEntity';
 import { getRepository, FindManyOptions } from 'typeorm';
 
 export class KnowledgeService {
@@ -10,9 +10,9 @@ export class KnowledgeService {
 
   findAvailableKnowledge = async () => {
     const availableList = await this.find({
-      where: {},
-      take: 100,
-      skip: 0
+      where: {
+        type: KNOWLEDGE_TYPE.DETAIL
+      }
     });
 
     const output = availableList.map((item) => {
@@ -25,13 +25,14 @@ export class KnowledgeService {
 
     return output;
   };
-	findAvailableKnowledgeMind = async () => {
+
+  findAvailableKnowledgeMind = async () => {
     const availableList = await this.find({
-      where: {},
-      take: 100,
-      skip: 0
+      where: {
+        type: KNOWLEDGE_TYPE.MIND
+      }
     });
-		//这里逻辑还没写
+
     const output = availableList.map((item) => {
       return {
         id: item.id,
