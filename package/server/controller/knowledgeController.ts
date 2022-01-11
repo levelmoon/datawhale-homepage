@@ -7,7 +7,7 @@ export class KnowledgeController {
 
   getKnowledge = async (req: Request, res: Response) => {
     try {
-      // 获取知识体系内容
+      // 获取培养方案内容
       const output = await this.knowledgeService.findAvailableKnowledge();
       sendSuccessResponse(res, output);
     } catch (e) {

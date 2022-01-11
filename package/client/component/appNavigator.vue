@@ -9,7 +9,7 @@
     >
       <el-menu-item class="navigator-menu-item" index="homepage"> 主页 </el-menu-item>
       <el-menu-item class="navigator-menu-item" index="learn"> 学习项目 </el-menu-item>
-      <el-menu-item class="navigator-menu-item" index="knowledge"> 知识体系 </el-menu-item>
+      <el-menu-item class="navigator-menu-item" index="knowledge"> 培养方案 </el-menu-item>
     </el-menu>
     <div class="navigator-right">
       <el-popover placement="bottom" :width="200" trigger="hover">

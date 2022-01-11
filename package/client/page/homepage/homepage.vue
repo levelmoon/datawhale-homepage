@@ -36,7 +36,7 @@
           <div v-for="(item, index) in activity" :key="`activity-${index}`">
             <div class="activity-item">
               <el-button type="text" @click="jumpToUrl(item.link)">{{ item.name }}</el-button>
-              <div class="activity-end-time">{{ item.endTime }} 截止报名</div>
+              <div class="activity-end-time">{{ item.endTime }} 截止</div>
             </div>
             <el-divider></el-divider>
           </div>

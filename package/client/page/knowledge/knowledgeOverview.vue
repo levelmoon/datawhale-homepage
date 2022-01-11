@@ -1,12 +1,14 @@
 <template>
   <div class="knowledge-overview">
-    <el-alert
-      title="为什么会有AI知识体系"
-      type="info"
-      description="我们做了很久的内容了，希望能串起来给大家一些帮助，还有很多不足的地方，也欢迎大家一起来建设。"
-      show-icon
-      :closable="false"
-    ></el-alert>
+    <el-alert title="为什么会有AI培养方案" type="info" show-icon :closable="false">
+      <slot>
+        给初涉AI的你，提供一份切实可行的学习路线；诚挚欢迎任何有意向为本培养方案贡献课程的同学加入，具体请联系
+        <a target="_blank" href="https://github.com/datawhalechina/DOPMC">
+          Datawhale开源项目管理委员会
+        </a>
+        。本培养方案在持续修订更新中，获取最新版请关注微信公众号：Datawhale，回复“培养方案”。
+      </slot>
+    </el-alert>
     <div class="knowledge-overview-chart" ref="chartElement"></div>
   </div>
 </template>
@@ -30,8 +32,8 @@ export default {
 
       const option = {
         title: {
-          text: 'AI知识体系图',
-          subtext: '知识体系可以拖动/缩放进行查看'
+          text: 'AI培养方案图',
+          subtext: '培养方案可以拖动/缩放/展开或收起节点进行查看'
         },
         tooltip: {
           trigger: 'item',
@@ -50,13 +52,10 @@ export default {
             id: 0,
             data: [overviewData],
             name: 'AI知识体系图',
-            symbol: 'none',
             symbolSize: 12,
             left: '8%',
             right: '20%',
-            edgeShape: 'polyline',
-            edgeForkPosition: '50%',
-            initialTreeDepth: -1,
+            initialTreeDepth: 1,
             lineStyle: {
               width: 2
             },
@@ -73,12 +72,12 @@ export default {
                 align: 'left'
               }
             },
-            expandAndCollapse: false,
+            expandAndCollapse: true,
             roam: true
           }
         ]
       };
-      
+
       myChart.setOption(option);
       myChart.on('click', (param) => {
         if (param.value) {

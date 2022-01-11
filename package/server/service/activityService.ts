@@ -22,7 +22,7 @@ export class ActivityService {
         name: item.name,
         description: item.description,
         link: item.registrationLink,
-        endTime: `${endTime.getFullYear()}-${endTime.getMonth()}-${endTime.getDate()}`
+        endTime: `${endTime.getFullYear()}-${endTime.getMonth() + 1}-${endTime.getDate()}`
       };
     });
 

@@ -8,6 +8,10 @@
         :key="`learn-menu-tooltip-${index}`"
         placement="top"
         :fallback-placements="['bottom']"
+        :enterable="false"
+        transition="none"
+        :show-after="-1"
+        :hide-after="-1"
       >
         <el-menu-item
           :index="`chapter-${index}`"

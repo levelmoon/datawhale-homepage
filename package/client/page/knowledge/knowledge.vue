@@ -6,7 +6,7 @@
         class="side-menu"
         :class="[selectedId === '0' ? 'selected-item' : 'side-menu-title']"
       >
-        关于AI知识体系
+        关于AI培养方案
       </div>
       <div
         @click="selectMenu(item.id)"

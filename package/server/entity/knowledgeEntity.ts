@@ -5,7 +5,7 @@ export class KnowledgeEntity {
   @PrimaryGeneratedColumn({
     type: 'int',
     name: 'id',
-    comment: '知识体系id',
+    comment: '培养方案id',
     unsigned: true
   })
   id: number;
@@ -13,7 +13,7 @@ export class KnowledgeEntity {
   @Column('varchar', {
     name: 'name',
     nullable: true,
-    comment: '知识体系名称',
+    comment: '培养方案名称',
     length: 512
   })
   name: string | null;
@@ -21,14 +21,14 @@ export class KnowledgeEntity {
   @Column('text', {
     name: 'content',
     nullable: true,
-    comment: '知识体系内容，json格式'
+    comment: '培养方案内容，json格式'
   })
   content: string | null;
 
   @Column('int', {
     name: 'type',
     nullable: true,
-    comment: '知识体系的类型，10为总览，20为具体细节'
+    comment: '培养方案的类型，10为总览，20为具体细节'
   })
   type: KNOWLEDGE_TYPE | null;
 
