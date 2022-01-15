@@ -1,8 +1,10 @@
 import MarkdownIt from 'markdown-it';
 import MarkdownItKatex from '@iktakahiro/markdown-it-katex';
+import MarkdownItHighlight from 'markdown-it-highlight'
 
 const md = new MarkdownIt({ breaks: true, html: true });
 md.use(MarkdownItKatex, { globalGroup: true, enableBareBlocks: true });
+md.use(MarkdownItHighlight);
 
 const allIndexOf = (target: string, sourceString: string) => {
   const output = [];

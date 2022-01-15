@@ -15,6 +15,7 @@ specifiers:
   file-loader: ^6.2.0
   html-webpack-plugin: ^5.5.0
   markdown-it: ^12.3.0
+  markdown-it-highlight: ^0.2.0
   mini-css-extract-plugin: ^2.4.5
   mysql: ^2.18.1
   nodemon: ^2.0.15
@@ -57,6 +58,7 @@ devDependencies:
   file-loader: registry.nlark.com/file-loader/6.2.0_webpack@5.65.0
   html-webpack-plugin: registry.npmmirror.com/html-webpack-plugin/5.5.0_webpack@5.65.0
   markdown-it: registry.npmmirror.com/markdown-it/12.3.0
+  markdown-it-highlight: registry.npmmirror.com/markdown-it-highlight/0.2.0
   mini-css-extract-plugin: registry.npmmirror.com/mini-css-extract-plugin/2.4.5_webpack@5.65.0
   postcss-loader: registry.npmmirror.com/postcss-loader/6.2.1_webpack@5.65.0
   prettier: registry.npmmirror.com/prettier/2.5.1
@@ -4382,10 +4384,18 @@ packages:
     version: 4.2.8
 
   registry.npmmirror.com/highlight.js/10.7.3:
-    resolution: {integrity: sha1-aXJy45kTVuQMPKxWanTu9oF1ZTE=, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/highlight.js/download/highlight.js-10.7.3.tgz}
+    resolution: {integrity: sha512-tzcUFauisWKNHaRkN4Wjl/ZA07gENAjFl3J/c480dprkGTg5EQstgaNFqBfUqCq54kZRIEcreTsAgF/m2quD7A==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/highlight.js/download/highlight.js-10.7.3.tgz}
     name: highlight.js
     version: 10.7.3
     dev: false
+
+  registry.npmmirror.com/highlight.js/9.18.5:
+    resolution: {integrity: sha512-a5bFyofd/BHCX52/8i8uJkjr9DYwXIPnM/plwI6W7ezItLGqzt7X2G2nXuYSfsIJdkwwj/g9DG1LkcGJI/dDoA==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/highlight.js/download/highlight.js-9.18.5.tgz}
+    name: highlight.js
+    version: 9.18.5
+    deprecated: Support has ended for 9.x series. Upgrade to @latest
+    requiresBuild: true
+    dev: true
 
   registry.npmmirror.com/html-minifier-terser/6.1.0:
     resolution: {integrity: sha512-YXxSlJBZTP7RS3tWnQw74ooKa6L9b9i9QYXY21eUEvhZ3u9XLfv6OnFsQq6RxkhHygsaUMvYsZRV5rU/OVNZxw==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/html-minifier-terser/download/html-minifier-terser-6.1.0.tgz}
@@ -4607,6 +4617,14 @@ packages:
     version: 2.0.0
     engines: {node: '>=8'}
     dev: false
+
+  registry.npmmirror.com/markdown-it-highlight/0.2.0:
+    resolution: {integrity: sha1-aVWkOO7+0c3lTt1eprn2sYaEb7E=, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/markdown-it-highlight/download/markdown-it-highlight-0.2.0.tgz}
+    name: markdown-it-highlight
+    version: 0.2.0
+    dependencies:
+      highlight.js: registry.npmmirror.com/highlight.js/9.18.5
+    dev: true
 
   registry.npmmirror.com/markdown-it/12.3.0:
     resolution: {integrity: sha512-T345UZZ6ejQWTjG6PSEHplzNy5m4kF6zvUpHVDv8Snl/pEU0OxIK0jGg8YLVNwJvT8E0YJC7/2UvssJDk/wQCQ==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/markdown-it/download/markdown-it-12.3.0.tgz}

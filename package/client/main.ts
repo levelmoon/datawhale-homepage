@@ -7,6 +7,7 @@ import elementPlus from 'element-plus';
 import './style/common.css';
 import './style/markdown.css';
 import 'element-plus/dist/index.css';
+import 'markdown-it-highlight/dist/index.css'
 import { initTracker } from './util/tracker';
 
 const app = createApp(App);
