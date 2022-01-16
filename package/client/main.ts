@@ -7,13 +7,17 @@ import elementPlus from 'element-plus';
 import './style/common.css';
 import './style/markdown.css';
 import 'element-plus/dist/index.css';
-import 'markdown-it-highlight/dist/index.css'
+import 'markdown-it-highlight/dist/index.css';
 import { initTracker } from './util/tracker';
 
-const app = createApp(App);
-app.use(store);
-app.use(router);
-app.use(elementPlus);
-app.mount('#root');
+const main = async () => {
+  const app = createApp(App);
+  app.use(store);
+  app.use(router);
+  app.use(elementPlus);
+  app.mount('#root');
 
-initTracker();
+  await initTracker();
+};
+
+main();
