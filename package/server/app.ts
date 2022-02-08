@@ -5,6 +5,8 @@ import { getRouter } from './router';
 import { config } from './config';
 import compression from 'compression';
 
+const bodyParser = require('body-parser');
+
 const main = async () => {
   await initDbConnection();
 
@@ -12,6 +14,9 @@ const main = async () => {
   const port = 8081;
 
   app.use(compression());
+  app.use(bodyParser.urlencoded({ extended: false }));
+  app.use(bodyParser.json());
+
   app.use('/datawhale-homepage', express.static(config.staticFilePath));
   // 使用getRouter是为了防止在建立dbconnection之前初始化entity
   app.use('/api', getRouter());

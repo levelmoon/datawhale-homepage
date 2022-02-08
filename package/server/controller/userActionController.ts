@@ -8,7 +8,6 @@ export class UserActionController {
   addUserAction = async (req: Request, res: Response) => {
     try {
       // 存取用户行为
-      console.log(req);
       const output = await this.userActionService.addUserAction(req.body);
       sendSuccessResponse(res, output);
     } catch (e) {

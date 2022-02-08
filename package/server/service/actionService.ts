@@ -6,12 +6,11 @@ export class UserActionService {
 
   addUserAction = (data) => {
     let actions = new UserActionEntity();
-    console.log('数据是啥', data);
     actions.sessionId = data.sessionId;
-    actions.urls = data.urls;
+    actions.urls = data.urls.toString();
     actions.actionTime = data.actionTime;
-    this.activityRepository.save(actions).then((res) => {
-      console.log('数据存进去了', res);
+    this.activityRepository.save(actions).catch((err) => {
+      console.error(err);
     });
   };
 }

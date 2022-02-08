@@ -13,7 +13,7 @@
 <script lang="ts">
 import appNavigator from './component/appNavigator.vue';
 import { onMounted, reactive, toRefs, ref } from 'vue';
-import { http } from './service/axios';
+
 import { MIN_DISPLAY_WIDTH } from './constant';
 
 export default {
@@ -23,40 +23,6 @@ export default {
       viewValid: true,
       minWidth: MIN_DISPLAY_WIDTH
     });
-    let handle = null;
-    const setPolling = () => {
-      handle = setInterval(setUserAction, 20000);
-    };
-
-    const getActions = () => {
-      console.log('window', window.tracker);
-      console.log('handle', handle);
-    };
-
-    const clearTimerTask = () => {
-      clearInterval(handle);
-      handle = null;
-    };
-
-    const setUserAction = async () => {
-      getActions();
-      let urls = [];
-      if (!window.tracker?.logList || !window.tracker?.sessionId) return;
-      let array = window.tracker.logList;
-      array.map((x) => {
-        urls.push(x.url);
-      });
-      let data = {
-        sessionId: window.tracker.sessionId,
-        urls: urls,
-        actionTime: new Date()
-      };
-      console.log('data', data);
-      let res = await http.post('/api/actions', data);
-      console.log('存入成功', res);
-      window.tracker.logList = [];
-      handle = null;
-    };
 
     onMounted(() => {
       window.addEventListener('resize', () => {
@@ -66,18 +32,10 @@ export default {
           data.viewValid = true;
         }
       });
-      window.addEventListener('beforeunload', () => {
-        alert('哈哈哈哈');
-      });
-      // setUserAction();
-      if (!handle) {
-        // setPolling();
-      }
     });
 
     return {
-      ...toRefs(data),
-      setUserAction
+      ...toRefs(data)
     };
   }
 };
