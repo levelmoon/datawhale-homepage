@@ -2,11 +2,13 @@ import express from 'express';
 import { HomepageController } from './controller/homepageController';
 import { KnowledgeController } from './controller/knowledgeController';
 import { LearnController } from './controller/learnController';
+import { UserActionController } from './controller/userActionController';
 
 export const getRouter = () => {
   const homepageController = new HomepageController();
   const learnController = new LearnController();
   const knowledgeController = new KnowledgeController();
+  const userActionController = new UserActionController();
 
   const router = express.Router();
 
@@ -18,7 +20,7 @@ export const getRouter = () => {
   router.get('/learn/detail', learnController.getLearnDetail);
   router.get('/learn/video', learnController.getLearnVideo);
   router.get('/knowledge/list', knowledgeController.getKnowledge);
-	router.get('/knowledge/mind',knowledgeController.getKnowledgeMind)
-
+  router.get('/knowledge/mind', knowledgeController.getKnowledgeMind);
+  router.post('/actions', userActionController.addUserAction);
   return router;
 };

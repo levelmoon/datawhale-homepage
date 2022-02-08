@@ -16,7 +16,6 @@ const main = async () => {
   app.use(router);
   app.use(elementPlus);
   app.mount('#root');
-
   await initTracker();
 };
 
