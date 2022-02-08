@@ -37,10 +37,13 @@ const setUserAction = async () => {
     urls: urls,
     actionTime: new Date()
   };
-  let res = await http.post('/api/actions', data);
-  console.log('res', res);
-  window.tracker.logList = [];
-  handle = null;
+  try {
+    await http.post('/api/actions', data);
+    window.tracker.logList = [];
+    handle = null;
+  } catch (err) {
+    console.error(err);
+  }
 };
 
 main();
