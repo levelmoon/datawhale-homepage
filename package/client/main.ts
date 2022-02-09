@@ -27,7 +27,8 @@ const setPolling = () => {
 
 const setUserAction = async () => {
   let urls = [];
-  if (!window.tracker?.logList || !window.tracker?.sessionId) return;
+  if (!window.tracker?.logList || window.tracker.logList.length === 0 || !window.tracker?.sessionId)
+    return;
   let array = window.tracker.logList;
   array.map((x) => {
     urls.push(x.url);
