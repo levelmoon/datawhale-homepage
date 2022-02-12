@@ -59,7 +59,7 @@ export default {
           content: JSON.parse(item.content)
         };
       });
-      selectMenu('0')
+      selectMenu('0');
     });
 
     return {
