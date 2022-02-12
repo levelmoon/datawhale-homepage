@@ -8,8 +8,9 @@ export class UserActionController {
   addUserAction = async (req: Request, res: Response) => {
     try {
       // 存取用户行为
-      const output = await this.userActionService.addUserAction(req.body);
-      sendSuccessResponse(res, output);
+      const { sessionId, logList } = req.body;
+      await this.userActionService.addUserAction(sessionId, logList);
+      sendSuccessResponse(res, 'save user action successful');
     } catch (e) {
       sendErrorResponse(res, e.message);
     }

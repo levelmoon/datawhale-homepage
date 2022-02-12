@@ -19,16 +19,23 @@ export class UserActionEntity {
   sessionId: string | null;
 
   @Column('text', {
-    name: 'urls',
+    name: 'log_list',
     nullable: true,
-    comment: '用户每的行为url'
+    comment: '用户上报的日志列表'
   })
-  urls: string | null;
+  logList: string | null;
 
   @Column('timestamp', {
-    name: 'action_time',
+    name: 'create_time',
     nullable: true,
-    comment: '行为时间'
+    comment: '创建时间'
   })
-  actionTime: Date | null;
+  createTime: Date | null;
+
+  @Column('timestamp', {
+    name: 'modify_time',
+    nullable: true,
+    comment: '修改时间'
+  })
+  modifyTime: Date | null;
 }
