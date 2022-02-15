@@ -36,7 +36,7 @@ export class UserActionService {
     const logFileName = `export-${Date.now()}.log`;
     const logFilePath = path.join(logDirPath, logFileName);
     await fse.ensureDir(logDirPath);
-    await fse.writeFile(logFilePath, JSON.stringify(sessionLogList), {
+    await fse.writeFile(logFilePath, JSON.stringify(output), {
       flag: 'w+'
     });
 
