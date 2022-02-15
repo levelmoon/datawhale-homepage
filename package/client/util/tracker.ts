@@ -2,20 +2,13 @@ import tracker from 'shadow-tracker';
 import fingerprintJS from '@fingerprintjs/fingerprintjs';
 import { http } from '../service/axios';
 
-const wait = (time: number) => {
-  return new Promise((resolve, reject) => {
-    setTimeout(() => {
-      resolve(time);
-    }, time);
-  });
-};
-
 export const initTracker = async () => {
   const fingerprint = await fingerprintJS.load({ monitoring: false });
   const result = await fingerprint.get();
 
   tracker.init({
-    sessionId: result.visitorId,
+    sessionId: `${result.visitorId}${Date.now()}`,
+    userId: result.visitorId,
     captureEvent: true,
     captureJsError: false,
     captureXMLHttpRequest: false
