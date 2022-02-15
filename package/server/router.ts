@@ -22,5 +22,6 @@ export const getRouter = () => {
   router.get('/knowledge/list', knowledgeController.getKnowledge);
   router.get('/knowledge/mind', knowledgeController.getKnowledgeMind);
   router.post('/actions', userActionController.addUserAction);
+  router.get('/actions/export', userActionController.exportUserAction);
   return router;
 };

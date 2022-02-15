@@ -15,4 +15,17 @@ export class UserActionController {
       sendErrorResponse(res, e.message);
     }
   };
+
+  exportUserAction = async (req: Request, res: Response) => {
+    try {
+      const { startTime, endTime } = req.query;
+      const filename = await this.userActionService.exportUserAction(
+        startTime as string,
+        endTime as string
+      );
+      sendSuccessResponse(res, `extract user action successful, filename: ${filename}`);
+    } catch (e) {
+      sendErrorResponse(res, e.message);
+    }
+  };
 }
