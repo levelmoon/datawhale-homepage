@@ -8,6 +8,8 @@ const knowledge = () =>
   import(/* webpackChunkName: 'knowledge' */ '../page/knowledge/knowledge.vue');
 const learnDetail = () =>
   import(/* webpackChunkName: 'learnDetail' */ '../page/learnDetail/learnDetail.vue');
+  const analyzer = () =>
+    import(/* webpackChunkName: 'analyzer' */ '../page/analyzer/analyzer.vue');
 
 const routerHashHistory = createWebHashHistory();
 
@@ -29,6 +31,10 @@ const router = createRouter({
     {
       path: ROUTER_MAP[3],
       component: learnDetail
+    },
+    {
+      path: ROUTER_MAP[4],
+      component: analyzer
     }
   ]
 });

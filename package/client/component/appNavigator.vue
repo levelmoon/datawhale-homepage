@@ -38,7 +38,8 @@ const ROUTER_MENU_RELATION = [
   { routerIndex: '0', menuIndex: 'homepage' },
   { routerIndex: '1', menuIndex: 'learn' },
   { routerIndex: '2', menuIndex: 'knowledge' },
-  { routerIndex: '3', menuIndex: 'learn' }
+  { routerIndex: '3', menuIndex: 'learn' },
+  { routerIndex: '4', menuIndex: '' }
 ];
 
 export default {

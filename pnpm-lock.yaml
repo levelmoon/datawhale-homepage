@@ -27,6 +27,7 @@ specifiers:
   prettier: 2.5.1
   reflect-metadata: ^0.1.13
   shadow-tracker: ^2.0.2
+  shadow-tracker-analyzer: ^1.0.1
   ts-loader: ^9.2.6
   ts-node: ^10.4.0
   typeorm: ^0.2.41
@@ -49,6 +50,7 @@ dependencies:
   mysql: 2.18.1
   nodemon: 2.0.15
   reflect-metadata: 0.1.13
+  shadow-tracker-analyzer: 1.0.1
   typeorm: 0.2.41
 
 devDependencies:
@@ -3471,6 +3473,10 @@ packages:
     dependencies:
       inherits: 2.0.4
       safe-buffer: 5.2.1
+    dev: false
+
+  /shadow-tracker-analyzer/1.0.1:
+    resolution: {integrity: sha512-TuBXShewuqQ/h0ka4+1ffcSuBS+f8y6WGdv4/+kDbg5bRsgo3tNCIXTqGQwHmd9Xiiqsq2OzO4VAtBSMfh7wVg==}
     dev: false
 
   /shadow-tracker/2.0.2:

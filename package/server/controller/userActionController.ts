@@ -16,6 +16,19 @@ export class UserActionController {
     }
   };
 
+  analyzeUserAction = async (req: Request, res: Response) => {
+    try {
+      const { startTime, endTime } = req.query;
+      const result = await this.userActionService.analyzeUserAction(
+        startTime as string,
+        endTime as string
+      );
+      sendSuccessResponse(res, result, 'get user action successful');
+    } catch (e) {
+      sendErrorResponse(res, e.message);
+    }
+  };
+
   exportUserAction = async (req: Request, res: Response) => {
     try {
       const { startTime, endTime } = req.query;

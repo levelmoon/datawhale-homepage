@@ -3,6 +3,7 @@ import { Between, getRepository } from 'typeorm';
 import { config } from '../config';
 import path from 'path';
 import fse from 'fs-extra';
+import { ShadowTrackerAnalyzer } from 'shadow-tracker-analyzer';
 
 export class UserActionService {
   private activityRepository = getRepository(UserActionEntity);
@@ -16,7 +17,7 @@ export class UserActionService {
     await this.activityRepository.save(actions);
   };
 
-  exportUserAction = async (startTime: string, endTime: string, limit = 10000) => {
+  getUserAction = async (startTime: string, endTime: string, limit: number) => {
     const res = await this.activityRepository.find({
       where: {
         createTime: Between(new Date(startTime), new Date(endTime))
@@ -31,6 +32,47 @@ export class UserActionService {
       const logList = JSON.parse(item);
       output.push(...logList);
     });
+
+    return output;
+  };
+
+  analyzeUserAction = async (startTime: string, endTime: string, limit = 10000) => {
+    const output = await this.getUserAction(startTime, endTime, limit);
+
+    const analyzer = new ShadowTrackerAnalyzer({
+      maxLogListLength: 10000,
+      jumpOutTimeLimit: 30 * 1000
+    });
+
+    analyzer.addLog(output);
+
+    const overviewData = analyzer.getOverview();
+    const urlStatisticData = analyzer.getUrlStatisticInfo();
+    const { screenInfo, clientInfo, browserInfo } = analyzer.getDeviceInfo();
+    const performanceData = analyzer.getPerformanceInfo();
+
+    return {
+      overview: overviewData,
+      urlStatistic: urlStatisticData.sort((a, b) => {
+        return b.visitNumber - a.visitNumber;
+      }),
+      device: {
+        screenInfo: screenInfo.sort((a, b) => {
+          return b.number - a.number;
+        }),
+        clientInfo: clientInfo.sort((a, b) => {
+          return b.number - a.number;
+        }),
+        browserInfo: browserInfo.sort((a, b) => {
+          return b.number - a.number;
+        })
+      },
+      performance: performanceData
+    };
+  };
+
+  exportUserAction = async (startTime: string, endTime: string, limit = 10000) => {
+    const output = await this.getUserAction(startTime, endTime, limit);
 
     const logDirPath = path.join(config.staticFilePath, 'log');
     const logFileName = `export-${Date.now()}.log`;
