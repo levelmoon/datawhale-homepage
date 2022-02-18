@@ -109,6 +109,7 @@
 <script lang="ts">
 import { onMounted, reactive, toRefs, watch } from 'vue';
 import { http } from '../../service/axios';
+import { ElMessage } from 'element-plus';
 
 export default {
   setup() {
@@ -165,13 +166,18 @@ export default {
     };
 
     const onTimePickerChange = async () => {
-      const res = await http.get('/api/actions/analyze', {
-        params: {
-          startTime: getTime(data.dateRange[0]),
-          endTime: getTime(data.dateRange[1])
-        }
-      });
-      data.userActionData = res.data.data;
+      try {
+        const res = await http.get('/api/actions/analyze', {
+          params: {
+            startTime: getTime(data.dateRange[0]),
+            endTime: getTime(data.dateRange[1])
+          }
+        });
+
+        data.userActionData = res.data.data;
+      } catch (e) {
+        ElMessage.error('日志太多，分析不过来了QAQ');
+      }
     };
 
     onMounted(async () => {

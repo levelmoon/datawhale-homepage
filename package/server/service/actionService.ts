@@ -40,11 +40,15 @@ export class UserActionService {
     const output = await this.getUserAction(startTime, endTime, limit);
 
     const analyzer = new ShadowTrackerAnalyzer({
-      maxLogListLength: 10000,
+      maxLogListLength: 20000,
       jumpOutTimeLimit: 30 * 1000
     });
 
-    analyzer.addLog(output);
+    try {
+      analyzer.addLog(output);
+    } catch (e) {
+      throw Error('日志太多，分析不过来了QAQ')
+    }
 
     const overviewData = analyzer.getOverview();
     const urlStatisticData = analyzer.getUrlStatisticInfo();
